@@ -50,7 +50,7 @@
 </style>
 </head>
 <body>
-<a href="index.html" style="position:fixed;top:10px;left:12px;z-index:50;background:#1e2a44;color:#e2e8f0;text-decoration:none;font:700 13px -apple-system,BlinkMacSystemFont,sans-serif;padding:7px 11px;border-radius:8px">Inicio</a>
+<a href="index.html#material" style="position:fixed;top:10px;left:12px;z-index:50;background:#1e2a44;color:#e2e8f0;text-decoration:none;font:700 13px -apple-system,BlinkMacSystemFont,sans-serif;padding:7px 11px;border-radius:8px">Inicio</a>
 
 <div class="wrap">
   <header>
@@ -134,7 +134,7 @@ const Q = [
  {d:"D5", t:"match", s:"Relaciona cada necesidad con el servicio de AWS correcto.", pairs:[["Saber qué usuario invocó un modelo y cuándo","AWS CloudTrail"],["Alarma cuando la latencia pasa de 3 segundos","Amazon CloudWatch"],["Detectar un bucket que no cumple la regla de cifrado","AWS Config"],["Recolectar evidencia para una auditoría SOC 2","AWS Audit Manager"],["Descargar los reportes de cumplimiento de AWS","AWS Artifact"]]}
 ];
 const LIMIT = 90*60*1000;
-const KEY = "gaby-simulacro1";
+const KEY = "jair-simulacro1";
 const L = "ABCDE";
 let st = JSON.parse(localStorage.getItem(KEY) || "null") || {started:false, done:false, idx:0, base:0, a:{}, f:{}, sec:{}, perm:{}};
 let runFrom=null, qFrom=null, tick=null;

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<script src="auth.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mis errores AIF-C01 · Guía de estudio</title>
+<style>
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0f172a;color:#e2e8f0;line-height:1.55}
+  main{max-width:1000px;margin:0 auto;padding:28px 18px 60px}
+  h1{font-size:26px;color:#ff9900;margin:0 0 4px}
+  .sub{color:#94a3b8;margin:0 0 18px;font-size:14px}
+  h2{font-size:18px;margin:28px 0 8px;border-bottom:1px solid #1e2a44;padding-bottom:6px}
+  table{width:100%;border-collapse:collapse;margin:8px 0;font-size:14px}
+  th,td{border:1px solid #1e2a44;padding:8px 9px;text-align:left;vertical-align:top}
+  th{background:#111c33;color:#ff9900}
+  tr:nth-child(even) td{background:#0d1629}
+  .ok{color:#22c55e;font-weight:700}.pend{color:#ff9900;font-weight:700}.bad{color:#f87171;font-weight:700}
+  .rule{border-left:3px solid #ff9900;background:#111c33;padding:9px 12px;margin:10px 0;border-radius:0 8px 8px 0;font-size:14.5px}
+  .rule b{color:#ff9900}
+  .legend span{margin-right:16px;font-size:13.5px}
+  nav{font-size:14px;margin-bottom:18px}nav a{color:#ff9900;margin-right:14px}
+</style>
+</head>
+<body>
+<main>
+<p><a href="index.html#errores" style="color:#ff9900;font-weight:700">Inicio</a></p>
+<h1>Mis errores · Guía de estudio</h1>
+<p class="sub">Todos los errores del diagnóstico (D) y las rondas 2, 3 y 4 (R2, R3, R4) la guía paso a paso (G) y el simulacro 1 (S), agrupados por tema. Repasa primero los que están en rojo y en naranja.</p>
+<p class="legend"><span class="bad">Sigue fallando</span><span class="pend">Falta volver a probarlo</span><span class="ok">Ya corregido en una ronda posterior</span></p>
+
+<h2>1. Herramientas de SageMaker y revisión humana (tu punto más débil)</h2>
+<table>
+<thead><tr><th>Ronda</th><th>La pregunta</th><th>Tu respuesta</th><th>Correcta</th><th>Estado</th></tr></thead>
+<tbody>
+<tr><td>D-12</td><td>Una persona revisa las reclamaciones con baja confianza antes de decidir</td><td>Comprehend</td><td>A2I</td><td class="ok">Correcto en R4-12</td></tr>
+<tr><td>R2-4</td><td>Personas etiquetan 200,000 fotos de piezas antes de entrenar</td><td>A2I</td><td>Ground Truth</td><td class="ok">Correcto en R3-6</td></tr>
+<tr><td>R2-16</td><td>El modelo empeoró meses después porque cambió el comportamiento de los clientes</td><td>Clarify</td><td>Model Monitor</td><td class="bad">Fallaste otra vez en R3-14 y R4-5</td></tr>
+<tr><td>R4-3</td><td>Unir Ground Truth, Clarify, Model Monitor, Model Cards y A2I con su momento</td><td>9 errores al unir</td><td>Ver la regla de abajo</td><td class="pend">Bajó a 1 error en G-15</td></tr>
+<tr><td>G-8</td><td>___ etiqueta los datos antes de entrenar</td><td>Clarify</td><td>Ground Truth</td><td class="bad">Pendiente</td></tr>
+<tr><td>G-16</td><td>Para documentar el modelo uso ___</td><td>Ground Truth</td><td>Model Cards</td><td class="bad">Pendiente</td></tr>
+<tr><td>R4-4</td><td>Sesgo antes de desplegar ___ / drift en producción ___</td><td>Ground Truth / Clarify</td><td>Clarify / Model Monitor</td><td class="ok">Correcto en G-16</td></tr>
+<tr><td>R4-5</td><td>Fraude: alerta cuando los datos nuevos se alejan de los de entrenamiento</td><td>A2I</td><td>Model Monitor</td><td class="bad">Pendiente</td></tr>
+<tr><td>R4-15</td><td>El regulador pide explicar qué variables pesaron en el rechazo de un crédito</td><td>Audit Manager</td><td>Clarify</td><td class="bad">Fallaste otra vez en S-50 (pusiste Model Cards)</td></tr>
+<tr><td>R3-7</td><td>Préstamos en producción con confianza menor a 80% pasan a un analista</td><td>Model Monitor</td><td>A2I</td><td class="ok">Correcto en R4-12</td></tr>
+<tr><td>R3-13</td><td>Antes de lanzar, revisar que el modelo de RH no favorezca a un género</td><td>Ground Truth</td><td>Clarify</td><td class="bad">Fallaste otra vez en R4-4</td></tr>
+<tr><td>R3-14</td><td>Alerta si los datos de producción se alejan del baseline de entrenamiento</td><td>Clarify</td><td>Model Monitor</td><td class="bad">Fallaste otra vez en R4-4 y R4-5</td></tr>
+<tr><td>R3-15</td><td>Documentar el uso previsto, el riesgo y el entrenamiento de cada modelo</td><td>Model Monitor</td><td>Model Cards</td><td class="ok">Correcto en R4-7</td></tr>
+</tbody>
+</table>
+<div class="rule"><b>Truco por el nombre:</b> <b>Clarify</b> = "aclarar": aclara por qué decidió el modelo (explicabilidad) y si es justo (sesgo). <b>Monitor</b> = "monitorear": vigila el modelo en producción con el paso del tiempo (drift).</div>
+<div class="rule"><b>Regla:</b> Ground Truth = etiquetar antes de entrenar. Clarify = ¿es justo? (sesgo y explicabilidad). Model Monitor = ¿se echó a perder? (drift en producción). Model Cards = la ficha del modelo. A2I = una persona revisa predicciones dudosas en producción.</div>
+
+<h2>2. Gobernanza y monitoreo</h2>
+<table>
+<thead><tr><th>Ronda</th><th>La pregunta</th><th>Tu respuesta</th><th>Correcta</th><th>Estado</th></tr></thead>
+<tbody>
+<tr><td>D-8</td><td>Saber qué usuario invocó un modelo de Bedrock, a qué hora y desde qué IP</td><td>Trusted Advisor</td><td>CloudTrail</td><td class="ok">Correcto en R3-8</td></tr>
+<tr><td>R2-6</td><td>Saber si un bucket pasó a ser público y ver su historial de configuración</td><td>Trusted Advisor</td><td>Config</td><td class="ok">Correcto en R3-10</td></tr>
+<tr><td>R2-7</td><td>Recolectar evidencia de cumplimiento para la auditoría anual</td><td>Trusted Advisor</td><td>Audit Manager</td><td class="ok">Correcto en R3-11</td></tr>
+<tr><td>R3-12</td><td>Latencia y errores en tiempo real, con alarma a los 3 segundos</td><td>CloudTrail</td><td>CloudWatch</td><td class="ok">Correcto en R4-2 y R4-6</td></tr>
+</tbody>
+</table>
+<div class="rule"><b>Regla:</b> CloudTrail = quién hizo qué. CloudWatch = cómo se comporta ahora (métricas y alarmas). Config = cómo está configurado. Audit Manager = evidencia para el auditor. Trusted Advisor = solo recomendaciones.</div>
+
+<h2>3. Servicios especializados</h2>
+<table>
+<thead><tr><th>Ronda</th><th>La pregunta</th><th>Tu respuesta</th><th>Correcta</th><th>Estado</th></tr></thead>
+<tbody>
+<tr><td>D-10</td><td>Extraer el total y la tabla de conceptos de facturas escaneadas</td><td>Transcribe</td><td>Textract</td><td class="ok">Correcto en R3-2</td></tr>
+<tr><td>R2-1</td><td>Llamadas grabadas a texto y después saber si el cliente quedó molesto</td><td>Textract + Comprehend</td><td>Transcribe + Comprehend</td><td class="ok">Correcto en R3-1</td></tr>
+<tr><td>D-19</td><td>Bloquear la asesoría de inversión y ocultar PII en un chatbot</td><td>Comprehend</td><td>Bedrock Guardrails</td><td class="ok">Correcto en R2-5</td></tr>
+<tr><td>R2-9</td><td>"Los clientes que compraron esto también compraron"</td><td>Bedrock Knowledge Bases</td><td>Personalize</td><td class="ok">Correcto en R3-16 y G-18</td></tr>
+<tr><td>G-18</td><td>Responder preguntas sobre las políticas internas</td><td>Comprehend</td><td>Knowledge Bases</td><td class="bad">Pendiente</td></tr>
+</tbody>
+</table>
+<div class="rule"><b>Regla:</b> Textract = texto que ya está escrito en un documento. Transcribe = voz a texto. Comprehend detecta PII, pero no bloquea nada; bloquear o filtrar a un chatbot es Guardrails.</div>
+
+<h2>4. Fundamentos de ML y métricas</h2>
+<table>
+<thead><tr><th>Ronda</th><th>La pregunta</th><th>Tu respuesta</th><th>Correcta</th><th>Estado</th></tr></thead>
+<tbody>
+<tr><td>D-2</td><td>Estimar cuántas unidades se venderán la próxima semana</td><td>Clasificación</td><td>Regresión</td><td class="ok">Correcto en R2-11</td></tr>
+<tr><td>D-15</td><td>Agrupar clientes sin etiquetas previas</td><td>Clasificación</td><td>Clustering</td><td class="ok">Correcto en R4-16</td></tr>
+<tr><td>D-9</td><td>98% en entrenamiento y 70% en prueba</td><td>Underfitting</td><td>Overfitting</td><td class="ok">Correcto en R2-12, R2-13 y G-30</td></tr>
+<tr><td>G-30</td><td>60% en entrenamiento y 58% en prueba</td><td>Drift</td><td>Underfitting</td><td class="bad">Pendiente (en R2-12 sí lo acertaste)</td></tr>
+<tr><td>D-14</td><td>Comparar resúmenes generados contra resúmenes de referencia</td><td>Accuracy</td><td>ROUGE</td><td class="pend">Falta volver a probarlo (BLEU sí lo acertaste)</td></tr>
+<tr><td>R2-15</td><td>Fraude al 1%: el modelo dice "legítima" a todo y saca 99%</td><td>Accuracy</td><td>Recall y F1</td><td class="pend">Correcto en R3-19, pero fallaste en R4-9</td></tr>
+<tr><td>R4-9</td><td>Si lo peor es que se escape un fraude priorizo ___</td><td>accuracy</td><td>recall</td><td class="bad">Pendiente</td></tr>
+</tbody>
+</table>
+<div class="rule"><b>Regla:</b> número = regresión; categoría = clasificación; sin etiquetas = clustering. Bien en entrenamiento y mal en prueba = overfitting. ROUGE = resúmenes; BLEU = traducción. Con clases desbalanceadas, nunca accuracy.</div>
+
+<h2>5. GenAI: parámetros, prompts e inferencia</h2>
+<table>
+<thead><tr><th>Ronda</th><th>La pregunta</th><th>Tu respuesta</th><th>Correcta</th><th>Estado</th></tr></thead>
+<tbody>
+<tr><td>D-3</td><td>El chatbot responde distinto cada vez; quieren más consistencia</td><td>Subir la temperatura</td><td>Bajar la temperatura</td><td class="ok">Correcto en R2-17</td></tr>
+<tr><td>D-11</td><td>Dos acciones que reducen las alucinaciones</td><td>Subir la temperatura + quitar el system prompt</td><td>RAG + pedir que diga "no sé"</td><td class="bad">Fallaste otra vez en G-34 y en S-24 (subir temperatura para bajar costo)</td></tr>
+<tr><td>D-17</td><td>Tres ejemplos de entrada y salida dentro del prompt</td><td>Zero-shot</td><td>Few-shot</td><td class="ok">Correcto en R4-8</td></tr>
+<tr><td>R2-19</td><td>"Razona paso a paso antes de responder"</td><td>Few-shot</td><td>Chain-of-thought</td><td class="ok">Correcto en R4-8</td></tr>
+<tr><td>D-20</td><td>Resumir 50,000 documentos cada noche, sin prisa y al menor costo</td><td>Provisioned Throughput</td><td>Batch inference</td><td class="pend">Falta volver a probarlo (Provisioned sí lo acertaste en R2-20)</td></tr>
+</tbody>
+</table>
+<div class="rule"><b>Regla:</b> temperatura baja = consistencia; alta = creatividad. Ejemplos en el prompt = few-shot; "paso a paso" = chain-of-thought; "no hagas X" = negative prompting. Sin prisa y barato = batch; capacidad garantizada o modelo fine-tuned = Provisioned Throughput.</div>
+<h2>6. Simulacro 1: temas nuevos y errores</h2>
+<table>
+<thead><tr><th>#</th><th>La pregunta</th><th>Tu respuesta</th><th>Correcta</th><th>Por qué</th></tr></thead>
+<tbody>
+<tr><td>S-4</td><td>50,000 correos sin etiquetas, descubrir de qué temas se quejan</td><td>Clasificación supervisada</td><td><b>No supervisado (clustering)</b></td><td>Sin etiquetas no se puede clasificar</td></tr>
+<tr><td>S-6</td><td>Adaptar un modelo de visión ya entrenado con solo 2,000 fotos</td><td>Aprendizaje por refuerzo</td><td><b>Transfer learning</b></td><td>Reusar un modelo ya entrenado y adaptarlo = transfer learning</td></tr>
+<tr><td>S-7</td><td>Ordenar las fases de un proyecto de ML</td><td>Feature engineering antes de preparar datos</td><td><b>Problema, datos, features, entrenar, evaluar, desplegar</b></td><td>Primero recolectas y limpias; luego creas las features</td></tr>
+<tr><td>S-8</td><td>Limpiar y transformar datos con poco código antes de entrenar</td><td>Clarify</td><td><b>SageMaker Data Wrangler</b></td><td>Wrangler = preparar datos</td></tr>
+<tr><td>S-9</td><td>Guardar features en un solo lugar para entrenamiento e inferencia</td><td>Ground Truth</td><td><b>SageMaker Feature Store</b></td><td>Store = almacén de features</td></tr>
+<tr><td>S-10</td><td>Analista sin código predice cancelaciones desde un CSV</td><td>Bedrock Agents</td><td><b>SageMaker Canvas</b></td><td>Canvas = ML sin código para negocio</td></tr>
+<tr><td>S-18</td><td>Foto de producto a descripción en texto</td><td>Modelo solo de texto</td><td><b>Modelo multimodal</b></td><td>Si entra imagen y sale texto, son dos modalidades</td></tr>
+<tr><td>S-24</td><td>Bajar costo en una tarea simple</td><td>Subir la temperatura</td><td><b>Modelo más pequeño</b></td><td>La temperatura no cambia el costo; el tamaño del modelo sí</td></tr>
+<tr><td>S-28</td><td>Millones de documentos médicos sin etiquetar para aprender vocabulario</td><td>Few-shot</td><td><b>Continued pre-training</b></td><td>Mucho texto sin etiquetar = continued pre-training</td></tr>
+<tr><td>S-29</td><td>Modelo más pequeño que conserve la calidad del grande</td><td>RAG</td><td><b>Distillation</b></td><td>El grande enseña al pequeño</td></tr>
+<tr><td>S-31</td><td>Comparar tres FMs con datos propios antes de elegir</td><td>Clarify</td><td><b>Bedrock Model Evaluation</b></td><td>Comparar modelos = Model Evaluation</td></tr>
+<tr><td>S-32</td><td>Sugerencias de código en el IDE</td><td>Lex</td><td><b>Amazon Q Developer</b></td><td>Developer = para desarrolladores</td></tr>
+<tr><td>S-33</td><td>Asistente listo sobre Confluence, SharePoint y S3 con permisos</td><td>Personalize</td><td><b>Amazon Q Business</b></td><td>Business = para empleados de la empresa</td></tr>
+<tr><td>S-34</td><td>Chatbot de voz y texto con intenciones y datos (tamaño, dirección)</td><td>Polly</td><td><b>Amazon Lex</b></td><td>Lex = chatbot con intents y slots; Polly solo habla</td></tr>
+<tr><td>S-35</td><td>"Eres un abogado experto..."</td><td>Zero-shot con temperatura alta</td><td><b>Role prompting</b></td><td>Asignar un rol al modelo</td></tr>
+<tr><td>S-36</td><td>Métrica de significado parecido aunque cambien las palabras</td><td>ROUGE</td><td><b>BERTScore</b></td><td>ROUGE cuenta palabras iguales; BERTScore compara significado</td></tr>
+<tr><td>S-37</td><td>Evaluar qué tan útiles y amables son las respuestas</td><td>Accuracy</td><td><b>Evaluación humana</b></td><td>Lo subjetivo lo califica una persona</td></tr>
+<tr><td>S-39</td><td>Ordenar de menor a mayor costo: prompt, RAG, fine-tuning, desde cero</td><td>RAG antes que prompt</td><td><b>Prompt, RAG, fine-tuning, desde cero</b></td><td>El prompt no cuesta casi nada</td></tr>
+<tr><td>S-48</td><td>Dos dimensiones de IA responsable</td><td>Maximizar tokens + explicabilidad</td><td><b>Equidad + explicabilidad</b></td><td>Maximizar tokens no tiene que ver con IA responsable</td></tr>
+<tr><td>S-58</td><td>Invocar Bedrock desde la VPC sin pasar por internet</td><td>Route 53</td><td><b>VPC endpoint (PrivateLink)</b></td><td>Route 53 es DNS</td></tr>
+<tr><td>S-59</td><td>Descargar los reportes SOC e ISO de AWS</td><td>Audit Manager</td><td><b>AWS Artifact</b></td><td>Artifact = reportes de AWS; Audit Manager = tu evidencia</td></tr>
+<tr><td>S-60</td><td>Cifrar en reposo con llaves propias que puedes rotar</td><td>Secrets Manager</td><td><b>AWS KMS</b></td><td>KMS = llaves de cifrado; Secrets Manager = contraseñas y tokens</td></tr>
+<tr><td>S-61</td><td>Buscar PII en un bucket de S3</td><td>Inspector</td><td><b>Amazon Macie</b></td><td>Inspector busca vulnerabilidades en servidores</td></tr>
+<tr><td>S-62</td><td>Catálogo de metadatos de los datasets</td><td>Lex</td><td><b>AWS Glue Data Catalog</b></td><td>Glue Data Catalog = inventario de datos</td></tr>
+<tr><td>S-65</td><td>Unir CloudTrail, CloudWatch, Config, Audit Manager y Artifact</td><td>CloudTrail en 3 lugares</td><td><b>Uno por necesidad</b></td><td>Config = regla de cifrado; Artifact = reportes de AWS</td></tr>
+</tbody>
+</table>
+<div class="rule"><b>Lo que sí aguantó en el simulacro:</b> Model Monitor (S-51), Model Cards (S-52), A2I (S-56), Guardrails (S-40 y S-54), Knowledge Bases (S-30), batch y on-demand (S-45 y S-38), el match de servicios especializados (S-43) y prompt injection (S-25).</div>
+</main>
+</body>
+</html>

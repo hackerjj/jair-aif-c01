@@ -4,53 +4,56 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>Gaby · AWS Certified AI Practitioner</title>
+<title>Jair · AWS Certified AI Practitioner</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23ff9900'/%3E%3Ctext x='32' y='42' font-size='28' font-family='Arial' font-weight='700' text-anchor='middle' fill='%23111'%3EAI%3C/text%3E%3C/svg%3E">
 <style>
-  :root { --bg:#0f172a; --card:#111c33; --ink:#e2e8f0; --muted:#94a3b8; --accent:#ff9900; --ok:#22c55e; --bad:#ef4444; --line:#1e2a44; }
+  :root { --bg:#0f172a; --card:#111c33; --ink:#e2e8f0; --muted:#94a3b8; --accent:#ff9900; --ok:#22c55e; --bad:#ef4444; --line:#1e2a44; --blue:#60a5fa; }
   * { box-sizing:border-box; }
   body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; background:var(--bg); color:var(--ink); line-height:1.55; }
-  main { max-width:900px; margin:0 auto; padding:26px 16px 70px; }
-  h1 { font-size:26px; margin:0 0 4px; } h1 span { color:var(--accent); }
-  h2 { font-size:18px; margin:30px 0 10px; border-bottom:1px solid var(--line); padding-bottom:6px; }
+  main { max-width:980px; margin:0 auto; padding:24px 16px 70px; }
+  h1 { font-size:26px; margin:0 0 2px; } h1 span { color:var(--accent); }
+  h2 { font-size:18px; margin:24px 0 10px; }
   .sub { color:var(--muted); font-size:14.5px; margin:0 0 14px; }
-  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px; }
-  .ico { display:inline-block; width:1.1em; height:1.1em; vertical-align:-0.18em; margin-right:6px; }
-  label.f { display:block; font-size:13.5px; color:var(--muted); margin:12px 0 5px; }
-  input[type=password], input[type=text], textarea { width:100%; background:#0d1629; color:var(--ink); border:1px solid #334366; border-radius:9px; padding:11px 12px; font-size:15px; }
-  textarea { min-height:90px; resize:vertical; font-family:inherit; }
-  .btn { background:var(--accent); color:#111; border:0; border-radius:9px; padding:11px 16px; font-weight:800; font-size:14.5px; cursor:pointer; text-decoration:none; display:inline-block; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px; }
+  .row { display:flex; gap:10px; flex-wrap:wrap; align-items:center; } .sp { flex:1; }
+  .btn { background:var(--accent); color:#111; border:0; border-radius:9px; padding:10px 15px; font-weight:800; font-size:14px; cursor:pointer; text-decoration:none; display:inline-block; }
   .btn.sec { background:#1e2a44; color:var(--ink); }
-  .btn:disabled { opacity:.45; cursor:not-allowed; }
-  button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible { outline:2px solid #fff; outline-offset:2px; }
-  .err { color:#fca5a5; font-size:13.5px; min-height:1.2em; margin-top:8px; }
-  .okm { color:#9be7b4; font-size:13.5px; min-height:1.2em; margin-top:8px; }
-  .row { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
-  .sp { flex:1; }
-  .mods { display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:12px; }
+  button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid #fff; outline-offset:2px; }
+  label.f { display:block; font-size:13.5px; color:var(--muted); margin:12px 0 5px; }
+  input[type=password] { width:100%; background:#0d1629; color:var(--ink); border:1px solid #334366; border-radius:9px; padding:11px 12px; font-size:15px; }
+  .err { color:#fca5a5; font-size:13.5px; min-height:1.2em; margin-top:8px; } .okm { color:#9be7b4; font-size:13.5px; min-height:1.2em; margin-top:8px; }
+  .hidden { display:none !important; }
+  .tabs { display:flex; gap:6px; border-bottom:1px solid var(--line); margin:18px 0 18px; flex-wrap:wrap; }
+  .tabs button { background:none; border:0; color:var(--muted); font-weight:800; font-size:14.5px; padding:10px 14px; cursor:pointer; border-bottom:3px solid transparent; }
+  .tabs button[aria-selected="true"] { color:var(--ink); border-bottom-color:var(--accent); }
+  .kpis { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:10px; }
+  .kpi { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px; }
+  .kpi .v { font-size:28px; font-weight:800; color:var(--accent); } .kpi .l { color:var(--muted); font-size:13px; }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  @media (max-width:760px){ .grid2{grid-template-columns:1fr;} }
+  svg text { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; }
+  .legend { display:flex; gap:14px; font-size:12.5px; color:var(--muted); margin-top:6px; flex-wrap:wrap; }
+  .legend i { display:inline-block; width:11px; height:11px; border-radius:3px; margin-right:5px; vertical-align:-1px; }
+  table { width:100%; border-collapse:collapse; font-size:14px; }
+  th,td { border:1px solid var(--line); padding:8px 10px; text-align:left; vertical-align:top; }
+  th { background:#0d1629; color:var(--accent); } tr:nth-child(even) td { background:#0d1629; }
+  td a { color:var(--accent); font-weight:700; }
+  .pill { display:inline-block; font-size:12px; font-weight:800; padding:2px 8px; border-radius:99px; }
+  .pill.ok { background:#14532d; color:#bbf7d0; } .pill.md { background:#5a3a07; color:#fde68a; } .pill.hi { background:#7f1d1d; color:#fecaca; }
+  .mods { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:12px; }
   .mod { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px; display:flex; flex-direction:column; gap:6px; }
   .mod .n { font-size:12px; color:var(--accent); font-weight:800; letter-spacing:.4px; text-transform:uppercase; }
-  .mod h3 { margin:0; font-size:16.5px; }
-  .mod p { margin:0; color:var(--muted); font-size:13.5px; flex:1; }
-  .st { font-size:13px; font-weight:700; }
-  .st.done { color:var(--ok); } .st.prog { color:var(--accent); } .st.none { color:var(--muted); }
-  .mod .btn { margin-top:8px; text-align:center; }
-  .steps { margin:0; padding-left:20px; color:var(--muted); font-size:14px; } .steps li { margin:4px 0; }
-  .stars { display:flex; gap:6px; flex-wrap:wrap; }
-  .stars button { background:#0d1629; color:var(--ink); border:2px solid var(--line); border-radius:10px; padding:8px 12px; font-weight:800; cursor:pointer; font-size:14px; }
-  .stars button.on { border-color:var(--accent); background:#1a2540; }
-  .q { margin:14px 0 4px; font-weight:700; font-size:14.5px; }
-  .hint { color:var(--muted); font-size:12.5px; }
-  .hidden { display:none !important; }
+  .mod h3 { margin:0; font-size:16px; } .mod p { margin:0; color:var(--muted); font-size:13.5px; flex:1; }
+  .st { font-size:13px; font-weight:700; } .st.done { color:var(--ok); } .st.prog { color:var(--accent); } .st.none { color:var(--muted); }
+  .note { border-left:3px solid var(--accent); background:var(--card); padding:10px 13px; border-radius:0 9px 9px 0; font-size:14.5px; margin-top:12px; } .note b { color:var(--accent); }
   details { margin-top:12px; } summary { cursor:pointer; color:var(--accent); font-weight:700; font-size:14px; }
 </style>
 </head>
 <body>
 <main>
-  <!-- LOGIN -->
   <section id="login" class="hidden" aria-labelledby="lt">
-    <h1 id="lt">Hola, <span>Gaby</span></h1>
-    <p class="sub">Tu curso para la certificación AWS Certified AI Practitioner (AIF-C01). Escribe tu contraseña para entrar.</p>
+    <h1 id="lt">Hola, <span>Jair</span></h1>
+    <p class="sub">Tu curso y tu historial para AWS Certified AI Practitioner (AIF-C01). Escribe tu contraseña.</p>
     <form class="card" id="lf" autocomplete="off" style="max-width:420px">
       <label class="f" for="pw">Contraseña</label>
       <input type="password" id="pw" autocomplete="current-password" required>
@@ -59,161 +62,210 @@
     </form>
   </section>
 
-  <!-- APP -->
   <section id="app" class="hidden">
     <div class="row">
-      <div><h1>Hola, <span>Gaby</span></h1><p class="sub" style="margin:0">Tu curso para AWS Certified AI Practitioner (AIF-C01)</p></div>
-      <span class="sp"></span>
-      <button class="btn sec" type="button" id="logout">Cerrar sesión</button>
+      <div><h1>Hola, <span>Jair</span></h1><p class="sub" style="margin:0">Tu avance hacia AWS Certified AI Practitioner (AIF-C01)</p></div>
+      <span class="sp"></span><button class="btn sec" type="button" id="logout">Cerrar sesión</button>
     </div>
 
-    <h2>Cómo llevar el curso</h2>
-    <ol class="steps">
-      <li><b>Guía 1</b>: los conceptos base y los servicios que más se confunden.</li>
-      <li><b>Práctica interactiva</b>: une, completa y ordena, con retroalimentación inmediata.</li>
-      <li><b>Guía 2</b>: los temas avanzados: seguridad, kit de SageMaker, asistentes, cómo adaptar y evaluar modelos.</li>
-      <li><b>Simulacro</b>: 65 preguntas en 90 minutos, igual que el examen real. Al terminar te califica solo y te muestra cada respuesta con su explicación.</li>
-      <li>La <b>hoja de contrastes</b> es para repasar cuando quieras. La meta para agendar el examen es <b>80% o más</b> en el simulacro.</li>
-    </ol>
+    <div class="tabs" role="tablist" aria-label="Secciones">
+      <button role="tab" id="t-progreso" aria-controls="p-progreso" aria-selected="true">Mi progreso</button>
+      <button role="tab" id="t-examenes" aria-controls="p-examenes" aria-selected="false" tabindex="-1">Mis exámenes</button>
+      <button role="tab" id="t-errores" aria-controls="p-errores" aria-selected="false" tabindex="-1">Mis errores</button>
+      <button role="tab" id="t-material" aria-controls="p-material" aria-selected="false" tabindex="-1">Material</button>
+    </div>
 
-    <h2>Tus módulos</h2>
-    <div class="mods" id="mods"></div>
-
-    <h2>Tus datos</h2>
-    <div class="card">
-      <p class="sub" style="margin-top:0">Tu avance se guarda automáticamente en este navegador. Si cambias de computadora o borras el historial, se pierde. Descarga tu respaldo de vez en cuando y guárdalo en tu carpeta; para recuperarlo, usa "Cargar respaldo".</p>
-      <div class="row">
-        <button class="btn" type="button" id="exp">Descargar mi respaldo</button>
-        <button class="btn sec" type="button" id="imp">Cargar respaldo</button>
-        <input type="file" id="impf" accept="application/json,.json" class="hidden" aria-label="Archivo de respaldo">
+    <!-- PROGRESO -->
+    <section role="tabpanel" id="p-progreso" aria-labelledby="t-progreso">
+      <div class="kpis" id="kpis"></div>
+      <h2>Calificación por intento</h2>
+      <div class="card"><div id="ch-line"></div>
+        <div class="legend"><span><i style="background:var(--accent)"></i>Tu calificación</span><span><i style="background:var(--ok)"></i>Meta para agendar: 80%</span></div></div>
+      <div class="grid2">
+        <div><h2>Por dominio: diagnóstico vs simulacro</h2><div class="card"><div id="ch-dom"></div>
+          <div class="legend"><span><i style="background:var(--blue)"></i>Diagnóstico</span><span><i style="background:var(--accent)"></i>Simulacro 1</span></div></div></div>
+        <div><h2>Segundos promedio por pregunta (simulacro 1)</h2><div class="card"><div id="ch-time"></div>
+          <div class="legend"><span>Tienes unos 83 s por pregunta en el examen real.</span></div></div></div>
       </div>
-      <div class="okm" id="dmsg" role="status"></div>
-    </div>
+      <div class="note"><b>Lectura honesta:</b> la tendencia es buena (de 40% a 75% en las rondas dirigidas), pero el simulacro mixto dio 60% y lo terminaste en 40 de 90 minutos. El dominio 5 (seguridad y gobernanza) es el más débil. Antes de agendar, la meta es 80% o más en un simulacro mixto, usando al menos 70 minutos.</div>
+    </section>
 
-    <h2>Tu opinión del curso</h2>
-    <form class="card" id="csat">
-      <p class="sub" style="margin-top:0">Ayúdanos a mejorar el contenido. Tarda un minuto.</p>
-      <div class="q" id="q1">¿Qué tan satisfecha estás con el curso en general?</div>
-      <div class="stars" role="radiogroup" aria-labelledby="q1" data-k="general"></div>
-      <div class="hint">1 = nada satisfecha · 5 = muy satisfecha</div>
-      <div class="q" id="q2">¿Qué tan claras son las explicaciones?</div>
-      <div class="stars" role="radiogroup" aria-labelledby="q2" data-k="claridad"></div>
-      <div class="q" id="q3">¿Qué tanto te está ayudando para el examen?</div>
-      <div class="stars" role="radiogroup" aria-labelledby="q3" data-k="utilidad"></div>
-      <div class="q" id="q4">¿Qué módulo te gustó más?</div>
-      <div class="stars" role="radiogroup" aria-labelledby="q4" data-k="favorito" data-opts="Guía 1|Práctica|Guía 2|Simulacro|Contrastes"></div>
-      <label class="f" for="cm">¿Qué mejorarías o qué te faltó? (opcional)</label>
-      <textarea id="cm" maxlength="1500"></textarea>
-      <label class="row" style="margin-top:10px;font-size:13.5px;color:var(--muted);gap:8px"><input type="checkbox" id="inc" checked> Incluir mi avance en el curso (puntajes y tiempos)</label>
-      <div class="row" style="margin-top:12px"><span class="sp"></span><button class="btn" type="submit" id="send">Enviar mi opinión</button></div>
-      <div class="okm" id="cmsg" role="status"></div>
-    </form>
+    <!-- EXAMENES -->
+    <section role="tabpanel" id="p-examenes" aria-labelledby="t-examenes" class="hidden">
+      <p class="sub">Cada intento con su calificación. Las revisiones muestran tus respuestas reales: la correcta en verde, la tuya en rojo y la explicación.</p>
+      <div class="card" style="padding:0;overflow-x:auto"><table id="tbl"></table></div>
+      <h2>Detalle por bloque</h2>
+      <div class="grid2" id="blocks"></div>
+    </section>
 
-    <h2>Seguridad</h2>
-    <details class="card">
-      <summary>Cambiar mi contraseña</summary>
-      <form id="pf" style="max-width:420px" autocomplete="off">
-        <label class="f" for="p0">Contraseña actual</label><input type="password" id="p0" required autocomplete="current-password">
-        <label class="f" for="p1">Contraseña nueva (mínimo 8 caracteres)</label><input type="password" id="p1" required minlength="8" autocomplete="new-password">
-        <label class="f" for="p2">Repite la contraseña nueva</label><input type="password" id="p2" required minlength="8" autocomplete="new-password">
-        <div class="err" id="perr" role="alert"></div><div class="okm" id="pok" role="status"></div>
-        <div class="row" style="margin-top:6px"><span class="sp"></span><button class="btn" type="submit">Guardar contraseña</button></div>
-        <p class="hint">La contraseña nueva se guarda en este navegador. En otra computadora sigue funcionando la contraseña original hasta que la cambies también ahí (o cargues tu respaldo).</p>
-      </form>
-    </details>
+    <!-- ERRORES -->
+    <section role="tabpanel" id="p-errores" aria-labelledby="t-errores" class="hidden">
+      <p class="sub">Todos tus errores agrupados por tema, con su estado: rojo si sigues fallando, naranja si falta volver a probarlo y verde si ya lo corregiste.</p>
+      <div class="card">
+        <h3 style="margin-top:0">Confusiones que se repiten</h3>
+        <table>
+          <thead><tr><th>Tema</th><th>Veces que lo fallaste</th><th>Regla para recordarlo</th></tr></thead>
+          <tbody>
+            <tr><td><b>Clarify vs Model Monitor</b></td><td>6 (R2-16, R3-14, R4-4, R4-5, R4-15, S-50)</td><td>Clarify = aclarar: sesgo y qué variables pesaron. Model Monitor = monitorear: drift en producción.</td></tr>
+            <tr><td><b>Temperatura</b></td><td>4 (D-3, D-11, G-34, S-24)</td><td>Subirla da más creatividad y MÁS alucinaciones. No baja el costo; el costo baja con un modelo más pequeño.</td></tr>
+            <tr><td><b>Ground Truth</b></td><td>5 (R2-4, R3-13, G-8, G-16, S-9)</td><td>Solo existe ANTES de entrenar: personas etiquetan los datos.</td></tr>
+            <tr><td><b>Trusted Advisor</b></td><td>3 (D-8, R2-6, R2-7)</td><td>Solo recomienda. Historial = Config; quién hizo qué = CloudTrail; evidencia = Audit Manager.</td></tr>
+            <tr><td><b>Seguridad (D5)</b></td><td>6 (S-58 a S-62 y S-65)</td><td>KMS = llaves; Secrets Manager = contraseñas; Macie = PII en S3; Artifact = reportes de AWS; PrivateLink = sin internet.</td></tr>
+          </tbody>
+        </table>
+        <div class="row" style="margin-top:14px"><a class="btn" href="errores.html">Abrir mi guía completa de errores</a></div>
+      </div>
+    </section>
+
+    <!-- MATERIAL -->
+    <section role="tabpanel" id="p-material" aria-labelledby="t-material" class="hidden">
+      <p class="sub">El mismo curso, para seguir practicando. Tus nuevos intentos se guardan en este navegador; descarga tu respaldo de vez en cuando.</p>
+      <div class="mods" id="mods"></div>
+      <div class="card" style="margin-top:16px">
+        <div class="row">
+          <button class="btn" type="button" id="exp">Descargar mi respaldo</button>
+          <button class="btn sec" type="button" id="imp">Cargar respaldo</button>
+          <input type="file" id="impf" accept="application/json,.json" class="hidden" aria-label="Archivo de respaldo">
+        </div>
+        <div class="okm" id="dmsg" role="status"></div>
+      </div>
+      <details class="card">
+        <summary>Cambiar mi contraseña</summary>
+        <form id="pf" style="max-width:420px" autocomplete="off">
+          <label class="f" for="p0">Contraseña actual</label><input type="password" id="p0" required autocomplete="current-password">
+          <label class="f" for="p1">Contraseña nueva (mínimo 8 caracteres)</label><input type="password" id="p1" required minlength="8" autocomplete="new-password">
+          <label class="f" for="p2">Repite la contraseña nueva</label><input type="password" id="p2" required minlength="8" autocomplete="new-password">
+          <div class="err" id="perr" role="alert"></div><div class="okm" id="pok" role="status"></div>
+          <div class="row" style="margin-top:6px"><span class="sp"></span><button class="btn" type="submit">Guardar contraseña</button></div>
+        </form>
+      </details>
+    </section>
   </section>
 </main>
 
 <script>
-const DEFAULT_HASH = "fbb0382d10fb30a07ed4602c8bd30cbcbc3f342c9f4152a792d62560bb11731d";
-const WEB3FORMS_KEY = "ed4b98c1-df0d-49b9-8522-976eb3bfc6ad";
-const DATA_KEYS = ["gaby-guia1","gaby-guia2","gaby-practica","gaby-simulacro1","gaby-pass-hash","gaby-csat"];
-const MODS = [
-  {k:"gaby-guia1", n:"Paso 1", t:"Guía 1 · Conceptos base", d:"Servicios especializados, gobernanza, herramientas de SageMaker, prompts, métricas, inferencia y ML.", href:"guia-1.html", kind:"guia"},
-  {k:"gaby-practica", n:"Paso 2", t:"Práctica interactiva", d:"16 ejercicios: une parejas, completa frases, ordena pasos y opción múltiple.", href:"practica.html", kind:"practica"},
-  {k:"gaby-guia2", n:"Paso 3", t:"Guía 2 · Temas avanzados", d:"Seguridad y cumplimiento, kit de SageMaker, Q y Lex, cómo adaptar y evaluar modelos.", href:"guia-2.html", kind:"guia"},
-  {k:"gaby-simulacro1", n:"Paso 4", t:"Simulacro tipo examen", d:"65 preguntas, 90 minutos, los 5 dominios con el peso oficial. Se califica solo.", href:"simulacro.html", kind:"sim"},
-  {k:null, n:"Repaso", t:"Hoja de contrastes", d:"Tablas con las parejas de servicios que más se confunden y un truco para cada una.", href:"contrastes.html", kind:"lectura"}
+const DEFAULT_HASH = "ee46c20a47f85e29a3462c7ffa4e8e1239c45a4052f5992a96fd64d81f6a64e0";
+const DATA_KEYS = ["jair-diagnostico","jair-guia1","jair-guia2","jair-practica","jair-simulacro1","jair-pass-hash"];
+// Historial real (10 nov 2026)
+const HIST = [
+  {id:"diag", n:"Diagnóstico", tipo:"Examen", ok:8, total:20, tiempo:"-", fecha:"10 nov 2026", rev:"revision-diagnostico.html", nota:"Sin timer. Fuerte en arquitectura con Bedrock."},
+  {id:"r2", n:"Ronda 2 · Bloques débiles", tipo:"Examen dirigido", ok:12, total:20, tiempo:"-", fecha:"10 nov 2026", rev:"revision-ronda-2.html", nota:"Fundamentos de ML corregidos."},
+  {id:"r3", n:"Ronda 3 · Contrastes", tipo:"Examen dirigido", ok:15, total:20, tiempo:"-", fecha:"10 nov 2026", rev:"revision-ronda-3.html", nota:"Falló SageMaker: Clarify, Model Monitor, Model Cards, A2I."},
+  {id:"r4", n:"Ronda 4 · Práctica interactiva", tipo:"Práctica (primer intento)", ok:9, total:16, tiempo:"16:08 (unos 8 min reales)", fecha:"10 nov 2026", rev:null, nota:"Calificación estricta. Llamada a la mitad."},
+  {id:"g1", n:"Guía paso a paso 1", tipo:"Práctica (primer intento)", ok:11, total:17, tiempo:"32:38 (unos 18 min reales)", fecha:"10 nov 2026", rev:null, nota:"Por fin acertó Clarify vs Model Monitor."},
+  {id:"sim", n:"Simulacro 1", tipo:"Examen tipo certificación", ok:39, total:65, tiempo:"39:53 de 90:00", fecha:"10 nov 2026", rev:"revision-simulacro-1.html", nota:"Temas nuevos fallaron; lo estudiado aguantó."}
 ];
+const DOM = {diag:{D1:[0,3],D2:[2,4],D3:[3,7],D4:[1,3],D5:[2,3]}, sim:{D1:[7,13],D2:[12,16],D3:[10,18],D4:[7,9],D5:[3,9]}};
+const SIMSEC = {D1:49,D2:41,D3:34,D4:23,D5:30};
+const BLOCKS = [
+  {t:"Ronda 2", rows:[["Servicios de IA",4,9],["Fundamentos de ML",5,7],["Fundamentos de GenAI",3,4]]},
+  {t:"Ronda 3", rows:[["Servicios de IA",5,5],["Humanos en el ciclo",1,2],["Gobernanza",4,5],["Modelos en SageMaker",0,3],["Recomendar vs responder",2,2],["Técnicas de prompt",1,1],["Métricas",2,2]]}
+];
+const DN = {D1:"Fundamentos de IA y ML",D2:"Fundamentos de GenAI",D3:"Aplicaciones de FMs",D4:"IA responsable",D5:"Seguridad y gobernanza"};
+const MODS = [
+  {k:"jair-diagnostico", n:"Paso 0", t:"Diagnóstico", d:"20 preguntas en 30 minutos. Nuevo intento, separado de tu historial.", href:"diagnostico.html", kind:"sim", total:20, rev:"diagnostico-revision.html"},
+  {k:"jair-guia1", n:"Paso 1", t:"Guía 1 · Conceptos base", d:"Servicios, gobernanza, SageMaker, prompts, métricas, inferencia y ML.", href:"guia-1.html", kind:"guia"},
+  {k:"jair-practica", n:"Paso 2", t:"Práctica interactiva", d:"Une parejas, completa frases, ordena pasos y opción múltiple.", href:"practica.html", kind:"guia"},
+  {k:"jair-guia2", n:"Paso 3", t:"Guía 2 · Temas avanzados", d:"Seguridad, kit de SageMaker, Q y Lex, adaptar y evaluar modelos.", href:"guia-2.html", kind:"guia"},
+  {k:"jair-simulacro1", n:"Paso 4", t:"Simulacro tipo examen", d:"65 preguntas en 90 minutos. Se califica solo.", href:"simulacro.html", kind:"sim", total:65, rev:"simulacro-revision.html"},
+  {k:null, n:"Repaso", t:"Hoja de contrastes", d:"Las parejas de servicios que más se confunden.", href:"contrastes.html"}
+];
+const $=id=>document.getElementById(id);
+const pct=(a,b)=>Math.round(100*a/b);
 async function sha(s){ const b=await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s)); return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join(""); }
-function curHash(){ return localStorage.getItem("gaby-pass-hash") || DEFAULT_HASH; }
+function curHash(){ return localStorage.getItem("jair-pass-hash") || DEFAULT_HASH; }
 function get(k){ try{ return JSON.parse(localStorage.getItem(k)||"null"); }catch(e){ return null; } }
 function fmt(ms){ const s=Math.round((ms||0)/1000); return String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0"); }
-const $=id=>document.getElementById(id);
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;"); }
+function lvl(p){ return p>=80?"ok":p>=60?"md":"hi"; }
 
+// ---------- Gráficas en SVG ----------
+function lineChart(el, pts){
+  const W=900,H=280,L=46,R=16,T=18,Bm=64, PAD=70, w=W-L-R-2*PAD, h=H-T-Bm, n=pts.length;
+  const x=i=>L+PAD+(n===1?w/2:i*w/(n-1)), y=v=>T+h-(v/100)*h;
+  let s='<svg viewBox="0 0 '+W+' '+H+'" width="100%" role="img" aria-label="Calificación por intento: '+pts.map(p=>p.l+' '+p.v+'%').join(", ")+'">';
+  [0,20,40,60,80,100].forEach(v=>{ s+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+y(v)+'" y2="'+y(v)+'" stroke="#1e2a44"/><text x="'+(L-8)+'" y="'+(y(v)+4)+'" fill="#94a3b8" font-size="12" text-anchor="end">'+v+'%</text>'; });
+  s+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+y(80)+'" y2="'+y(80)+'" stroke="#22c55e" stroke-width="2" stroke-dasharray="6 5"/>';
+  s+='<polyline fill="none" stroke="#ff9900" stroke-width="3" points="'+pts.map((p,i)=>x(i)+","+y(p.v)).join(" ")+'"/>';
+  pts.forEach((p,i)=>{ s+='<circle cx="'+x(i)+'" cy="'+y(p.v)+'" r="6" fill="#ff9900"/><text x="'+x(i)+'" y="'+(y(p.v)-12)+'" fill="#e2e8f0" font-size="13" font-weight="700" text-anchor="middle">'+p.v+'%</text>';
+    p.l.split("|").forEach((ln,j)=>{ s+='<text x="'+x(i)+'" y="'+(H-Bm+20+j*15)+'" fill="#94a3b8" font-size="12" text-anchor="middle">'+esc(ln)+'</text>'; }); });
+  el.innerHTML=s+'</svg>';
+}
+function barChart(el, cats, series, max, unit){
+  const W=440,H=260,L=40,R=10,T=14,Bm=34, w=W-L-R, h=H-T-Bm, g=w/cats.length, bw=(g*0.7)/series.length;
+  const y=v=>T+h-(v/max)*h;
+  let s='<svg viewBox="0 0 '+W+' '+H+'" width="100%" role="img" aria-label="'+esc(series.map(se=>se.name+": "+cats.map((c,i)=>c+" "+se.v[i]+unit).join(", ")).join(". "))+'">';
+  for(let v=0; v<=max; v+=max/5){ s+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+y(v)+'" y2="'+y(v)+'" stroke="#1e2a44"/><text x="'+(L-6)+'" y="'+(y(v)+4)+'" fill="#94a3b8" font-size="11" text-anchor="end">'+Math.round(v)+unit+'</text>'; }
+  cats.forEach((c,i)=>{ const x0=L+i*g+g*0.15;
+    series.forEach((se,j)=>{ const v=se.v[i], bx=x0+j*bw; s+='<rect x="'+bx+'" y="'+y(v)+'" width="'+(bw-3)+'" height="'+(T+h-y(v))+'" rx="3" fill="'+se.c+'"/><text x="'+(bx+(bw-3)/2)+'" y="'+(y(v)-5)+'" fill="#e2e8f0" font-size="11" text-anchor="middle">'+v+'</text>'; });
+    s+='<text x="'+(L+i*g+g/2)+'" y="'+(H-12)+'" fill="#94a3b8" font-size="12" text-anchor="middle">'+c+'</text>'; });
+  el.innerHTML=s+'</svg>';
+}
+function renderProgreso(){
+  const sim=HIST.find(h=>h.id==="sim"), best=Math.max(...HIST.map(h=>pct(h.ok,h.total)));
+  $("kpis").innerHTML=[
+    [pct(sim.ok,sim.total)+"%","Simulacro 1 (examen mixto)"],
+    [best+"%","Mejor resultado (ronda 3)"],
+    ["80%","Meta para agendar el examen"],
+    [HIST.length,"Intentos registrados"]
+  ].map(k=>'<div class="kpi"><div class="v">'+k[0]+'</div><div class="l">'+k[1]+'</div></div>').join("");
+  lineChart($("ch-line"), [
+    {l:"Diagnóstico|10 nov",v:40},{l:"Ronda 2|dirigida",v:60},{l:"Ronda 3|contrastes",v:75},{l:"Ronda 4|práctica",v:56},{l:"Guía 1|práctica",v:65},{l:"Simulacro 1|65 preguntas",v:60}
+  ]);
+  const cats=["D1","D2","D3","D4","D5"];
+  barChart($("ch-dom"), cats, [{name:"Diagnóstico",c:"#60a5fa",v:cats.map(d=>pct(DOM.diag[d][0],DOM.diag[d][1]))},{name:"Simulacro 1",c:"#ff9900",v:cats.map(d=>pct(DOM.sim[d][0],DOM.sim[d][1]))}],100,"%");
+  barChart($("ch-time"), cats, [{name:"Segundos",c:"#ff9900",v:cats.map(d=>SIMSEC[d])}],100," s");
+}
+function renderExamenes(){
+  $("tbl").innerHTML='<thead><tr><th>Intento</th><th>Tipo</th><th>Calificación</th><th>Tiempo</th><th>Nota</th><th>Revisión</th></tr></thead><tbody>'+
+    HIST.map(h=>{ const p=pct(h.ok,h.total); return '<tr><td><b>'+esc(h.n)+'</b><br><span style="color:#94a3b8;font-size:12.5px">'+h.fecha+'</span></td><td>'+esc(h.tipo)+'</td><td><span class="pill '+lvl(p)+'">'+h.ok+' de '+h.total+' · '+p+'%</span></td><td>'+esc(h.tiempo)+'</td><td>'+esc(h.nota)+'</td><td>'+(h.rev?'<a href="'+h.rev+'">Ver mis respuestas</a>':'<span style="color:#94a3b8">Solo resumen</span>')+'</td></tr>'; }).join("")+'</tbody>';
+  const domTbl=(t,o)=>'<div class="card"><h3 style="margin-top:0">'+t+'</h3><table><thead><tr><th>Dominio</th><th>Resultado</th></tr></thead><tbody>'+Object.keys(o).map(d=>{ const p=pct(o[d][0],o[d][1]); return '<tr><td>'+d+' · '+DN[d]+'</td><td><span class="pill '+lvl(p)+'">'+o[d][0]+' de '+o[d][1]+' · '+p+'%</span></td></tr>'; }).join("")+'</tbody></table></div>';
+  const blkTbl=b=>'<div class="card"><h3 style="margin-top:0">'+b.t+'</h3><table><thead><tr><th>Bloque</th><th>Resultado</th></tr></thead><tbody>'+b.rows.map(r=>{ const p=pct(r[1],r[2]); return '<tr><td>'+esc(r[0])+'</td><td><span class="pill '+lvl(p)+'">'+r[1]+' de '+r[2]+' · '+p+'%</span></td></tr>'; }).join("")+'</tbody></table></div>';
+  $("blocks").innerHTML=domTbl("Diagnóstico",DOM.diag)+domTbl("Simulacro 1",DOM.sim)+BLOCKS.map(blkTbl).join("");
+}
 function status(m){
   if(!m.k) return {cls:"none", txt:"Para repasar cuando quieras", btn:"Abrir"};
   const st=get(m.k);
-  if(!st||!st.started) return {cls:"none", txt:"Sin empezar", btn:"Empezar"};
-  if(m.kind==="sim"){
-    if(!st.done) return {cls:"prog", txt:"En curso · "+Object.keys(st.a||{}).length+" de 65 contestadas", btn:"Continuar"};
-    return {cls:"done", txt:"Terminado en "+fmt(st.base)+" · ve tu calificación", btn:"Ver calificación", href:"simulacro-revision.html"};
-  }
-  const res=Object.values(st.res||{}).filter(r=>r&&r.correcto!==undefined);
-  const ok=res.filter(r=>r.correcto).length;
-  if(!st.done) return {cls:"prog", txt:"En curso · "+res.length+" ejercicios resueltos", btn:"Continuar"};
-  return {cls:"done", txt:"Terminado · "+ok+" de "+res.length+" correctos · "+fmt(st.base), btn:"Ver resultados"};
+  if(!st||!st.started) return {cls:"none", txt:"Sin intento nuevo", btn:"Empezar"};
+  if(m.kind==="sim"){ if(!st.done) return {cls:"prog", txt:"En curso · "+Object.keys(st.a||{}).length+" de "+m.total, btn:"Continuar"};
+    return {cls:"done", txt:"Terminado en "+fmt(st.base), btn:"Ver calificación", href:m.rev}; }
+  const res=Object.values(st.res||{}).filter(r=>r&&r.correcto!==undefined), ok=res.filter(r=>r.correcto).length;
+  if(!st.done) return {cls:"prog", txt:"En curso · "+res.length+" resueltos", btn:"Continuar"};
+  return {cls:"done", txt:"Terminado · "+ok+" de "+res.length+" · "+fmt(st.base), btn:"Ver resultados"};
 }
-function renderMods(){
-  $("mods").innerHTML=MODS.map(m=>{ const s=status(m);
-    return '<article class="mod"><div class="n">'+m.n+'</div><h3>'+m.t+'</h3><p>'+m.d+'</p><div class="st '+s.cls+'">'+s.txt+'</div><a class="btn" href="'+(s.href||m.href)+'">'+s.btn+'</a></article>'; }).join("");
+function renderMods(){ $("mods").innerHTML=MODS.map(m=>{ const s=status(m); return '<article class="mod"><div class="n">'+m.n+'</div><h3>'+m.t+'</h3><p>'+m.d+'</p><div class="st '+s.cls+'">'+s.txt+'</div><a class="btn" href="'+(s.href||m.href)+'">'+s.btn+'</a></article>'; }).join(""); }
+
+// ---------- Pestañas ----------
+const TABS=["progreso","examenes","errores","material"];
+function openTab(name, focus){
+  TABS.forEach(t=>{ const on=t===name; $("t-"+t).setAttribute("aria-selected",on); $("t-"+t).tabIndex=on?0:-1; $("p-"+t).classList.toggle("hidden",!on); });
+  if(focus) $("t-"+name).focus();
+  history.replaceState(null,"","#"+name);
 }
-function showApp(){ $("login").classList.add("hidden"); $("app").classList.remove("hidden"); renderMods(); }
+TABS.forEach((t,i)=>{ const b=$("t-"+t); b.onclick=()=>openTab(t);
+  b.onkeydown=e=>{ if(e.key==="ArrowRight"||e.key==="ArrowLeft"){ e.preventDefault(); openTab(TABS[(i+(e.key==="ArrowRight"?1:TABS.length-1))%TABS.length],true); } }; });
+
+// ---------- Sesión, contraseña y respaldo ----------
+function showApp(){ $("login").classList.add("hidden"); $("app").classList.remove("hidden"); renderProgreso(); renderExamenes(); renderMods(); const h=location.hash.slice(1); openTab(TABS.includes(h)?h:"progreso"); }
 function showLogin(){ $("app").classList.add("hidden"); $("login").classList.remove("hidden"); $("pw").focus(); }
-
-$("lf").onsubmit=async e=>{ e.preventDefault();
-  if(await sha($("pw").value)===curHash()){ sessionStorage.setItem("gaby-auth","ok"); $("pw").value=""; $("lerr").textContent=""; showApp(); }
-  else { $("lerr").textContent="Contraseña incorrecta. Intenta de nuevo."; $("pw").select(); } };
-$("logout").onclick=()=>{ sessionStorage.removeItem("gaby-auth"); showLogin(); };
-
+$("lf").onsubmit=async e=>{ e.preventDefault(); if(await sha($("pw").value)===curHash()){ sessionStorage.setItem("jair-auth","ok"); $("pw").value=""; showApp(); } else { $("lerr").textContent="Contraseña incorrecta."; $("pw").select(); } };
+$("logout").onclick=()=>{ sessionStorage.removeItem("jair-auth"); showLogin(); };
 $("pf").onsubmit=async e=>{ e.preventDefault(); $("perr").textContent=""; $("pok").textContent="";
   if(await sha($("p0").value)!==curHash()){ $("perr").textContent="La contraseña actual no es correcta."; return; }
   if($("p1").value.length<8){ $("perr").textContent="La nueva debe tener al menos 8 caracteres."; return; }
   if($("p1").value!==$("p2").value){ $("perr").textContent="Las contraseñas nuevas no coinciden."; return; }
-  localStorage.setItem("gaby-pass-hash", await sha($("p1").value)); e.target.reset(); $("pok").textContent="Listo. Tu contraseña nueva ya está guardada en este navegador."; };
-
-// Respaldo
-$("exp").onclick=async()=>{
-  const data={app:"gaby-aif-c01", version:1, fecha:new Date().toISOString(), datos:{}};
-  DATA_KEYS.forEach(k=>{ const v=localStorage.getItem(k); if(v!==null) data.datos[k]=v; });
-  const txt=JSON.stringify(data,null,2), name="respaldo-gaby-aif-c01-"+new Date().toISOString().slice(0,10)+".json";
+  localStorage.setItem("jair-pass-hash", await sha($("p1").value)); e.target.reset(); $("pok").textContent="Listo. Contraseña nueva guardada en este navegador."; };
+$("exp").onclick=async()=>{ const data={app:"jair-aif-c01",version:1,fecha:new Date().toISOString(),datos:{}}; DATA_KEYS.forEach(k=>{ const v=localStorage.getItem(k); if(v!==null) data.datos[k]=v; });
+  const txt=JSON.stringify(data,null,2), name="respaldo-jair-aif-c01-"+new Date().toISOString().slice(0,10)+".json";
   try{ if(window.showSaveFilePicker){ const h=await window.showSaveFilePicker({suggestedName:name,types:[{description:"JSON",accept:{"application/json":[".json"]}}]}); const w=await h.createWritable(); await w.write(txt); await w.close(); }
-    else { const a=document.createElement("a"); a.href=URL.createObjectURL(new Blob([txt],{type:"application/json"})); a.download=name; a.click(); }
-    $("dmsg").textContent="Respaldo descargado. Guárdalo en tu carpeta del curso."; }catch(e){ if(e.name!=="AbortError") $("dmsg").textContent="No se pudo descargar el respaldo."; }
-};
+    else { const a=document.createElement("a"); a.href=URL.createObjectURL(new Blob([txt],{type:"application/json"})); a.download=name; a.click(); } $("dmsg").textContent="Respaldo descargado."; }catch(e){ if(e.name!=="AbortError") $("dmsg").textContent="No se pudo descargar."; } };
 $("imp").onclick=()=>$("impf").click();
 $("impf").onchange=async e=>{ const f=e.target.files[0]; if(!f) return;
-  try{ const d=JSON.parse(await f.text()); if(d.app!=="gaby-aif-c01"||!d.datos) throw 0;
-    if(!confirm("¿Cargar este respaldo? Reemplaza el avance que tienes en este navegador.")) return;
-    Object.keys(d.datos).forEach(k=>{ if(DATA_KEYS.includes(k)) localStorage.setItem(k,d.datos[k]); });
-    renderMods(); $("dmsg").textContent="Respaldo cargado."; }catch(err){ $("dmsg").textContent="Ese archivo no es un respaldo válido del curso."; }
+  try{ const d=JSON.parse(await f.text()); if(d.app!=="jair-aif-c01"||!d.datos) throw 0; if(!confirm("¿Cargar este respaldo? Reemplaza el avance de este navegador.")) return;
+    Object.keys(d.datos).forEach(k=>{ if(DATA_KEYS.includes(k)) localStorage.setItem(k,d.datos[k]); }); renderMods(); $("dmsg").textContent="Respaldo cargado."; }catch(err){ $("dmsg").textContent="Ese archivo no es un respaldo válido."; }
   e.target.value=""; };
 
-// CSAT
-const csat={};
-document.querySelectorAll(".stars").forEach(g=>{ const opts=g.dataset.opts?g.dataset.opts.split("|"):["1","2","3","4","5"];
-  opts.forEach(o=>{ const b=document.createElement("button"); b.type="button"; b.textContent=o; b.setAttribute("role","radio"); b.setAttribute("aria-checked","false");
-    b.onclick=()=>{ g.querySelectorAll("button").forEach(x=>{x.classList.remove("on"); x.setAttribute("aria-checked","false");}); b.classList.add("on"); b.setAttribute("aria-checked","true"); csat[g.dataset.k]=o; };
-    g.appendChild(b); }); });
-function progressSummary(){
-  return MODS.filter(m=>m.k).map(m=>m.t+": "+status(m).txt).join("\n");
-}
-$("csat").onsubmit=async e=>{ e.preventDefault(); const msg=$("cmsg");
-  if(!csat.general){ msg.style.color="#fca5a5"; msg.textContent="Elige al menos tu satisfacción general."; return; }
-  const entry={fecha:new Date().toISOString(), ...csat, comentario:$("cm").value.trim()};
-  const hist=get("gaby-csat")||[]; hist.push(entry); localStorage.setItem("gaby-csat", JSON.stringify(hist));
-  $("send").disabled=true; msg.style.color=""; msg.textContent="Enviando...";
-  const body={access_key:WEB3FORMS_KEY, subject:"CSAT curso AIF-C01 · Gaby", from_name:"Curso AIF-C01 de Gaby",
-    "Satisfacción general (1-5)":csat.general, "Claridad (1-5)":csat.claridad||"-", "Utilidad para el examen (1-5)":csat.utilidad||"-",
-    "Módulo favorito":csat.favorito||"-", "Comentario":entry.comentario||"-"};
-  if($("inc").checked) body["Avance"]=progressSummary();
-  try{ const r=await fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(body)});
-    const j=await r.json(); if(!j.success) throw 0;
-    msg.textContent="Gracias, Gaby. Tu opinión ya llegó."; e.target.reset(); document.querySelectorAll(".stars button").forEach(x=>{x.classList.remove("on");x.setAttribute("aria-checked","false");}); Object.keys(csat).forEach(k=>delete csat[k]);
-  }catch(err){ msg.style.color="#fca5a5"; msg.textContent="No se pudo enviar ahora. Tu opinión quedó guardada en tu respaldo; intenta de nuevo más tarde."; }
-  $("send").disabled=false; };
-
-if(sessionStorage.getItem("gaby-auth")==="ok") showApp(); else showLogin();
+if(sessionStorage.getItem("jair-auth")==="ok") showApp(); else showLogin();
 </script>
 </body>
 </html>

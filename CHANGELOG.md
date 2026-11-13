@@ -2,13 +2,19 @@
 
 Historial de cambios de los dos sitios de estudio de AWS Certified AI Practitioner y de su guardado de resultados.
 Formato: lo más reciente arriba. Fecha y hora local CDMX (DD mmm AAAA · HH:MM).
-La misma lista vive en el chip de versión del sitio de Jair (clic en "vX.Y" abre el historial).
-En el sitio de Gaby el chip solo muestra la versión actual; el historial no es visible para ella.
+La misma lista se abre en el sitio de Jair al dar clic en el texto "vX.Y.Z — build AAAA-MM-DD" al final de la página.
+En el sitio de Gaby ese texto solo muestra la versión actual; el historial no es visible para ella.
 
 - Sitio de Jair: https://hackerjj.github.io/jair-aif-c01/ (repo hackerjj/jair-aif-c01)
 - Sitio de Gaby: https://awsemjairgarcia.github.io/gaby-aif-c01/ (repo AWSEMJairGarcia/gaby-aif-c01)
 - Backend de resultados: trento-social-backend en Render (repo hackerjj/trento-social-backend)
 
+## v2.2.0 — 13 nov 2026 · 02:21
+### Cambiado
+- El chip naranja de versión del encabezado se cambió por un texto pequeño al final de la página, "v2.2.0 — build 2026-11-13", igual que en el POS de Sushi Queen.
+- En el sitio de Jair ese texto abre el "Historial de versiones": versión actual y fecha arriba, una etiqueta por versión, la marca "actual" en la más nueva, cada cambio con una palomita y botón "Cerrar".
+- En el sitio de Gaby el texto solo muestra la versión, sin historial.
+- La numeración pasa a tres partes (mayor.menor.parche).
 ## v2.1 — 13 nov 2026 · 02:14
 ### Agregado
 - Banner **"Tu siguiente paso"**. En el sitio de Jair va arriba de la pestaña Material y dice qué hacer ahora y por qué (hoy: Guía 2). En el sitio de Gaby va arriba del Inicio y sigue el orden Diagnóstico → Guía 1 → Práctica → Guía 2 → Simulacro, con "Empezar" o "Continuar" según su avance.

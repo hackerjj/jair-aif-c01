@@ -48,20 +48,6 @@
   .note { border-left:3px solid var(--accent); background:var(--card); padding:10px 13px; border-radius:0 9px 9px 0; font-size:14.5px; margin-top:12px; } .note b { color:var(--accent); }
   details { margin-top:12px; } summary { cursor:pointer; color:var(--accent); font-weight:700; font-size:14px; }
 
-  .ver-chip { font-size:12px; font-weight:700; line-height:1; font-family:inherit; display:inline-block; vertical-align:middle; background:#1a2540; color:var(--accent); border:1px solid var(--accent); border-radius:10px; padding:4px 9px; margin-left:8px; }
-  button.ver-chip { cursor:pointer; } button.ver-chip:hover { background:var(--accent); color:#111; }
-  .cl-backdrop { position:fixed; inset:0; background:rgba(0,0,0,.6); display:none; align-items:center; justify-content:center; z-index:1000; padding:16px; }
-  .cl-backdrop.open { display:flex; }
-  .cl-modal { background:var(--card); border:1px solid var(--line); border-radius:12px; max-width:760px; width:100%; max-height:85vh; overflow:auto; }
-  .cl-head { display:flex; align-items:center; justify-content:space-between; padding:14px 18px; border-bottom:1px solid var(--line); position:sticky; top:0; background:var(--card); }
-  .cl-head h3 { font-size:15px; margin:0; }
-  .cl-close { background:transparent; border:1px solid var(--line); color:var(--muted); border-radius:6px; padding:5px 10px; cursor:pointer; font-family:inherit; }
-  .cl-body { padding:14px 18px; font-size:13.5px; line-height:1.55; }
-  .cl-ver { margin:0 0 16px; } .cl-ver h4 { font-size:14px; margin:0 0 4px; color:var(--accent); } .cl-ver h4 small { color:var(--muted); font-weight:500; margin-left:8px; }
-  .cl-ver ul { margin:4px 0 0 18px; padding:0; } .cl-ver li { margin:4px 0; }
-  .cl-body code { background:#0d1629; padding:1px 5px; border-radius:4px; font-size:12.5px; }
-  .cl-tag { display:inline-block; font-size:10.5px; font-weight:800; padding:1px 6px; border-radius:5px; margin-right:6px; vertical-align:1px; }
-  .cl-add { background:#14532d; color:#bbf7d0; } .cl-chg { background:#1a2540; color:var(--accent); border:1px solid var(--accent); } .cl-fix { background:#5a3a07; color:#fde68a; }
   .next { background:linear-gradient(135deg,#2a1d06,#111c33); border:2px solid var(--accent); border-radius:14px; padding:18px 20px; margin:0 0 18px; }
   .next .k { font-size:12px; color:var(--accent); font-weight:800; letter-spacing:.5px; text-transform:uppercase; }
   .next h2 { margin:4px 0 6px; font-size:21px; border:0; padding:0; }
@@ -70,6 +56,26 @@
   .next .row { margin-top:12px; }
   .mod.is-next { border:2px solid var(--accent); box-shadow:0 0 0 3px rgba(255,153,0,.15); }
   .mod .nx { align-self:flex-start; background:var(--accent); color:#111; font-size:11.5px; font-weight:800; padding:2px 8px; border-radius:99px; }
+  .vh-wrap { text-align:center; padding:18px 0 8px; }
+  .vh-btn { background:none; border:0; padding:0; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:11px; color:var(--muted); text-decoration:underline dotted; text-underline-offset:3px; cursor:pointer; }
+  .vh-btn:hover, .vh-btn:focus-visible { color:var(--ink); }
+  .vh-txt { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:11px; color:var(--muted); }
+  .vh-backdrop { position:fixed; inset:0; z-index:1000; background:rgba(0,0,0,.6); display:none; align-items:center; justify-content:center; padding:16px; }
+  .vh-backdrop.open { display:flex; }
+  .vh-modal { background:var(--card); border:1px solid var(--line); border-radius:16px; box-shadow:0 20px 50px rgba(0,0,0,.5); width:100%; max-width:520px; max-height:80vh; display:flex; flex-direction:column; overflow:hidden; }
+  .vh-head { background:var(--accent); color:#111; padding:16px 22px; display:flex; align-items:center; justify-content:space-between; flex-shrink:0; }
+  .vh-head h3 { margin:0; font-size:17px; font-weight:800; } .vh-head p { margin:2px 0 0; font-size:12px; opacity:.8; }
+  .vh-x { background:none; border:0; color:#111; opacity:.75; font-size:26px; line-height:1; cursor:pointer; padding:0 4px; } .vh-x:hover { opacity:1; }
+  .vh-body { padding:16px 22px; overflow-y:auto; }
+  .vh-ver + .vh-ver { margin-top:18px; padding-top:18px; border-top:1px solid var(--line); }
+  .vh-top { display:flex; align-items:baseline; gap:8px; margin-bottom:8px; }
+  .vh-pill { font-size:13px; font-weight:800; padding:2px 8px; border-radius:6px; background:#1a2540; color:var(--ink); } .vh-pill.cur { background:var(--accent); color:#111; }
+  .vh-date { font-size:12px; color:var(--muted); } .vh-now { font-size:12px; font-weight:700; color:var(--accent); }
+  .vh-ver ul { list-style:none; margin:0; padding:0; } .vh-ver li { display:flex; gap:8px; align-items:flex-start; font-size:13.5px; line-height:1.5; margin:6px 0; color:var(--ink); }
+  .vh-chk { width:16px; height:16px; flex-shrink:0; margin-top:2px; color:var(--accent); }
+  .vh-body code { background:#0d1629; padding:1px 5px; border-radius:4px; font-size:12.5px; }
+  .vh-foot { padding:12px 22px; border-top:1px solid var(--line); text-align:center; flex-shrink:0; }
+  .vh-close { background:var(--accent); color:#111; border:0; border-radius:9px; padding:8px 20px; font-weight:800; font-size:14px; cursor:pointer; font-family:inherit; }
 </style>
 </head>
 <body>
@@ -87,7 +93,7 @@
 
   <section id="app" class="hidden">
     <div class="row">
-      <div><h1>Hola, <span>Jair</span> <button type="button" class="ver-chip" id="ver-chip" title="Ver historial de cambios" aria-haspopup="dialog">v2.1</button></h1><p class="sub" style="margin:0">Tu avance hacia AWS Certified AI Practitioner (AIF-C01)</p></div>
+      <div><h1>Hola, <span>Jair</span></h1><p class="sub" style="margin:0">Tu avance hacia AWS Certified AI Practitioner (AIF-C01)</p></div>
       <span class="sp"></span><button class="btn sec" type="button" id="logout">Cerrar sesión</button>
     </div>
 
@@ -165,19 +171,23 @@
       </details>
     </section>
   </section>
-<p class="sub" style="margin-top:28px;font-size:12.5px">Versión 2.1 · Tus avances y resultados se guardan automáticamente en el servidor; ya no hace falta copiarlos ni descargar el JSON para calificarlos.</p>
+<p class="sub" style="margin-top:28px;font-size:12.5px">Tus avances y resultados se guardan automáticamente en el servidor; ya no hace falta copiarlos ni descargar el JSON para calificarlos.</p>
+<div class="vh-wrap"><button type="button" class="vh-btn" id="vh-btn" title="Ver historial de versiones" aria-haspopup="dialog">v2.2.0 — build 2026-11-13</button></div>
 </main>
-<div class="cl-backdrop" id="changelog" role="dialog" aria-modal="true" aria-labelledby="cl-title">
-  <div class="cl-modal">
-    <div class="cl-head"><h3 id="cl-title">Historial de versiones · Curso AIF-C01</h3><button type="button" class="cl-close" id="cl-close">Cerrar</button></div>
-    <div class="cl-body"><div class="cl-ver"><h4>v2.1 <small>13 nov 2026 · 02:14</small></h4><ul><li><span class="cl-tag cl-add">NUEVO</span>Banner <b>"Tu siguiente paso"</b>. En el sitio de Jair va arriba de la pestaña Material y dice qué hacer ahora y por qué (hoy: Guía 2). En el sitio de Gaby va arriba del Inicio y sigue el orden Diagnóstico → Guía 1 → Práctica → Guía 2 → Simulacro, con "Empezar" o "Continuar" según su avance.</li><li><span class="cl-tag cl-add">NUEVO</span>El módulo que sigue se resalta con un borde naranja y la etiqueta "Siguiente".</li><li><span class="cl-tag cl-add">NUEVO</span>Chip de versión en el encabezado de los dos sitios. En el de Jair abre este historial; en el de Gaby solo muestra la versión.</li><li><span class="cl-tag cl-add">NUEVO</span><code>CHANGELOG.md</code> en el repo del sitio de Jair.</li></ul></div>
-<div class="cl-ver"><h4>v2.0 <small>12 nov 2026 · 20:35</small></h4><ul><li><span class="cl-tag cl-add">NUEVO</span>Guardado automático de resultados (<code>sync.js</code>) en los dos sitios: manda el avance de cada módulo cada 2 minutos como máximo, el resultado completo al terminar un módulo y una foto de todo el avance al entrar al Inicio (máximo cada 30 minutos). Usa <code>sendBeacon</code> con texto simple para no depender de CORS.</li><li><span class="cl-tag cl-add">NUEVO</span>Backend (commit <code>89f619a</code> de trento-social-backend): <code>POST /api/aif/resultado</code> (público, 30 por minuto) y <code>GET /api/aif/resultados</code> (con el token de admin). Colección nueva <code>aif_resultados</code>, aislada de los datos de Trento. Desplegado en Render el 13 nov 2026 · 00:34 y probado de punta a punta.</li><li><span class="cl-tag cl-add">NUEVO</span>Script <code>Estudio/bajar-resultados.py</code>: baja los resultados de Jair y Gaby a <code>Estudio/resultados-remotos/</code> y califica el diagnóstico y el simulacro.</li><li><span class="cl-tag cl-chg">CAMBIO</span>Aviso en el Inicio de Gaby: sus resultados se comparten con Jair para ajustar su plan.</li></ul></div>
-<div class="cl-ver"><h4>v1.3 <small>11 nov 2026 · 19:55</small></h4><ul><li><span class="cl-tag cl-add">NUEVO</span>Sitio de Jair con pestañas: Mi progreso (indicadores y gráficas de calificación, dominios y tiempos), Mis exámenes (historial y revisiones), Mis errores y Material.</li><li><span class="cl-tag cl-add">NUEVO</span>Revisiones con las respuestas reales de Jair: diagnóstico, ronda 2, ronda 3 y simulacro 1.</li><li><span class="cl-tag cl-chg">CAMBIO</span>El repo viejo <code>hackerjj/gaby-aif-c01</code> se renombró a <code>hackerjj/jair-aif-c01</code>. Liga corta <code>tinyurl.com/jair-ai-cert</code>.</li></ul></div>
-<div class="cl-ver"><h4>v1.2 <small>11 nov 2026 · 19:47</small></h4><ul><li><span class="cl-tag cl-add">NUEVO</span>Paso 0 en el sitio de Gaby: diagnóstico de 20 preguntas con timer de 30 minutos, calificación automática y revisión con explicaciones.</li><li><span class="cl-tag cl-add">NUEVO</span>Sección "Tu ruta": ordena sus 4 temas del más débil al más fuerte y marca cada paso como Prioridad alta, Recomendado o Puedes ir rápido.</li></ul></div>
-<div class="cl-ver"><h4>v1.0 <small>11 nov 2026 · 19:37</small></h4><ul><li><span class="cl-tag cl-add">NUEVO</span>Sitio de Gaby: login con contraseña, Guía 1, Práctica interactiva, Guía 2, simulacro de 65 preguntas que se califica solo, revisión con explicaciones y hoja de contrastes.</li><li><span class="cl-tag cl-add">NUEVO</span>Respaldo en JSON (descargar y cargar), cambio de contraseña y encuesta de satisfacción que llega por correo.</li><li><span class="cl-tag cl-chg">CAMBIO</span>Publicado en la cuenta de GitHub AWSEMJairGarcia. Liga corta <code>tinyurl.com/gaby-ai-cert</code>.</li></ul></div></div>
+<div class="vh-backdrop" id="vh-modal" role="dialog" aria-modal="true" aria-labelledby="vh-title">
+  <div class="vh-modal">
+    <div class="vh-head"><div><h3 id="vh-title">Historial de versiones</h3><p>Versión actual 2.2.0 — 2026-11-13</p></div><button type="button" class="vh-x" data-vh-close aria-label="Cerrar">&times;</button></div>
+    <div class="vh-body">
+<div class="vh-ver"><div class="vh-top"><span class="vh-pill cur">v2.2.0</span><span class="vh-date">13 nov 2026 · 02:21</span><span class="vh-now">actual</span></div><ul><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>El chip naranja de versión del encabezado se cambió por un texto pequeño al final de la página, "v2.2.0 — build 2026-11-13", igual que en el POS de Sushi Queen.</span></li><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>En el sitio de Jair ese texto abre el "Historial de versiones": versión actual y fecha arriba, una etiqueta por versión, la marca "actual" en la más nueva, cada cambio con una palomita y botón "Cerrar".</span></li><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>En el sitio de Gaby el texto solo muestra la versión, sin historial.</span></li><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>La numeración pasa a tres partes (mayor.menor.parche).</span></li></ul></div>
+<div class="vh-ver"><div class="vh-top"><span class="vh-pill">v2.1</span><span class="vh-date">13 nov 2026 · 02:14</span></div><ul><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Banner <b>"Tu siguiente paso"</b>. En el sitio de Jair va arriba de la pestaña Material y dice qué hacer ahora y por qué (hoy: Guía 2). En el sitio de Gaby va arriba del Inicio y sigue el orden Diagnóstico → Guía 1 → Práctica → Guía 2 → Simulacro, con "Empezar" o "Continuar" según su avance.</span></li><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>El módulo que sigue se resalta con un borde naranja y la etiqueta "Siguiente".</span></li><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Chip de versión en el encabezado de los dos sitios. En el de Jair abre este historial; en el de Gaby solo muestra la versión.</span></li><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span><code>CHANGELOG.md</code> en el repo del sitio de Jair.</span></li></ul></div>
+<div class="vh-ver"><div class="vh-top"><span class="vh-pill">v2.0</span><span class="vh-date">12 nov 2026 · 20:35</span></div><ul><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Guardado automático de resultados (<code>sync.js</code>) en los dos sitios: manda el avance de cada módulo cada 2 minutos como máximo, el resultado completo al terminar un módulo y una foto de todo el avance al entrar al Inicio (máximo cada 30 minutos). Usa <code>sendBeacon</code> con texto simple para no depender de CORS.</span></li><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Backend (commit <code>89f619a</code> de trento-social-backend): <code>POST /api/aif/resultado</code> (público, 30 por minuto) y <code>GET /api/aif/resultados</code> (con el token de admin). Colección nueva <code>aif_resultados</code>, aislada de los datos de Trento. Desplegado en Render el 13 nov 2026 · 00:34 y probado de punta a punta.</span></li><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Script <code>Estudio/bajar-resultados.py</code>: baja los resultados de Jair y Gaby a <code>Estudio/resultados-remotos/</code> y califica el diagnóstico y el simulacro.</span></li><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Aviso en el Inicio de Gaby: sus resultados se comparten con Jair para ajustar su plan.</span></li></ul></div>
+<div class="vh-ver"><div class="vh-top"><span class="vh-pill">v1.3</span><span class="vh-date">11 nov 2026 · 19:55</span></div><ul><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Sitio de Jair con pestañas: Mi progreso (indicadores y gráficas de calificación, dominios y tiempos), Mis exámenes (historial y revisiones), Mis errores y Material.</span></li><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Revisiones con las respuestas reales de Jair: diagnóstico, ronda 2, ronda 3 y simulacro 1.</span></li><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>El repo viejo <code>hackerjj/gaby-aif-c01</code> se renombró a <code>hackerjj/jair-aif-c01</code>. Liga corta <code>tinyurl.com/jair-ai-cert</code>.</span></li></ul></div>
+<div class="vh-ver"><div class="vh-top"><span class="vh-pill">v1.2</span><span class="vh-date">11 nov 2026 · 19:47</span></div><ul><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Paso 0 en el sitio de Gaby: diagnóstico de 20 preguntas con timer de 30 minutos, calificación automática y revisión con explicaciones.</span></li><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Sección "Tu ruta": ordena sus 4 temas del más débil al más fuerte y marca cada paso como Prioridad alta, Recomendado o Puedes ir rápido.</span></li></ul></div>
+<div class="vh-ver"><div class="vh-top"><span class="vh-pill">v1.0</span><span class="vh-date">11 nov 2026 · 19:37</span></div><ul><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Sitio de Gaby: login con contraseña, Guía 1, Práctica interactiva, Guía 2, simulacro de 65 preguntas que se califica solo, revisión con explicaciones y hoja de contrastes.</span></li><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Respaldo en JSON (descargar y cargar), cambio de contraseña y encuesta de satisfacción que llega por correo.</span></li><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Publicado en la cuenta de GitHub AWSEMJairGarcia. Liga corta <code>tinyurl.com/gaby-ai-cert</code>.</span></li></ul></div>
+    </div>
+    <div class="vh-foot"><button type="button" class="vh-close" id="vh-close" data-vh-close>Cerrar</button></div>
   </div>
 </div>
-
 <script src="sync.js"></script>
 <script>
 const DEFAULT_HASH = "ee46c20a47f85e29a3462c7ffa4e8e1239c45a4052f5992a96fd64d81f6a64e0";
@@ -325,10 +335,11 @@ $("impf").onchange=async e=>{ const f=e.target.files[0]; if(!f) return;
   e.target.value=""; };
 
 
-// Chip de versión: abre el historial
-(function(){ var m=document.getElementById("changelog"), ch=document.getElementById("ver-chip"), c=document.getElementById("cl-close");
-  function t(o){ m.classList.toggle("open",o); if(o) c.focus(); else ch.focus(); }
-  ch.onclick=function(){ t(true); }; c.onclick=function(){ t(false); };
+// Versión: abre el historial
+(function(){ var m=document.getElementById("vh-modal"), b=document.getElementById("vh-btn");
+  function t(o){ m.classList.toggle("open",o); if(o) document.getElementById("vh-close").focus(); else b.focus(); }
+  b.onclick=function(){ t(true); };
+  m.querySelectorAll("[data-vh-close]").forEach(function(x){ x.onclick=function(){ t(false); }; });
   m.addEventListener("click",function(e){ if(e.target===m) t(false); });
   document.addEventListener("keydown",function(e){ if(e.key==="Escape"&&m.classList.contains("open")) t(false); }); })();
 

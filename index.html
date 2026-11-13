@@ -141,8 +141,10 @@
       </details>
     </section>
   </section>
+<p class="sub" style="margin-top:28px;font-size:12.5px">Versión 2.0 · 11 nov 2026 · Tus avances y resultados se guardan automáticamente en el servidor; ya no hace falta copiarlos ni descargar el JSON para calificarlos.</p>
 </main>
 
+<script src="sync.js"></script>
 <script>
 const DEFAULT_HASH = "ee46c20a47f85e29a3462c7ffa4e8e1239c45a4052f5992a96fd64d81f6a64e0";
 const DATA_KEYS = ["jair-diagnostico","jair-guia1","jair-guia2","jair-practica","jair-simulacro1","jair-pass-hash"];
@@ -246,7 +248,7 @@ TABS.forEach((t,i)=>{ const b=$("t-"+t); b.onclick=()=>openTab(t);
   b.onkeydown=e=>{ if(e.key==="ArrowRight"||e.key==="ArrowLeft"){ e.preventDefault(); openTab(TABS[(i+(e.key==="ArrowRight"?1:TABS.length-1))%TABS.length],true); } }; });
 
 // ---------- Sesión, contraseña y respaldo ----------
-function showApp(){ $("login").classList.add("hidden"); $("app").classList.remove("hidden"); renderProgreso(); renderExamenes(); renderMods(); const h=location.hash.slice(1); openTab(TABS.includes(h)?h:"progreso"); }
+function showApp(){ $("login").classList.add("hidden"); $("app").classList.remove("hidden"); if(window.AIF_SNAPSHOT) AIF_SNAPSHOT(); renderProgreso(); renderExamenes(); renderMods(); const h=location.hash.slice(1); openTab(TABS.includes(h)?h:"progreso"); }
 function showLogin(){ $("app").classList.add("hidden"); $("login").classList.remove("hidden"); $("pw").focus(); }
 $("lf").onsubmit=async e=>{ e.preventDefault(); if(await sha($("pw").value)===curHash()){ sessionStorage.setItem("jair-auth","ok"); $("pw").value=""; showApp(); } else { $("lerr").textContent="Contraseña incorrecta."; $("pw").select(); } };
 $("logout").onclick=()=>{ sessionStorage.removeItem("jair-auth"); showLogin(); };

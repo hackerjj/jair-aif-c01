@@ -62,6 +62,7 @@
   <header>
     <div class="pbar" aria-hidden="true"><i id="pb"></i></div>
     <div class="timer" id="timer" aria-label="Tiempo transcurrido">00:00</div>
+    <button type="button" class="btn sec" id="restart" style="padding:6px 10px;font-size:13px">Reiniciar</button>
   </header>
   <main id="app" aria-live="polite"></main>
 </div>
@@ -285,6 +286,7 @@ function finish(){
   };
 }
 
+document.getElementById("restart").onclick=()=>{ if(confirm("¿Reiniciar la práctica desde el principio? Se borra tu avance, tus respuestas y el tiempo.")){ clearInterval(tick); runFrom=null; localStorage.removeItem(KEY); location.reload(); } };
 document.getElementById("timer").textContent=fmt(st.base);
 if(!st.started) intro();
 else if(st.done) finish();

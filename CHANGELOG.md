@@ -9,6 +9,9 @@ En el sitio de Gaby ese texto solo muestra la versión actual; el historial no e
 - Sitio de Gaby: https://awsemjairgarcia.github.io/gaby-aif-c01/ (repo AWSEMJairGarcia/gaby-aif-c01)
 - Backend de resultados: trento-social-backend en Render (repo hackerjj/trento-social-backend)
 
+## v2.2.1 — 13 nov 2026 · 02:41
+### Agregado
+- Botón **Reiniciar** en la Práctica interactiva de los dos sitios (lo pidió Gaby en su encuesta). Pide confirmación y borra el avance, las respuestas y el tiempo para empezar de cero, igual que en las guías.
 ## v2.2.0 — 13 nov 2026 · 02:21
 ### Cambiado
 - El chip naranja de versión del encabezado se cambió por un texto pequeño al final de la página, "v2.2.0 — build 2026-11-13", igual que en el POS de Sushi Queen.

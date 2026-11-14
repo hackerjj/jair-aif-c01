@@ -9,6 +9,12 @@ En el sitio de Gaby ese texto solo muestra la versión actual; el historial no e
 - Sitio de Gaby: https://awsemjairgarcia.github.io/gaby-aif-c01/ (repo AWSEMJairGarcia/gaby-aif-c01)
 - Backend de resultados: trento-social-backend en Render (repo hackerjj/trento-social-backend)
 
+## v2.3.0 — 13 nov 2026 · 17:36
+### Agregado
+- Resultado de la **Guía paso a paso 2** de Jair (14 de 22, 91:58) en Mi progreso y en Mis exámenes. Se hizo en el archivo local viejo, que no guarda en el servidor, así que se registró a mano y también se subió al servidor.
+### Cambiado
+- Con la Guía 2 terminada, "Tu siguiente paso" ahora apunta al Simulacro 2. Solo aplica al sitio de Jair; en el de Gaby solo cambia el número de versión.
+- Las guías viejas locales (`lectura/7` y `lectura/8`) muestran un aviso con la liga al sitio, para no volver a usarlas por error.
 ## v2.2.1 — 13 nov 2026 · 02:41
 ### Agregado
 - Botón **Reiniciar** en la Práctica interactiva de los dos sitios (lo pidió Gaby en su encuesta). Pide confirmación y borra el avance, las respuestas y el tiempo para empezar de cero, igual que en las guías.

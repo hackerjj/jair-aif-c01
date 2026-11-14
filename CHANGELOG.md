@@ -9,7 +9,7 @@ En el sitio de Gaby ese texto solo muestra la versión actual; el historial no e
 - Sitio de Gaby: https://awsemjairgarcia.github.io/gaby-aif-c01/ (repo AWSEMJairGarcia/gaby-aif-c01)
 - Backend de resultados: trento-social-backend en Render (repo hackerjj/trento-social-backend)
 
-## v2.3.0 — 13 nov 2026 · 17:36
+## v2.3.0 — 14 nov 2026 · 17:36
 ### Agregado
 - Resultado de la **Guía paso a paso 2** de Jair (14 de 22, 91:58) en Mi progreso y en Mis exámenes. Se hizo en el archivo local viejo, que no guarda en el servidor, así que se registró a mano y también se subió al servidor.
 ### Cambiado

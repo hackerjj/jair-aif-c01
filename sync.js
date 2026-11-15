@@ -4,7 +4,7 @@
   var USUARIO = "jair";
   var PREFIX = "jair-";
   var URL = "https://trento-social-backend.onrender.com/api/aif/resultado";
-  var MODULOS = { diagnostico: 1, guia1: 1, guia2: 1, practica: 1, simulacro1: 1 };
+  var MODULOS = { diagnostico: 1, guia1: 1, guia2: 1, practica: 1, simulacro1: 1, simulacro2: 1 };
   var AVANCE_CADA_MS = 2 * 60 * 1000;
   var SNAPSHOT_CADA_MS = 30 * 60 * 1000;
 

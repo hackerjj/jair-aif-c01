@@ -9,6 +9,14 @@ En el sitio de Gaby ese texto solo muestra la versión actual; el historial no e
 - Sitio de Gaby: https://awsemjairgarcia.github.io/gaby-aif-c01/ (repo AWSEMJairGarcia/gaby-aif-c01)
 - Backend de resultados: trento-social-backend en Render (repo hackerjj/trento-social-backend)
 
+## v2.4.0 — 14 nov 2026 · 17:58
+### Agregado
+- **Simulacro 2** en el sitio de Jair: 65 preguntas nuevas, 90 minutos, mismos dominios y mezcla de tipos que el examen real (opción múltiple, respuesta múltiple, ordenar y relacionar). Pesa más en lo que se falló en la Guía 2: adaptar modelos, Clarify contra Model Monitor y temperatura contra costo.
+- Página **"Mi calificación"** del Simulacro 2, con puntaje por dominio, filtro de errores y la explicación de cada pregunta.
+- "Tu siguiente paso" ahora lleva a **Empezar el Simulacro 2** y, al terminarlo, a su calificación. Tarjeta "Paso 5" en Material.
+- Guardado automático del Simulacro 2 en el servidor (módulo `simulacro2`; backend actualizado, falta el deploy en Render).
+### Cambiado
+- Solo el sitio de Jair recibe el Simulacro 2, porque se armó con sus errores. En el sitio de Gaby solo cambia el número de versión.
 ## v2.3.0 — 14 nov 2026 · 17:36
 ### Agregado
 - Resultado de la **Guía paso a paso 2** de Jair (14 de 22, 91:58) en Mi progreso y en Mis exámenes. Se hizo en el archivo local viejo, que no guarda en el servidor, así que se registró a mano y también se subió al servidor.

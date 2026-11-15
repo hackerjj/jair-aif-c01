@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <script src="auth.js"></script>
-<script src="sync.js"></script>
+<script src="sync.js?v=2.5.2"></script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Simulacro · AIF-C01 · 65 preguntas · 90 minutos</title>
@@ -234,7 +234,7 @@ function resultText(){
     Q.map((q,i)=>{ const n=i+1; return n+": "+(st.a[n]||"-")+" · "+(st.sec[n]||0)+" s"+(st.f[n]?" · marcada":""); }).join("\n");
 }
 function finishExam(auto){
-  if(!st.done){ stopClock(); st.done=true; st.auto=!!auto; save(); }
+  if(!st.done){ stopClock(); st.done=true; st.fin=Date.now(); st.auto=!!auto; save(); }
   const fl=Object.keys(st.f).filter(k=>st.f[k]).length;
   const dom={D1:[0,0],D2:[0,0],D3:[0,0],D4:[0,0],D5:[0,0]};
   Q.forEach((q,i)=>{ dom[q.d][0]++; dom[q.d][1]+=(st.sec[i+1]||0); });

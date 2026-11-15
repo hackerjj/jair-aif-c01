@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <script src="auth.js"></script>
-<script src="sync.js"></script>
+<script src="sync.js?v=2.5.2"></script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Práctica interactiva · AIF-C01</title>
@@ -269,7 +269,7 @@ function summaryText(){
     st.res.map((r,i)=>(i+1)+" ("+r.tipo+"): "+(r.correcto?"correcto":"incorrecto")+(r.errores?" · errores "+r.errores:"")+" · "+r.segundos+" s"+(r.tipo!=="match"?" · resp: "+r.respuesta:"")).join("\n");
 }
 function finish(){
-  if(!st.done){ stopClock(); st.done=true; save(); }
+  if(!st.done){ stopClock(); st.done=true; st.fin=Date.now(); save(); }
   progress(); document.getElementById("pb").style.width="100%";
   const ok=st.res.filter(r=>r&&r.correcto).length;
   let rows=st.res.map((r,i)=>'<tr><td>'+(i+1)+'</td><td>'+KIND[r.tipo]+'</td><td>'+(r.correcto?"Correcto":"Incorrecto")+'</td><td>'+r.errores+'</td><td>'+r.segundos+' s</td></tr>').join("");

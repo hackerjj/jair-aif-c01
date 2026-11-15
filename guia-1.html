@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <script src="auth.js"></script>
-<script src="sync.js"></script>
+<script src="sync.js?v=2.5.2"></script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Guía 1 · AIF-C01</title>
@@ -257,7 +257,7 @@ function summaryText(){
   return "Guía paso a paso AIF-C01\nPuntaje: "+ok+" de "+SCORED+"\nTiempo total: "+fmt(st.base)+"\n"+lines.join("\n");
 }
 function finish(){
-  if(!st.done){ stopClock(); st.done=true; save(); }
+  if(!st.done){ stopClock(); st.done=true; st.fin=Date.now(); save(); }
   document.getElementById("pb").style.width="100%";
   const sc=scored(), ok=sc.filter(r=>r.correcto).length;
   const byTopic={}; Object.values(st.res).forEach(r=>{ const b=byTopic[r.tema]||(byTopic[r.tema]={ok:0,n:0,s:0}); b.s+=r.segundos; if(r.correcto!==undefined){ b.n++; if(r.correcto) b.ok++; } });

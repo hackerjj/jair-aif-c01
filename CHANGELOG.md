@@ -9,6 +9,13 @@ En el sitio de Gaby ese texto solo muestra la versión actual; el historial no e
 - Sitio de Gaby: https://awsemjairgarcia.github.io/gaby-aif-c01/ (repo AWSEMJairGarcia/gaby-aif-c01)
 - Backend de resultados: trento-social-backend en Render (repo hackerjj/trento-social-backend)
 
+## v2.5.2 — 15 nov 2026 · 12:08
+### Corregido
+- Los resultados nuevos no llegaban al servidor: el guardado automático tenía una lista fija de módulos y el navegador conservaba la versión vieja. Ahora reconoce cualquier módulo (diagnóstico, guías, prácticas y simulacros) por su nombre y se recarga con número de versión (`sync.js?v=2.5.2`) en todas las páginas, para que no se quede en caché.
+- La foto de avance ya no espera 30 minutos cuando hay un módulo terminado que todavía no se reportó: se manda al abrir el Inicio.
+### Agregado
+- Cada módulo guarda la **fecha y la hora en que lo terminaste** (`fin`). Se ven en Mis exámenes (por ejemplo "15 nov 2026 · 11:58") y llegan al servidor con el resultado.
+- Práctica 2 registrada: 18 de 20 en 10:40. Se agregó a las gráficas y a Mis errores (Artifact contra Audit Manager por tercera vez y un ordenar de estrategia).
 ## v2.5.1 — 14 nov 2026 · 20:37
 ### Corregido
 - **Mi progreso** estaba desactualizado: la gráfica de calificaciones se detenía en el Simulacro 1. Ahora muestra todos los intentos (incluidos Guía 2 y Simulacro 2). También las barras por dominio y la tabla traen el Simulacro 2, y la leyenda y los títulos ya no dicen "simulacro 1".

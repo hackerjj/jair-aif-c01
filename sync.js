@@ -4,7 +4,8 @@
   var USUARIO = "jair";
   var PREFIX = "jair-";
   var URL = "https://trento-social-backend.onrender.com/api/aif/resultado";
-  var MODULOS = { diagnostico: 1, guia1: 1, guia2: 1, practica: 1, simulacro1: 1, simulacro2: 1, practica2: 1, simulacro3: 1 };
+  var MODULO_RE = /^(diagnostico|guia\d+|practica\d*|simulacro\d+)$/;
+  function esMod(m) { return MODULO_RE.test(m); }
   var AVANCE_CADA_MS = 2 * 60 * 1000;
   var SNAPSHOT_CADA_MS = 30 * 60 * 1000;
 
@@ -41,9 +42,9 @@
   Storage.prototype.setItem = function (k, v) {
     var antes = null;
     var modulo = (this === localStorage && typeof k === "string" && k.indexOf(PREFIX) === 0) ? k.slice(PREFIX.length) : null;
-    if (modulo && MODULOS[modulo]) { try { antes = JSON.parse(localStorage.getItem(k) || "null"); } catch (e) {} }
+    if (modulo && esMod(modulo)) { try { antes = JSON.parse(localStorage.getItem(k) || "null"); } catch (e) {} }
     origSet.call(this, k, v);
-    if (!modulo || !MODULOS[modulo]) return;
+    if (!modulo || !esMod(modulo)) return;
     var st = null; try { st = JSON.parse(v); } catch (e) { return; }
     if (!st || !st.started) return;
     if (st.done && !(antes && antes.done)) { enviarModulo(modulo, st, "terminado"); ultimoAvance[modulo] = Date.now(); return; }
@@ -53,11 +54,19 @@
   // Foto completa del avance (desde el Inicio), como respaldo por si algún envío se perdió.
   window.AIF_SNAPSHOT = function (forzar) {
     var k = PREFIX + "ultimo-snapshot", t = +(localStorage.getItem(k) || 0);
+    var estado = {}, hechos = [];
+    for (var i = 0; i < localStorage.length; i++) {
+      var kk = localStorage.key(i);
+      if (kk.indexOf(PREFIX) !== 0 || !esMod(kk.slice(PREFIX.length))) continue;
+      try { var v = JSON.parse(localStorage.getItem(kk)); estado[kk.slice(PREFIX.length)] = v; if (v && v.done) hechos.push(kk.slice(PREFIX.length)); } catch (e) {}
+    }
+    // Si hay un módulo terminado que todavía no se ha reportado, se manda la foto aunque no hayan pasado 30 minutos.
+    var sk = PREFIX + "snap-hechos", firma = hechos.sort().join(",");
+    if (firma !== (localStorage.getItem(sk) || "")) forzar = true;
     if (!forzar && Date.now() - t < SNAPSHOT_CADA_MS) return;
-    var estado = {};
-    Object.keys(MODULOS).forEach(function (m) { var v = localStorage.getItem(PREFIX + m); if (v) { try { estado[m] = JSON.parse(v); } catch (e) {} } });
     if (!Object.keys(estado).length) return;
     enviar({ modulo: "snapshot", evento: "snapshot", estado: estado });
     origSet.call(localStorage, k, String(Date.now()));
+    origSet.call(localStorage, sk, firma);
   };
 })();

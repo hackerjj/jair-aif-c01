@@ -52,6 +52,11 @@
   };
 
   // Foto completa del avance (desde el Inicio), como respaldo por si algún envío se perdió.
+  // Comprueba si el navegador puede llegar al servidor (no-cors: falla solo si algo lo bloquea).
+  window.AIF_ESTADO = function (cb) {
+    try { fetch(URL.replace("/resultado", "/resultados") + "?ping=1", { method: "GET", mode: "no-cors" }).then(function () { cb(true); }, function () { cb(false); }); }
+    catch (e) { cb(false); }
+  };
   window.AIF_SNAPSHOT = function (forzar) {
     var k = PREFIX + "ultimo-snapshot", t = +(localStorage.getItem(k) || 0);
     var estado = {}, hechos = [];

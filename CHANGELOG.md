@@ -9,6 +9,13 @@ En el sitio de Gaby ese texto solo muestra la versión actual; el historial no e
 - Sitio de Gaby: https://awsemjairgarcia.github.io/gaby-aif-c01/ (repo AWSEMJairGarcia/gaby-aif-c01)
 - Backend de resultados: trento-social-backend en Render (repo hackerjj/trento-social-backend)
 
+## v2.6.1 — 15 nov 2026 · 13:02
+### Agregado
+- **Indicador "Guardado en el servidor"** en el Inicio de los dos sitios: dice en verde si el navegador llega al servidor y en rojo si algo lo bloquea. Sirve para saber por qué no llegan los resultados sin adivinar.
+- Resultado del **Simulacro 3** (50 de 65, 77%, 30:45): entra a Mis exámenes, a las gráficas, al panel "¿Listo para el examen?" y a la lectura. Sus 15 errores están en Mis errores y en la sección 8 de la guía de errores.
+- Hoja de contrastes, sección 13 (en los dos sitios): clasificación contra clustering, sobreajuste, drift, etiqueta, zero-shot, few-shot y plantilla, y por qué la temperatura no cambia el costo.
+### Cambiado
+- "Tu siguiente paso" ahora recomienda un repaso dirigido en lugar de otro simulacro, porque el 77% se repitió dos veces.
 ## v2.6.0 — 15 nov 2026 · 12:31
 ### Agregado
 - Panel **"¿Listo para el examen?"** arriba de Mi progreso (sitio de Jair). Revisa cuatro criterios con tus resultados reales y muestra la prueba de cada uno: último simulacro en 90% o más, dos simulacros seguidos en 80% o más, ningún dominio debajo de 75%, y usar al menos 60 de los 90 minutos. Dice "Todavía no", "Casi listo" o "Listo para agendar el examen" y se actualiza solo con cada simulacro.

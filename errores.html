@@ -158,6 +158,28 @@
 </tbody>
 </table>
 <div class="rule"><b>Lo que ya aguantas:</b> Clarify y Model Monitor, temperatura y costo, Guardrails, A2I, tipos de aprendizaje y las métricas. Subiste de 60% a 77% entre el Simulacro 1 y el 2. Lo que falta: la escalera de adaptación de modelos, Artifact contra Audit Manager y ordenar pasos con calma.</div>
+<h2>8. Simulacro 3: tus 15 errores (50 de 65)</h2>
+<table>
+<thead><tr><th>#</th><th>La pregunta</th><th>Tu respuesta</th><th>Correcta</th><th>Por qué</th></tr></thead>
+<tbody>
+<tr><td>S3-1</td><td>Cinco categorías de tickets</td><td>Clustering</td><td><b>Clasificación multiclase</b></td><td>Categorías conocidas = clasificación</td></tr>
+<tr><td>S3-2</td><td>Qué reduce el sobreajuste</td><td>Más épocas con los mismos datos</td><td><b>Más datos variados o regularización</b></td><td>Más épocas empeora el sobreajuste</td></tr>
+<tr><td>S3-3</td><td>Agrupar clientes sin etiquetas</td><td>Clasificación supervisada</td><td><b>Clustering</b></td><td>Sin etiquetas = clustering</td></tr>
+<tr><td>S3-8</td><td>Los datos de producción cambian y baja la calidad</td><td>Transfer learning</td><td><b>Data drift</b></td><td>Drift = cambia la distribución de los datos</td></tr>
+<tr><td>S3-11</td><td>Columna con la respuesta correcta</td><td>Embedding</td><td><b>Etiqueta (label)</b></td><td>Es lo que el modelo aprende a predecir</td></tr>
+<tr><td>S3-24</td><td>Red generadora y discriminadora que compiten</td><td>K-means</td><td><b>GAN</b></td><td>Generador contra discriminador</td></tr>
+<tr><td>S3-26</td><td>Qué DOS elementos cuentan para el costo en Bedrock</td><td>Temperatura y top-p</td><td><b>Tokens de entrada y de salida</b></td><td>La temperatura no cambia el precio (otra vez)</td></tr>
+<tr><td>S3-28</td><td>Ordenar etapas de un foundation model</td><td>Fine-tuning antes de evaluar</td><td><b>Pre-training, fine-tuning, evaluación, despliegue</b></td><td>Se evalúa después de adaptar</td></tr>
+<tr><td>S3-35</td><td>Clasificar sentimiento sin dar ejemplos</td><td>Few-shot</td><td><b>Zero-shot</b></td><td>Zero-shot = cero ejemplos</td></tr>
+<tr><td>S3-36</td><td>Mismo prompt con variables por cliente</td><td>Fine-tuning</td><td><b>Plantilla de prompt</b></td><td>Es texto fijo con huecos, no entrenamiento</td></tr>
+<tr><td>S3-45</td><td>Ordenar preparar una base RAG</td><td>Vectores guardados antes de generar embeddings</td><td><b>Documentos, chunks, embeddings, base vectorial</b></td><td>Primero se convierten en vectores y luego se guardan</td></tr>
+<tr><td>S3-46</td><td>Dos técnicas que modifican pesos</td><td>Few-shot y fine-tuning</td><td><b>Fine-tuning y continued pre-training</b></td><td>Few-shot solo cambia el prompt</td></tr>
+<tr><td>S3-53</td><td>Mismas tasas de error para distintos grupos</td><td>Privacidad</td><td><b>Equidad (fairness)</b></td><td>Trato comparable entre grupos</td></tr>
+<tr><td>S3-54</td><td>Personas etiquetan imágenes antes de entrenar</td><td>A2I</td><td><b>SageMaker Ground Truth</b></td><td>Ground Truth antes de entrenar; A2I en producción</td></tr>
+<tr><td>S3-65</td><td>Unir Artifact y Audit Manager</td><td>Los dos al revés</td><td><b>Artifact = reportes de AWS; Audit Manager = tu evidencia</b></td><td>Quinta vez que se confunden</td></tr>
+</tbody>
+</table>
+<div class="rule"><b>Lo que ya aguantas:</b> RAG, fine-tuning, continued pre-training y distillation (acertaste las preguntas directas), KMS, Macie, Inspector, Model Monitor, Clarify y los servicios de seguridad. <b>Lo que se repite:</b> temperatura contra costo, Artifact contra Audit Manager y ordenar pasos. Cayó D1 (62%) porque salieron fundamentos básicos que no habías repasado.</div>
 </main>
 </body>
 </html>

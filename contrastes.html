@@ -172,6 +172,23 @@
 </tbody>
 </table>
 <div class="tip"><b>Truco:</b> en el Simulacro 2 fallaste las 3 de ordenar por cambiar dos pasos de lugar. Antes de elegir, di el proceso completo de corrido en tu cabeza.</div>
+<h2>13. Fundamentos de ML y prompting que se mezclan</h2>
+<table>
+<thead><tr><th>Si el caso dice...</th><th>Es</th></tr></thead>
+<tbody>
+<tr><td>Hay etiquetas y se predice una <b>categoría</b></td><td>Clasificación (binaria si son 2, multiclase si son más)</td></tr>
+<tr><td>Hay etiquetas y se predice un <b>número</b></td><td>Regresión (se mide con RMSE)</td></tr>
+<tr><td><b>No hay etiquetas</b> y se quieren formar grupos</td><td>Clustering (aprendizaje no supervisado)</td></tr>
+<tr><td>Funciona muy bien en entrenamiento y mal con datos nuevos</td><td>Sobreajuste. Se reduce con más datos variados o regularización, <b>no</b> con más épocas</td></tr>
+<tr><td>Los datos de producción cambian y baja la calidad</td><td>Data drift (lo vigila Model Monitor)</td></tr>
+<tr><td>La columna con la respuesta que se quiere predecir</td><td>Etiqueta (label) o variable objetivo</td></tr>
+<tr><td>El prompt <b>no</b> trae ejemplos</td><td>Zero-shot. Con ejemplos dentro del prompt es few-shot (no entrena el modelo)</td></tr>
+<tr><td>Un prompt fijo con huecos para variables</td><td>Plantilla de prompt (prompt template)</td></tr>
+<tr><td>Se cobra en Bedrock bajo demanda</td><td>Tokens de entrada y de salida. <b>No</b> la temperatura ni el top-p</td></tr>
+<tr><td>Generador y discriminador que compiten</td><td>GAN</td></tr>
+</tbody>
+</table>
+<div class="tip"><b>Truco:</b> la temperatura y el top-p cambian cómo suena la respuesta; jamás cambian el precio. Ground Truth etiqueta ANTES de entrenar; A2I revisa en producción.</div>
 </main>
 </body>
 </html>

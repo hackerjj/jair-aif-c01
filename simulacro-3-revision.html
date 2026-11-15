@@ -113,7 +113,7 @@ const dom={}; Q.forEach((q,i)=>{const d=dom[q.d]||(dom[q.d]={ok:0,n:0}); d.n++; 
 const tot=ok.filter(Boolean).length;
 document.getElementById("when").innerHTML='Tiempo usado: <b>'+(function(s){s=Math.round(s/1000);return String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0")})(ST.base||0)+'</b> de 90:00. <button type="button" id="again" style="margin-left:10px;background:#1e2a44;color:#e2e8f0;border:0;border-radius:8px;padding:6px 10px;cursor:pointer;font-weight:700">Repetir simulacro</button>';
 document.getElementById("again").onclick=function(){ if(confirm("¿Repetir el simulacro desde cero? Se borra este resultado de este navegador. Si quieres conservarlo, primero descarga tu respaldo en el Inicio.")){ localStorage.removeItem("jair-simulacro3"); location.href="simulacro-3.html"; } };
-try{ var r=JSON.parse(localStorage.getItem("jair-scores")||"{}"); r.simulacro3={ok:ok.filter(Boolean).length,total:Q.length,fecha:new Date().toISOString()}; }catch(e){}
+try{ var r=JSON.parse(localStorage.getItem("jair-scores")||"{}"); r.simulacro3={ok:ok.filter(Boolean).length,total:Q.length,fecha:new Date().toISOString(),base:ST.base,dom:(function(){var o={};Object.keys(dom).forEach(function(k){o[k]=[dom[k].ok,dom[k].n];});return o;})()}; localStorage.setItem("jair-scores",JSON.stringify(r)); }catch(e){}
 document.getElementById("sum").innerHTML='<table class="sum"><thead><tr><th>Dominio</th><th>Correctas</th><th>%</th></tr></thead><tbody>'+
  Object.keys(dom).map(k=>'<tr><td>'+k+' · '+DN[k]+'</td><td>'+dom[k].ok+' de '+dom[k].n+'</td><td>'+Math.round(100*dom[k].ok/dom[k].n)+'%</td></tr>').join("")+
  '<tr><td><b>Total</b></td><td><b>'+tot+' de '+Q.length+'</b></td><td><b>'+Math.round(100*tot/Q.length)+'%</b></td></tr></tbody></table>';

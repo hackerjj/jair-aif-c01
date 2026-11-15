@@ -9,6 +9,13 @@ En el sitio de Gaby ese texto solo muestra la versión actual; el historial no e
 - Sitio de Gaby: https://awsemjairgarcia.github.io/gaby-aif-c01/ (repo AWSEMJairGarcia/gaby-aif-c01)
 - Backend de resultados: trento-social-backend en Render (repo hackerjj/trento-social-backend)
 
+## v2.5.1 — 14 nov 2026 · 20:37
+### Corregido
+- **Mi progreso** estaba desactualizado: la gráfica de calificaciones se detenía en el Simulacro 1. Ahora muestra todos los intentos (incluidos Guía 2 y Simulacro 2). También las barras por dominio y la tabla traen el Simulacro 2, y la leyenda y los títulos ya no dicen "simulacro 1".
+- El texto "Lectura honesta" se escribe solo con tus últimos resultados (hoy 60% y 77%, lo débil del último simulacro y cuánto tiempo usaste).
+- **Mis errores** incluye los errores del Simulacro 2 y las confusiones nuevas: adaptar modelos, ordenar pasos, Artifact contra Audit Manager y Model Cards contra Data Wrangler. La guía completa de errores trae una sección 7 con tus 15 errores.
+### Agregado
+- La Práctica 2 y el Simulacro 3 se agregan solos a las gráficas, a Mis exámenes y a la lectura al terminarlos (el Simulacro 3, al abrir su calificación). Los segundos por pregunta del Simulacro 2 y 3 salen de tu navegador.
 ## v2.5.0 — 14 nov 2026 · 19:58
 ### Agregado
 - **Práctica 2 · tus errores** (sitio de Jair): 20 ejercicios armados con los errores del Simulacro 2. Mezcla cuatro formas: unir parejas, completar frases, ordenar pasos y elegir (incluye verdadero o falso), con explicación al instante.

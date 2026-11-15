@@ -111,12 +111,12 @@
       <div class="card"><div id="ch-line"></div>
         <div class="legend"><span><i style="background:var(--accent)"></i>Tu calificación</span><span><i style="background:var(--ok)"></i>Meta para agendar: 80%</span></div></div>
       <div class="grid2">
-        <div><h2>Por dominio: diagnóstico vs simulacro</h2><div class="card"><div id="ch-dom"></div>
-          <div class="legend"><span><i style="background:var(--blue)"></i>Diagnóstico</span><span><i style="background:var(--accent)"></i>Simulacro 1</span></div></div></div>
-        <div><h2>Segundos promedio por pregunta (simulacro 1)</h2><div class="card"><div id="ch-time"></div>
-          <div class="legend"><span>Tienes unos 83 s por pregunta en el examen real.</span></div></div></div>
+        <div><h2>Por dominio: diagnóstico y simulacros</h2><div class="card"><div id="ch-dom"></div>
+          <div class="legend" id="lg-dom"></div></div></div>
+        <div><h2>Segundos promedio por pregunta</h2><div class="card"><div id="ch-time"></div>
+          <div class="legend" id="lg-time"></div></div></div>
       </div>
-      <div class="note"><b>Lectura honesta:</b> la tendencia es buena (de 40% a 75% en las rondas dirigidas), pero el simulacro mixto dio 60% y lo terminaste en 40 de 90 minutos. El dominio 5 (seguridad y gobernanza) es el más débil. Antes de agendar, la meta es 80% o más en un simulacro mixto, usando al menos 70 minutos.</div>
+      <div class="note" id="lectura"></div>
     </section>
 
     <!-- EXAMENES -->
@@ -135,14 +135,18 @@
         <table>
           <thead><tr><th>Tema</th><th>Veces que lo fallaste</th><th>Regla para recordarlo</th></tr></thead>
           <tbody>
-            <tr><td><b>Clarify vs Model Monitor</b></td><td>6 (R2-16, R3-14, R4-4, R4-5, R4-15, S-50)</td><td>Clarify = aclarar: sesgo y qué variables pesaron. Model Monitor = monitorear: drift en producción.</td></tr>
-            <tr><td><b>Temperatura</b></td><td>4 (D-3, D-11, G-34, S-24)</td><td>Subirla da más creatividad y MÁS alucinaciones. No baja el costo; el costo baja con un modelo más pequeño.</td></tr>
+            <tr><td><b>Adaptar un modelo</b> (RAG, fine-tuning, continued pre-training, distillation, few-shot)</td><td>8 (G2-24, G2-25, G2-26, S2-30, S2-32, S2-33, S2-38, S2-46)</td><td>¿Cambia la información? RAG. ¿Datos etiquetados? Fine-tuning. ¿Sin etiquetar? Continued pre-training. ¿Pequeño que imita a grande? Distillation. Solo prompt y RAG no cambian los pesos.</td></tr>
+            <tr><td><b>Seguridad (D5)</b></td><td>9 (S-58 a S-62, S-65, S2-58, S2-61, S2-62)</td><td>Artifact = reportes que AWS te da; Audit Manager = evidencia tuya para el auditor (lo fallaste en los dos simulacros). KMS = llaves; Secrets Manager = contraseñas; Macie = PII en S3.</td></tr>
+            <tr><td><b>Ordenar pasos</b></td><td>4 (S-7, S2-11, S2-28, S2-45)</td><td>Di el proceso completo de corrido antes de elegir. ML: entrenar va antes de evaluar. RAG: se busca antes de armar el prompt.</td></tr>
+            <tr><td><b>Clarify vs Model Monitor</b></td><td>6 (R2-16, R3-14, R4-4, R4-5, R4-15, S-50). En el Simulacro 2 ya acertaste las dos.</td><td>Clarify = aclarar: sesgo y qué variables pesaron. Model Monitor = monitorear: drift en producción.</td></tr>
+            <tr><td><b>Temperatura</b></td><td>4 (D-3, D-11, G-34, S-24). En el Simulacro 2 ya acertaste las 3.</td><td>Subirla da más creatividad y MÁS alucinaciones. No baja el costo; el costo baja con un modelo más pequeño.</td></tr>
+            <tr><td><b>Model Cards vs Data Wrangler</b></td><td>2 (S-8, S2-50)</td><td>Model Cards = la ficha del modelo (documenta). Data Wrangler = prepara y transforma datos.</td></tr>
             <tr><td><b>Ground Truth</b></td><td>5 (R2-4, R3-13, G-8, G-16, S-9)</td><td>Solo existe ANTES de entrenar: personas etiquetan los datos.</td></tr>
             <tr><td><b>Trusted Advisor</b></td><td>3 (D-8, R2-6, R2-7)</td><td>Solo recomienda. Historial = Config; quién hizo qué = CloudTrail; evidencia = Audit Manager.</td></tr>
-            <tr><td><b>Seguridad (D5)</b></td><td>6 (S-58 a S-62 y S-65)</td><td>KMS = llaves; Secrets Manager = contraseñas; Macie = PII en S3; Artifact = reportes de AWS; PrivateLink = sin internet.</td></tr>
+            <tr><td><b>Fundamentos sueltos del Simulacro 2</b></td><td>3 (S2-6 batch, S2-23 auto-atención, S2-26 embeddings)</td><td>Batch = muchos registros sin que nadie espere. Auto-atención = lo que usa el transformer. Embeddings = vectores; se buscan por similitud y sirven para texto, no solo imágenes.</td></tr>
           </tbody>
         </table>
-        <div class="row" style="margin-top:14px"><a class="btn" href="errores.html">Abrir mi guía completa de errores</a></div>
+        <div class="row" style="margin-top:14px"><a class="btn" href="errores.html">Abrir mi guía completa de errores</a> <a class="btn sec" href="contrastes.html">Hoja de contrastes</a></div>
       </div>
     </section>
 
@@ -172,13 +176,14 @@
     </section>
   </section>
 <p class="sub" style="margin-top:28px;font-size:12.5px">Tus avances y resultados se guardan automáticamente en el servidor; ya no hace falta copiarlos ni descargar el JSON para calificarlos.</p>
-<div class="vh-wrap"><button type="button" class="vh-btn" id="vh-btn" title="Ver historial de versiones" aria-haspopup="dialog">v2.5.0 — build 2026-11-14</button></div>
+<div class="vh-wrap"><button type="button" class="vh-btn" id="vh-btn" title="Ver historial de versiones" aria-haspopup="dialog">v2.5.1 — build 2026-11-14</button></div>
 </main>
 <div class="vh-backdrop" id="vh-modal" role="dialog" aria-modal="true" aria-labelledby="vh-title">
   <div class="vh-modal">
-    <div class="vh-head"><div><h3 id="vh-title">Historial de versiones</h3><p>Versión actual 2.5.0 — 2026-11-14</p></div><button type="button" class="vh-x" data-vh-close aria-label="Cerrar">&times;</button></div>
+    <div class="vh-head"><div><h3 id="vh-title">Historial de versiones</h3><p>Versión actual 2.5.1 — 2026-11-14</p></div><button type="button" class="vh-x" data-vh-close aria-label="Cerrar">&times;</button></div>
     <div class="vh-body">
-<div class="vh-ver"><div class="vh-top"><span class="vh-pill cur">v2.5.0</span><span class="vh-date">14 nov 2026 · 19:58</span><span class="vh-now">actual</span></div><ul><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Práctica 2 · tus errores</b> (sitio de Jair): 20 ejercicios armados con los errores del Simulacro 2. Mezcla cuatro formas: unir parejas, completar frases, ordenar pasos y elegir (incluye verdadero o falso), con explicación al instante.</span></li><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Simulacro 3</b> (sitio de Jair): 65 preguntas nuevas, 90 minutos, con su página de calificación y explicaciones. Pesa más en adaptar modelos, Artifact contra Audit Manager, KMS, Model Cards y ordenar pasos.</span></li><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Hoja de contrastes</b>, en los dos sitios: secciones nuevas 9 a 12 con la escalera de adaptación de modelos, seguridad y cumplimiento, SageMaker (Model Cards contra Data Wrangler) y los órdenes que se repiten.</span></li><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>El resultado del <b>Simulacro 2</b> (50 de 65, 77%) entra a las gráficas de Mi progreso y a Mis exámenes.</span></li><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>"Tu siguiente paso" ahora sigue la ruta Práctica 2, luego Simulacro 3. Los módulos nuevos se guardan solos en el servidor (módulos <code>practica2</code> y <code>simulacro3</code>).</span></li><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>En el sitio de Gaby solo cambia la hoja de contrastes y el número de versión.</span></li></ul></div>
+<div class="vh-ver"><div class="vh-top"><span class="vh-pill cur">v2.5.1</span><span class="vh-date">14 nov 2026 · 20:37</span><span class="vh-now">actual</span></div><ul><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Mi progreso</b> estaba desactualizado: la gráfica de calificaciones se detenía en el Simulacro 1. Ahora muestra todos los intentos (incluidos Guía 2 y Simulacro 2). También las barras por dominio y la tabla traen el Simulacro 2, y la leyenda y los títulos ya no dicen "simulacro 1".</span></li><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>El texto "Lectura honesta" se escribe solo con tus últimos resultados (hoy 60% y 77%, lo débil del último simulacro y cuánto tiempo usaste).</span></li><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Mis errores</b> incluye los errores del Simulacro 2 y las confusiones nuevas: adaptar modelos, ordenar pasos, Artifact contra Audit Manager y Model Cards contra Data Wrangler. La guía completa de errores trae una sección 7 con tus 15 errores.</span></li><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>La Práctica 2 y el Simulacro 3 se agregan solos a las gráficas, a Mis exámenes y a la lectura al terminarlos (el Simulacro 3, al abrir su calificación). Los segundos por pregunta del Simulacro 2 y 3 salen de tu navegador.</span></li></ul></div>
+<div class="vh-ver"><div class="vh-top"><span class="vh-pill">v2.5.0</span><span class="vh-date">14 nov 2026 · 19:58</span></div><ul><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Práctica 2 · tus errores</b> (sitio de Jair): 20 ejercicios armados con los errores del Simulacro 2. Mezcla cuatro formas: unir parejas, completar frases, ordenar pasos y elegir (incluye verdadero o falso), con explicación al instante.</span></li><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Simulacro 3</b> (sitio de Jair): 65 preguntas nuevas, 90 minutos, con su página de calificación y explicaciones. Pesa más en adaptar modelos, Artifact contra Audit Manager, KMS, Model Cards y ordenar pasos.</span></li><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Hoja de contrastes</b>, en los dos sitios: secciones nuevas 9 a 12 con la escalera de adaptación de modelos, seguridad y cumplimiento, SageMaker (Model Cards contra Data Wrangler) y los órdenes que se repiten.</span></li><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>El resultado del <b>Simulacro 2</b> (50 de 65, 77%) entra a las gráficas de Mi progreso y a Mis exámenes.</span></li><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>"Tu siguiente paso" ahora sigue la ruta Práctica 2, luego Simulacro 3. Los módulos nuevos se guardan solos en el servidor (módulos <code>practica2</code> y <code>simulacro3</code>).</span></li><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>En el sitio de Gaby solo cambia la hoja de contrastes y el número de versión.</span></li></ul></div>
 <div class="vh-ver"><div class="vh-top"><span class="vh-pill">v2.4.0</span><span class="vh-date">14 nov 2026 · 17:58</span></div><ul><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Simulacro 2</b> en el sitio de Jair: 65 preguntas nuevas, 90 minutos, mismos dominios y mezcla de tipos que el examen real (opción múltiple, respuesta múltiple, ordenar y relacionar). Pesa más en lo que se falló en la Guía 2: adaptar modelos, Clarify contra Model Monitor y temperatura contra costo.</span></li><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Página <b>"Mi calificación"</b> del Simulacro 2, con puntaje por dominio, filtro de errores y la explicación de cada pregunta.</span></li><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>"Tu siguiente paso" ahora lleva a <b>Empezar el Simulacro 2</b> y, al terminarlo, a su calificación. Tarjeta "Paso 5" en Material.</span></li><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Guardado automático del Simulacro 2 en el servidor (módulo <code>simulacro2</code>; backend actualizado, falta el deploy en Render).</span></li><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Solo el sitio de Jair recibe el Simulacro 2, porque se armó con sus errores. En el sitio de Gaby solo cambia el número de versión.</span></li></ul></div>
 <div class="vh-ver"><div class="vh-top"><span class="vh-pill">v2.3.0</span><span class="vh-date">14 nov 2026 · 17:36</span></div><ul><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Resultado de la <b>Guía paso a paso 2</b> de Jair (14 de 22, 91:58) en Mi progreso y en Mis exámenes. Se hizo en el archivo local viejo, que no guarda en el servidor, así que se registró a mano y también se subió al servidor.</span></li><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Con la Guía 2 terminada, "Tu siguiente paso" ahora apunta al Simulacro 2. Solo aplica al sitio de Jair; en el de Gaby solo cambia el número de versión.</span></li><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Las guías viejas locales (<code>lectura/7</code> y <code>lectura/8</code>) muestran un aviso con la liga al sitio, para no volver a usarlas por error.</span></li></ul></div>
 <div class="vh-ver"><div class="vh-top"><span class="vh-pill">v2.2.1</span><span class="vh-date">13 nov 2026 · 02:41</span></div><ul><li><svg class="vh-chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3.5 3.5L15 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Botón <b>Reiniciar</b> en la Práctica interactiva de los dos sitios (lo pidió Gaby en su encuesta). Pide confirmación y borra el avance, las respuestas y el tiempo para empezar de cero, igual que en las guías.</span></li></ul></div>
@@ -256,27 +261,59 @@ function barChart(el, cats, series, max, unit){
     s+='<text x="'+(L+i*g+g/2)+'" y="'+(H-12)+'" fill="#94a3b8" font-size="12" text-anchor="middle">'+c+'</text>'; });
   el.innerHTML=s+'</svg>';
 }
+const DRANGE={D1:[1,13],D2:[14,29],D3:[30,47],D4:[48,56],D5:[57,65]};
+const LBL={diag:"Diagnóstico|10 nov",r2:"Ronda 2|dirigida",r3:"Ronda 3|contrastes",r4:"Ronda 4|práctica",g1:"Guía 1|práctica",sim:"Simulacro 1|65 preguntas",g2:"Guía 2|práctica",s2:"Simulacro 2|65 preguntas",p2:"Práctica 2|tus errores",s3:"Simulacro 3|65 preguntas"};
+function scores(){ try{ return JSON.parse(localStorage.getItem("jair-scores")||"{}"); }catch(e){ return {}; } }
+// Resultados que se agregan solos al terminar la Práctica 2 y el Simulacro 3
+function liveHist(){
+  const out=[], p2=get("jair-practica2"), sc=scores();
+  if(p2&&p2.done){ const r=Object.values(p2.res||{}).filter(x=>x&&x.correcto!==undefined);
+    out.push({id:"p2", n:"Práctica 2 · tus errores", tipo:"Práctica (primer intento)", ok:r.filter(x=>x.correcto).length, total:r.length, tiempo:fmt(p2.base), fecha:"—", rev:null, nota:"Armada con tus errores del Simulacro 2."}); }
+  if(sc.simulacro3){ const x=sc.simulacro3;
+    out.push({id:"s3", n:"Simulacro 3", tipo:"Examen tipo certificación", ok:x.ok, total:x.total, tiempo:(x.base?fmt(x.base)+" de 90:00":"-"), fecha:new Date(x.fecha).toLocaleDateString("es-MX",{day:"numeric",month:"short",year:"numeric"}).replace(/\./g,""), rev:"simulacro-3-revision.html", nota:"Tu prueba final antes de agendar.", dom:x.dom}); }
+  return out;
+}
+const ALL=()=>HIST.concat(liveHist());
+function avgSec(key){ const st=get(key); if(!st||!st.sec) return null; const o={};
+  Object.keys(DRANGE).forEach(d=>{ let t=0,n=0; for(let k=DRANGE[d][0];k<=DRANGE[d][1];k++){ t+=(st.sec[k]||0); n++; } o[d]=Math.round(t/n); }); return o; }
+function legendHTML(series){ return series.map(se=>'<span><i style="background:'+se.c+'"></i>'+se.name+'</span>').join(""); }
+function lectura(){
+  const sims=ALL().filter(h=>["sim","s2","s3"].includes(h.id)), last=sims[sims.length-1], lp=pct(last.ok,last.total);
+  const dm=last.id==="s3"&&last.dom?last.dom:(last.id==="s2"?DOM.sim2:DOM.sim), ps=Object.keys(dm).map(d=>pct(dm[d][0],dm[d][1])), mn=Math.min(...ps);
+  const wk=Object.keys(dm).filter((d,i)=>ps[i]===mn).map(d=>d+" ("+DN[d]+")").join(" y ");
+  const mins=parseInt(String(last.tiempo).split(":")[0],10)||0;
+  const best=Math.max(...ALL().map(h=>pct(h.ok,h.total)));
+  return '<b>Lectura honesta:</b> tus simulacros mixtos van '+sims.map(h=>pct(h.ok,h.total)+"%").join(", ")+'. '+
+    (lp>=80?'Ya pasaste la meta de 80%: puedes agendar el examen.':'Al último le faltaron '+(80-lp)+' puntos para la meta de 80%.')+
+    ' Lo más débil del '+last.n+' fue '+wk+' con '+mn+'%. '+
+    (mins<70?'Lo terminaste en '+mins+' de 90 minutos: usa al menos 70 para releer cada pregunta.':'Buen uso del tiempo.')+
+    ' Antes de agendar, la meta es 80% o más en un simulacro mixto.';
+}
 function renderProgreso(){
-  const sim=HIST.find(h=>h.id==="s2"), bestH=HIST.reduce((a,h)=>pct(h.ok,h.total)>pct(a.ok,a.total)?h:a), best=pct(bestH.ok,bestH.total);
+  const all=ALL(), sims=all.filter(h=>["sim","s2","s3"].includes(h.id)), sim=sims[sims.length-1], bestH=all.reduce((a,h)=>pct(h.ok,h.total)>pct(a.ok,a.total)?h:a), best=pct(bestH.ok,bestH.total);
   $("kpis").innerHTML=[
-    [pct(sim.ok,sim.total)+"%","Simulacro 2 (examen mixto)"],
+    [pct(sim.ok,sim.total)+"%",sim.n+" (examen mixto)"],
     [best+"%","Mejor resultado ("+bestH.n.split(" · ")[0]+")"],
     ["80%","Meta para agendar el examen"],
-    [HIST.length,"Intentos registrados"]
+    [all.length,"Intentos registrados"]
   ].map(k=>'<div class="kpi"><div class="v">'+k[0]+'</div><div class="l">'+k[1]+'</div></div>').join("");
-  lineChart($("ch-line"), [
-    {l:"Diagnóstico|10 nov",v:40},{l:"Ronda 2|dirigida",v:60},{l:"Ronda 3|contrastes",v:75},{l:"Ronda 4|práctica",v:56},{l:"Guía 1|práctica",v:65},{l:"Simulacro 1|65 preguntas",v:60}
-  ]);
-  const cats=["D1","D2","D3","D4","D5"];
-  barChart($("ch-dom"), cats, [{name:"Diagnóstico",c:"#60a5fa",v:cats.map(d=>pct(DOM.diag[d][0],DOM.diag[d][1]))},{name:"Simulacro 1",c:"#ff9900",v:cats.map(d=>pct(DOM.sim[d][0],DOM.sim[d][1]))},{name:"Simulacro 2",c:"#22c55e",v:cats.map(d=>pct(DOM.sim2[d][0],DOM.sim2[d][1]))}],100,"%");
-  barChart($("ch-time"), cats, [{name:"Segundos",c:"#ff9900",v:cats.map(d=>SIMSEC[d])}],100," s");
+  lineChart($("ch-line"), all.map(h=>({l:LBL[h.id]||h.n, v:pct(h.ok,h.total)})));
+  const cats=["D1","D2","D3","D4","D5"], dser=[{name:"Diagnóstico",c:"#60a5fa",o:DOM.diag},{name:"Simulacro 1",c:"#ff9900",o:DOM.sim},{name:"Simulacro 2",c:"#22c55e",o:DOM.sim2}];
+  const l3=all.find(h=>h.id==="s3"&&h.dom); if(l3) dser.push({name:"Simulacro 3",c:"#a78bfa",o:l3.dom});
+  barChart($("ch-dom"), cats, dser.map(se=>({name:se.name,c:se.c,v:cats.map(d=>pct(se.o[d][0],se.o[d][1]))})),100,"%");
+  $("lg-dom").innerHTML=legendHTML(dser);
+  const tser=[{name:"Simulacro 1",c:"#ff9900",o:SIMSEC}];
+  [["Simulacro 2","#22c55e","jair-simulacro2"],["Simulacro 3","#a78bfa","jair-simulacro3"]].forEach(x=>{ const o=avgSec(x[2]); if(o) tser.push({name:x[0],c:x[1],o}); });
+  barChart($("ch-time"), cats, tser.map(se=>({name:se.name,c:se.c,v:cats.map(d=>se.o[d])})),100," s");
+  $("lg-time").innerHTML=legendHTML(tser)+'<span>Tienes unos 83 s por pregunta en el examen real.</span>';
+  $("lectura").innerHTML=lectura();
 }
 function renderExamenes(){
   $("tbl").innerHTML='<thead><tr><th>Intento</th><th>Tipo</th><th>Calificación</th><th>Tiempo</th><th>Nota</th><th>Revisión</th></tr></thead><tbody>'+
-    HIST.map(h=>{ const p=pct(h.ok,h.total); return '<tr><td><b>'+esc(h.n)+'</b><br><span style="color:#94a3b8;font-size:12.5px">'+h.fecha+'</span></td><td>'+esc(h.tipo)+'</td><td><span class="pill '+lvl(p)+'">'+h.ok+' de '+h.total+' · '+p+'%</span></td><td>'+esc(h.tiempo)+'</td><td>'+esc(h.nota)+'</td><td>'+(h.rev?'<a href="'+h.rev+'">Ver mis respuestas</a>':'<span style="color:#94a3b8">Solo resumen</span>')+'</td></tr>'; }).join("")+'</tbody>';
+    ALL().map(h=>{ const p=pct(h.ok,h.total); return '<tr><td><b>'+esc(h.n)+'</b><br><span style="color:#94a3b8;font-size:12.5px">'+h.fecha+'</span></td><td>'+esc(h.tipo)+'</td><td><span class="pill '+lvl(p)+'">'+h.ok+' de '+h.total+' · '+p+'%</span></td><td>'+esc(h.tiempo)+'</td><td>'+esc(h.nota)+'</td><td>'+(h.rev?'<a href="'+h.rev+'">Ver mis respuestas</a>':'<span style="color:#94a3b8">Solo resumen</span>')+'</td></tr>'; }).join("")+'</tbody>';
   const domTbl=(t,o)=>'<div class="card"><h3 style="margin-top:0">'+t+'</h3><table><thead><tr><th>Dominio</th><th>Resultado</th></tr></thead><tbody>'+Object.keys(o).map(d=>{ const p=pct(o[d][0],o[d][1]); return '<tr><td>'+d+' · '+DN[d]+'</td><td><span class="pill '+lvl(p)+'">'+o[d][0]+' de '+o[d][1]+' · '+p+'%</span></td></tr>'; }).join("")+'</tbody></table></div>';
   const blkTbl=b=>'<div class="card"><h3 style="margin-top:0">'+b.t+'</h3><table><thead><tr><th>Bloque</th><th>Resultado</th></tr></thead><tbody>'+b.rows.map(r=>{ const p=pct(r[1],r[2]); return '<tr><td>'+esc(r[0])+'</td><td><span class="pill '+lvl(p)+'">'+r[1]+' de '+r[2]+' · '+p+'%</span></td></tr>'; }).join("")+'</tbody></table></div>';
-  $("blocks").innerHTML=domTbl("Diagnóstico",DOM.diag)+domTbl("Simulacro 1",DOM.sim)+domTbl("Simulacro 2",DOM.sim2)+BLOCKS.map(blkTbl).join("");
+  $("blocks").innerHTML=domTbl("Diagnóstico",DOM.diag)+domTbl("Simulacro 1",DOM.sim)+domTbl("Simulacro 2",DOM.sim2)+(ALL().filter(h=>h.id==="s3"&&h.dom).map(h=>domTbl("Simulacro 3",h.dom)).join(""))+BLOCKS.map(blkTbl).join("");
 }
 const PREVIO={"jair-diagnostico":"diag","jair-guia1":"g1","jair-practica":"r4","jair-simulacro1":"sim","jair-guia2":"g2","jair-simulacro2":"s2"};
 function status(m){

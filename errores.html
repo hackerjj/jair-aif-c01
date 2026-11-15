@@ -136,6 +136,28 @@
 </tbody>
 </table>
 <div class="rule"><b>Lo que sí aguantó en el simulacro:</b> Model Monitor (S-51), Model Cards (S-52), A2I (S-56), Guardrails (S-40 y S-54), Knowledge Bases (S-30), batch y on-demand (S-45 y S-38), el match de servicios especializados (S-43) y prompt injection (S-25).</div>
+<h2>7. Simulacro 2: tus 15 errores (50 de 65)</h2>
+<table>
+<thead><tr><th>#</th><th>La pregunta</th><th>Tu respuesta</th><th>Correcta</th><th>Por qué</th></tr></thead>
+<tbody>
+<tr><td>S2-6</td><td>Recomendaciones de todos los clientes calculadas cada madrugada</td><td>Un trabajo de entrenamiento</td><td><b>Inferencia por lotes (batch)</b></td><td>Muchos registros a la vez, sin que nadie espere</td></tr>
+<tr><td>S2-11</td><td>Ordenar el ciclo de vida de un modelo de ML</td><td>Evaluar antes de entrenar</td><td><b>Datos, entrenar, evaluar, desplegar, monitorear</b></td><td>No se puede evaluar un modelo que aún no se entrena</td></tr>
+<tr><td>S2-23</td><td>Qué permite al transformer relacionar cada palabra con las demás</td><td>Clustering</td><td><b>Auto-atención (self-attention)</b></td><td>Es la idea central de la arquitectura transformer</td></tr>
+<tr><td>S2-26</td><td>Dos afirmaciones correctas sobre embeddings</td><td>Una correcta y "solo sirven para imágenes"</td><td><b>Se guardan en una base vectorial + lo parecido queda cerca</b></td><td>Los embeddings sirven para texto, imágenes y más</td></tr>
+<tr><td>S2-28</td><td>Ordenar una consulta con RAG</td><td>El prompt antes de buscar</td><td><b>Embedding, buscar, agregar al prompt, responder</b></td><td>Primero recuperas y después armas el prompt</td></tr>
+<tr><td>S2-30</td><td>Manuales que cambian cada semana, sin reentrenar</td><td>Fine-tuning cada semana</td><td><b>RAG</b></td><td>Información cambiante = RAG</td></tr>
+<tr><td>S2-32</td><td>Millones de documentos legales sin etiquetar, aprender el vocabulario</td><td>Model distillation</td><td><b>Continued pre-training</b></td><td>Sin etiquetar = continued pre-training</td></tr>
+<tr><td>S2-33</td><td>Modelo pequeño que imita a uno grande</td><td>RAG</td><td><b>Model distillation</b></td><td>El grande enseña al pequeño</td></tr>
+<tr><td>S2-38</td><td>Tres ejemplos dentro del prompt</td><td>Fine-tuning</td><td><b>Few-shot prompting</b></td><td>Ejemplos en el prompt no entrenan el modelo</td></tr>
+<tr><td>S2-45</td><td>Ordenar por costo: prompt, RAG, fine-tuning, continued pre-training</td><td>Continued pre-training antes que fine-tuning</td><td><b>Prompt, RAG, fine-tuning, continued pre-training</b></td><td>Continued pre-training es lo más caro</td></tr>
+<tr><td>S2-46</td><td>Dos técnicas que NO modifican los pesos</td><td>Fine-tuning y prompt engineering</td><td><b>Prompt engineering y RAG</b></td><td>Fine-tuning sí modifica los pesos</td></tr>
+<tr><td>S2-50</td><td>Documentar propósito, datos, métricas y límites del modelo</td><td>Data Wrangler</td><td><b>SageMaker Model Cards</b></td><td>Data Wrangler prepara datos; Model Cards documenta</td></tr>
+<tr><td>S2-58</td><td>Cifrar un bucket de S3 con claves que controlas y auditas</td><td>GuardDuty</td><td><b>AWS KMS</b></td><td>GuardDuty detecta amenazas; KMS administra claves</td></tr>
+<tr><td>S2-61</td><td>Descargar los reportes SOC e ISO de AWS</td><td>Audit Manager</td><td><b>AWS Artifact</b></td><td>Artifact = lo que AWS te entrega (ya lo fallaste en S-59)</td></tr>
+<tr><td>S2-62</td><td>Evidencia continua de tus propios recursos para auditorías</td><td>AWS Artifact</td><td><b>AWS Audit Manager</b></td><td>Audit Manager = tu evidencia para el auditor</td></tr>
+</tbody>
+</table>
+<div class="rule"><b>Lo que ya aguantas:</b> Clarify y Model Monitor, temperatura y costo, Guardrails, A2I, tipos de aprendizaje y las métricas. Subiste de 60% a 77% entre el Simulacro 1 y el 2. Lo que falta: la escalera de adaptación de modelos, Artifact contra Audit Manager y ordenar pasos con calma.</div>
 </main>
 </body>
 </html>

@@ -9,6 +9,15 @@ En el sitio de Gaby ese texto solo muestra la versión actual; el historial no e
 - Sitio de Gaby: https://awsemjairgarcia.github.io/gaby-aif-c01/ (repo AWSEMJairGarcia/gaby-aif-c01)
 - Backend de resultados: trento-social-backend en Render (repo hackerjj/trento-social-backend)
 
+## v2.5.0 — 14 nov 2026 · 19:58
+### Agregado
+- **Práctica 2 · tus errores** (sitio de Jair): 20 ejercicios armados con los errores del Simulacro 2. Mezcla cuatro formas: unir parejas, completar frases, ordenar pasos y elegir (incluye verdadero o falso), con explicación al instante.
+- **Simulacro 3** (sitio de Jair): 65 preguntas nuevas, 90 minutos, con su página de calificación y explicaciones. Pesa más en adaptar modelos, Artifact contra Audit Manager, KMS, Model Cards y ordenar pasos.
+- **Hoja de contrastes**, en los dos sitios: secciones nuevas 9 a 12 con la escalera de adaptación de modelos, seguridad y cumplimiento, SageMaker (Model Cards contra Data Wrangler) y los órdenes que se repiten.
+- El resultado del **Simulacro 2** (50 de 65, 77%) entra a las gráficas de Mi progreso y a Mis exámenes.
+### Cambiado
+- "Tu siguiente paso" ahora sigue la ruta Práctica 2, luego Simulacro 3. Los módulos nuevos se guardan solos en el servidor (módulos `practica2` y `simulacro3`).
+- En el sitio de Gaby solo cambia la hoja de contrastes y el número de versión.
 ## v2.4.0 — 14 nov 2026 · 17:58
 ### Agregado
 - **Simulacro 2** en el sitio de Jair: 65 preguntas nuevas, 90 minutos, mismos dominios y mezcla de tipos que el examen real (opción múltiple, respuesta múltiple, ordenar y relacionar). Pesa más en lo que se falló en la Guía 2: adaptar modelos, Clarify contra Model Monitor y temperatura contra costo.

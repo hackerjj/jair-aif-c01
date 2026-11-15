@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<script src="auth.js"></script>
+<script src="sync.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulacro · AIF-C01 · 65 preguntas · 90 minutos</title>
+<style>
+  :root { --bg:#0f172a; --card:#111c33; --ink:#e2e8f0; --muted:#94a3b8; --accent:#ff9900; --ok:#22c55e; --bad:#ef4444; --line:#1e2a44; --flag:#eab308; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; background:var(--bg); color:var(--ink); line-height:1.5; }
+  .wrap { padding-top:44px !important; max-width:860px; margin:0 auto; padding:16px 16px 60px; }
+  header { display:flex; align-items:center; gap:14px; padding:10px 0 14px; border-bottom:1px solid var(--line); margin-bottom:16px; flex-wrap:wrap; }
+  .ttl { font-weight:800; flex:1; }
+  .timer { font-variant-numeric:tabular-nums; font-weight:800; font-size:18px; padding:6px 12px; border-radius:8px; background:#1e2a44; }
+  .timer.low { background:#7f1d1d; }
+  .ico { display:inline-block; width:1em; height:1em; vertical-align:-0.125em; margin-right:5px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:22px; }
+  .kind { font-size:12px; color:var(--accent); font-weight:700; letter-spacing:.4px; }
+  h1 { font-size:24px; margin:0 0 8px; }
+  .stem { font-size:16px; margin:8px 0 14px; }
+  .note { font-size:13px; color:var(--accent); margin:-6px 0 12px; }
+  p.muted, li.muted { color:var(--muted); }
+  label.opt { display:flex; gap:10px; align-items:flex-start; padding:10px 12px; border:1px solid var(--line); border-radius:9px; margin-bottom:8px; cursor:pointer; }
+  label.opt:hover { border-color:#334366; }
+  label.opt.sel { border-color:var(--accent); background:#1a2540; }
+  label.opt input { margin-top:4px; accent-color:var(--accent); }
+  .row { display:grid; grid-template-columns:1fr 1fr; gap:10px; align-items:center; padding:8px 0; border-bottom:1px solid var(--line); }
+  select { background:#0d1629; color:var(--ink); border:1px solid #334366; border-radius:8px; padding:8px; font-size:14px; width:100%; }
+  .nav { display:flex; gap:10px; margin-top:18px; flex-wrap:wrap; align-items:center; }
+  .sp { flex:1; }
+  .btn { background:var(--accent); color:#111; border:0; border-radius:9px; padding:10px 16px; font-weight:800; font-size:14px; cursor:pointer; }
+  .btn.sec { background:#1e2a44; color:var(--ink); }
+  .btn.flag.on { background:var(--flag); color:#111; }
+  .btn:disabled { opacity:.4; cursor:not-allowed; }
+  button:focus-visible, select:focus-visible, input:focus-visible { outline:2px solid #fff; outline-offset:2px; }
+  .pal { display:grid; grid-template-columns:repeat(auto-fill,minmax(42px,1fr)); gap:6px; margin-top:12px; }
+  .pal button { background:#0d1629; color:var(--muted); border:1px solid var(--line); border-radius:7px; padding:7px 0; cursor:pointer; font-weight:700; font-size:13px; }
+  .pal button.ans { background:#1a2540; color:var(--ink); border-color:#334366; }
+  .pal button.flg { border-color:var(--flag); color:var(--flag); }
+  .pal button.cur { outline:2px solid var(--accent); }
+  .legend { font-size:12.5px; color:var(--muted); margin-top:8px; }
+  details { margin-top:16px; }
+  summary { cursor:pointer; color:var(--accent); font-weight:700; font-size:14px; }
+  #msg { color:var(--ok); font-size:13px; margin-top:8px; min-height:1em; }
+  table { width:100%; border-collapse:collapse; font-size:14px; margin-top:12px; }
+  th,td { border:1px solid var(--line); padding:7px 9px; text-align:left; }
+  th { background:#0d1629; color:var(--accent); }
+</style>
+</head>
+<body>
+<a href="index.html#material" style="position:fixed;top:10px;left:12px;z-index:50;background:#1e2a44;color:#e2e8f0;text-decoration:none;font:700 13px -apple-system,BlinkMacSystemFont,sans-serif;padding:7px 11px;border-radius:8px">Inicio</a>
+
+<div class="wrap">
+  <header>
+    <div class="ttl">Simulacro 3 · AIF-C01</div>
+    <div class="timer" id="timer" aria-label="Tiempo restante">90:00</div>
+  </header>
+  <main id="app"></main>
+</div>
+
+<script>
+const Q = [
+ {"d": "D1", "t": "mc", "s": "Un sistema asigna cada ticket de soporte a una de cinco categorías: facturación, envíos, devoluciones, cuenta u otros. ¿Qué tipo de problema es?", "o": ["Aprendizaje por refuerzo", "Regresión", "Clasificación multiclase", "Clustering"]},
+ {"d": "D1", "t": "mc", "s": "¿Qué ayuda a reducir el sobreajuste (overfitting) de un modelo?", "o": ["Quitar el conjunto de prueba", "Usar más datos variados o aplicar regularización", "Hacer el modelo todavía más complejo", "Entrenarlo muchas más épocas con los mismos datos"]},
+ {"d": "D1", "t": "mc", "s": "Una empresa quiere dividir a sus clientes en grupos con comportamientos parecidos, pero no tiene ninguna etiqueta. ¿Qué técnica usa?", "o": ["Clasificación supervisada", "Clustering", "Regresión lineal", "Aprendizaje por refuerzo"]},
+ {"d": "D1", "t": "mc", "s": "Un modelo predice cuántas unidades de un producto se venderán la próxima semana. ¿Qué métrica es típica para medir su error?", "o": ["Matriz de confusión", "BLEU", "ROUGE", "RMSE"]},
+ {"d": "D1", "t": "mc", "s": "Un modelo ayuda a detectar una enfermedad grave. Lo peor sería dejar sin detectar a un paciente que sí la tiene. ¿Qué métrica se prioriza?", "o": ["Latencia", "RMSE", "Recall (sensibilidad)", "Precisión"]},
+ {"d": "D1", "t": "mc", "s": "¿Qué mide el AUC-ROC en un modelo de clasificación?", "o": ["El costo por token", "El tiempo que tarda en responder", "Qué tan bien distingue el modelo entre las clases", "La cantidad de datos de entrenamiento"]},
+ {"d": "D1", "t": "mc", "s": "¿Para qué se usa el conjunto de validación?", "o": ["Para etiquetar los datos", "Para medir el desempeño final con datos nunca vistos", "Para ajustar hiperparámetros y comparar modelos durante el desarrollo", "Para guardar los pesos del modelo"]},
+ {"d": "D1", "t": "mc", "s": "Con el tiempo, los datos que llegan a un modelo en producción cambian respecto de los de entrenamiento y baja su calidad. ¿Cómo se llama el fenómeno?", "o": ["Transfer learning", "Data drift (deriva de datos)", "Sobreajuste", "Alucinación"]},
+ {"d": "D1", "t": "mc", "s": "Una empresa procesa archivos grandes cuya inferencia tarda varios minutos, y nadie espera la respuesta en línea. ¿Qué opción de SageMaker conviene?", "o": ["Ground Truth", "Inferencia en tiempo real con respuesta menor a un segundo", "Un trabajo de entrenamiento", "Inferencia asíncrona"]},
+ {"d": "D1", "t": "order", "s": "Ordena las etapas de preparación de datos antes de entrenar.", "steps": ["Recolectar los datos", "Limpiar duplicados y valores faltantes", "Dividir en entrenamiento, validación y prueba", "Entrenar el modelo"]},
+ {"d": "D1", "t": "mc", "s": "En un conjunto de datos supervisado, ¿cómo se llama la columna con la respuesta correcta que el modelo debe aprender a predecir?", "o": ["Token", "Embedding", "Hiperparámetro", "Etiqueta (label) o variable objetivo"]},
+ {"d": "D1", "t": "mc", "s": "¿Cuál de estos casos NO es de IA generativa?", "o": ["Predecir si un cliente va a cancelar su suscripción", "Redactar un correo de bienvenida", "Resumir un contrato largo", "Crear una imagen de producto a partir de una descripción"]},
+ {"d": "D1", "t": "mc", "s": "En una tabla de clientes con edad, ciudad y gasto mensual, ¿qué es una característica (feature)?", "o": ["Un hiperparámetro", "Cada columna de entrada que el modelo usa para predecir", "El resultado final del modelo", "El servidor donde se entrena"]},
+ {"d": "D2", "t": "mc", "s": "¿Qué es un LLM (modelo de lenguaje grande)?", "o": ["Un tipo de gráfica de monitoreo", "Un servicio de red de AWS", "Un modelo entrenado con enormes cantidades de texto que puede comprender y generar lenguaje", "Una base de datos de documentos"]},
+ {"d": "D2", "t": "mc", "s": "En IA generativa, ¿qué es el prompt?", "o": ["El resultado que devuelve el modelo", "La instrucción o entrada que se le da al modelo", "El conjunto de datos de entrenamiento", "La región donde corre el modelo"]},
+ {"d": "D2", "t": "mc", "s": "¿Qué controla el parámetro de longitud máxima de respuesta (max tokens)?", "o": ["Cuántos tokens como máximo puede generar el modelo en la respuesta", "Qué tan creativa es la respuesta", "La región donde se procesa", "La cantidad de documentos de la base de conocimiento"]},
+ {"d": "D2", "t": "mc", "s": "¿Qué se espera de una temperatura cercana a 0?", "o": ["Respuestas muy creativas y distintas cada vez", "Respuestas muy predecibles y casi iguales entre llamadas", "Respuestas más largas", "Respuestas más baratas"]},
+ {"d": "D2", "t": "mc", "s": "¿Para qué sirve una secuencia de parada (stop sequence)?", "o": ["Para aumentar la temperatura", "Para elegir el idioma", "Para indicar al modelo en qué punto debe dejar de generar texto", "Para cifrar la respuesta"]},
+ {"d": "D2", "t": "mc", "s": "¿Cuál de estos cambios NO reduce el costo por solicitud en Amazon Bedrock bajo demanda?", "o": ["Bajar la temperatura", "Acortar el prompt", "Usar un modelo más pequeño", "Limitar los tokens de salida"]},
+ {"d": "D2", "t": "mc", "s": "¿Qué servicio de AWS ofrece una base de datos vectorial administrada que se puede usar en una solución RAG?", "o": ["Amazon Polly", "Amazon OpenSearch Service o OpenSearch Serverless", "Amazon SQS", "AWS Glue DataBrew"]},
+ {"d": "D2", "t": "mc", "s": "¿Por qué en RAG se dividen los documentos en fragmentos (chunks)?", "o": ["Para entrenar el modelo desde cero", "Para reducir la temperatura", "Para cifrar los documentos", "Para que cada fragmento quepa en el contexto y la búsqueda traiga solo lo relevante"]},
+ {"d": "D2", "t": "mc", "s": "¿Para qué sirve un modelo de embeddings como Amazon Titan Text Embeddings?", "o": ["Para convertir texto en vectores y poder buscar por significado", "Para generar imágenes", "Para cifrar datos", "Para convertir voz en texto"]},
+ {"d": "D2", "t": "mc", "s": "Un modelo afirma con total seguridad un dato que es falso e inventado. ¿Cómo se llama este problema?", "o": ["Fuga de datos", "Alucinación", "Sobreajuste", "Data drift"]},
+ {"d": "D2", "t": "mc", "s": "¿Qué arquitectura de modelos generativos usa una red generadora y una red discriminadora que compiten entre sí?", "o": ["Árbol de decisión", "Regresión lineal", "GAN (red generativa antagónica)", "K-means"]},
+ {"d": "D2", "t": "mc", "s": "¿Qué etapa entrena a un foundation model con enormes cantidades de datos generales para que aprenda patrones amplios?", "o": ["Pre-training (preentrenamiento)", "Prompt engineering", "Evaluación", "Inferencia"]},
+ {"d": "D2", "t": "multi", "n": 2, "s": "En Amazon Bedrock con precio bajo demanda, ¿qué DOS elementos cuentan para el costo?", "o": ["Número de usuarios conectados", "Valor de la temperatura", "Tokens de salida", "Valor de top-p", "Tokens de entrada"]},
+ {"d": "D2", "t": "multi", "n": 2, "s": "¿Qué DOS son usos adecuados de la IA generativa?", "o": ["Reemplazar una base de datos transaccional", "Generar código a partir de una descripción", "Hacer una suma con garantía de exactitud absoluta", "Resumir un contrato largo", "Cifrar datos en reposo"]},
+ {"d": "D2", "t": "order", "s": "Ordena las etapas de creación y uso de un foundation model.", "steps": ["Pre-training con enormes cantidades de datos", "Fine-tuning para una tarea o comportamiento", "Evaluación del modelo", "Despliegue y uso por los usuarios"]},
+ {"d": "D2", "t": "mc", "s": "Un chatbot debe responder siempre en un formato JSON válido y de forma consistente. ¿Qué temperatura conviene?", "o": ["Máxima", "Alta", "No importa; solo cambia el costo", "Baja"]},
+ {"d": "D3", "t": "mc", "s": "Un banco quiere que su asistente cite las políticas internas vigentes, que se actualizan a diario. ¿Qué técnica elige?", "o": ["Fine-tuning diario", "Model distillation", "RAG", "Entrenar un modelo desde cero"]},
+ {"d": "D3", "t": "mc", "s": "Una empresa tiene 1,000 ejemplos de pregunta y respuesta ideal, y quiere que el modelo responda siempre con su formato y su tono. ¿Qué técnica usa?", "o": ["Continued pre-training", "Subir la temperatura", "Fine-tuning", "RAG"]},
+ {"d": "D3", "t": "mc", "s": "Una farmacéutica tiene millones de artículos científicos sin etiquetar y quiere que el modelo entienda mejor ese vocabulario. ¿Qué técnica usa?", "o": ["Prompt engineering", "Fine-tuning con pares etiquetados", "Continued pre-training", "RAG"]},
+ {"d": "D3", "t": "mc", "s": "Un modelo grande resulta demasiado caro para el volumen de solicitudes. La empresa quiere un modelo más pequeño que mantenga la calidad en esa tarea. ¿Qué técnica usa?", "o": ["Continued pre-training", "Provisioned Throughput", "RAG", "Model distillation"]},
+ {"d": "D3", "t": "mc", "s": "Antes de invertir en entrenar un modelo, ¿qué conviene probar primero?", "o": ["Entrenar desde cero", "Hacer continued pre-training", "Mejorar el prompt con mejores instrucciones y ejemplos", "Comprar Provisioned Throughput"]},
+ {"d": "D3", "t": "mc", "s": "Se pide al modelo clasificar el sentimiento de una reseña sin darle ningún ejemplo. ¿Qué técnica es?", "o": ["Few-shot prompting", "Distillation", "Fine-tuning", "Zero-shot prompting"]},
+ {"d": "D3", "t": "mc", "s": "Un equipo reutiliza el mismo prompt con variables que cambian por cliente, como el nombre y el producto. ¿Cómo se llama esta práctica?", "o": ["Destilación", "Plantilla de prompt (prompt template)", "Embedding", "Fine-tuning"]},
+ {"d": "D3", "t": "mc", "s": "En Agents for Amazon Bedrock, ¿para qué sirven los grupos de acciones (action groups)?", "o": ["Para medir el costo", "Para cifrar la conversación", "Para definir las acciones o APIs que el agente puede ejecutar", "Para entrenar el modelo"]},
+ {"d": "D3", "t": "mc", "s": "¿Qué hace Knowledge Bases for Amazon Bedrock?", "o": ["Conecta las fuentes de datos, genera embeddings, los guarda en una base vectorial y recupera contexto para RAG", "Cifra los buckets de S3", "Entrena un modelo desde cero", "Traduce documentos"]},
+ {"d": "D3", "t": "mc", "s": "¿Qué métrica se usa típicamente para evaluar traducciones automáticas?", "o": ["AUC-ROC", "RMSE", "Recall", "BLEU"]},
+ {"d": "D3", "t": "mc", "s": "¿Para qué sirve Amazon Bedrock Model Evaluation?", "o": ["Para descubrir PII en S3", "Para entrenar un modelo nuevo", "Para comparar modelos con métricas automáticas o con revisores humanos", "Para cifrar prompts"]},
+ {"d": "D3", "t": "mc", "s": "Una empresa debe procesar 500,000 documentos durante la noche al menor costo, sin necesidad de respuesta inmediata. ¿Qué opción de Bedrock conviene?", "o": ["Un trabajo de fine-tuning", "Provisioned Throughput permanente", "Batch inference", "On-demand en tiempo real"]},
+ {"d": "D3", "t": "mc", "s": "Una aplicación tiene tráfico alto y constante y necesita rendimiento predecible. ¿Qué opción de Bedrock conviene?", "o": ["Model Evaluation", "On-demand sin límites", "Batch inference", "Provisioned Throughput"]},
+ {"d": "D3", "t": "mc", "s": "Una tarea consiste en analizar contratos de 300 páginas de una sola vez. ¿Qué característica del modelo es clave?", "o": ["Una ventana de contexto grande", "Que genere imágenes", "Que sea el más barato", "Una temperatura alta"]},
+ {"d": "D3", "t": "match", "s": "Relaciona cada caso con la técnica de adaptación correcta.", "pairs": [["Las políticas de la empresa cambian a diario", "RAG"], ["Fijar el estilo de marca con 1,000 ejemplos etiquetados", "Fine-tuning"], ["Aprender el vocabulario de millones de textos sin etiquetar", "Continued pre-training"], ["Imitar a un modelo grande con uno más pequeño", "Model distillation"]]},
+ {"d": "D3", "t": "order", "s": "Ordena los pasos para preparar una base de conocimiento para RAG.", "steps": ["Cargar los documentos a Amazon S3", "Dividirlos en fragmentos (chunks)", "Generar un embedding de cada fragmento", "Guardar los vectores en una base vectorial"]},
+ {"d": "D3", "t": "multi", "n": 2, "s": "¿Qué DOS técnicas necesitan datos de entrenamiento y modifican los pesos del modelo?", "o": ["Continued pre-training", "Few-shot prompting", "RAG", "Fine-tuning", "Prompt engineering"]},
+ {"d": "D3", "t": "mc", "s": "¿En qué tipo de problema es más útil el prompting de cadena de pensamiento (chain-of-thought)?", "o": ["En reducir la latencia", "En problemas de razonamiento de varios pasos", "En traducir una palabra", "En cifrar la respuesta"]},
+ {"d": "D4", "t": "mc", "s": "Un banco quiere comprobar, antes de lanzar su modelo de crédito, que no discrimina por género y entender qué variables pesan más. ¿Qué usa?", "o": ["Amazon SageMaker Data Wrangler", "Amazon SageMaker Clarify", "Amazon SageMaker Model Monitor", "AWS Artifact"]},
+ {"d": "D4", "t": "mc", "s": "El equipo quiere alertas cuando la calidad de las predicciones del modelo en producción empiece a caer. ¿Qué usa?", "o": ["Amazon SageMaker Clarify solamente", "Amazon SageMaker Model Monitor", "Amazon SageMaker Model Cards", "AWS KMS"]},
+ {"d": "D4", "t": "mc", "s": "¿Qué servicio de SageMaker prepara y transforma datos con una interfaz visual?", "o": ["Amazon SageMaker Model Cards", "Amazon SageMaker Model Monitor", "Amazon SageMaker Clarify", "Amazon SageMaker Data Wrangler"]},
+ {"d": "D4", "t": "mc", "s": "Una empresa quiere que su asistente en Bedrock nunca dé consejos médicos. ¿Qué configura?", "o": ["Una temperatura más baja", "Un tema denegado (denied topic) en Guardrails for Amazon Bedrock", "Un bucket de S3 privado", "Más Provisioned Throughput"]},
+ {"d": "D4", "t": "mc", "s": "Una empresa publica de qué datos se entrenó su modelo, para qué sirve y cuáles son sus límites. ¿Qué principio de IA responsable cumple?", "o": ["Transparencia", "Escalabilidad", "Latencia", "Disponibilidad"]},
+ {"d": "D4", "t": "mc", "s": "Un modelo tiene tasas de error parecidas para distintos grupos de personas. ¿Qué principio refleja?", "o": ["Privacidad", "Costo", "Equidad (fairness)", "Disponibilidad"]},
+ {"d": "D4", "t": "mc", "s": "Una empresa necesita que personas etiqueten miles de imágenes antes de entrenar un modelo. ¿Qué servicio usa?", "o": ["Amazon SageMaker Model Monitor", "AWS Config", "Amazon Augmented AI (A2I)", "Amazon SageMaker Ground Truth"]},
+ {"d": "D4", "t": "match", "s": "Relaciona cada necesidad con la herramienta correcta.", "pairs": [["Etiquetar datos con personas antes de entrenar", "SageMaker Ground Truth"], ["Detectar sesgo y explicar predicciones", "SageMaker Clarify"], ["Revisión humana de predicciones en producción", "Amazon Augmented AI (A2I)"], ["Ficha de documentación del modelo", "SageMaker Model Cards"]]},
+ {"d": "D4", "t": "multi", "n": 2, "s": "¿Qué DOS son riesgos de la IA generativa?", "o": ["Precisión absoluta garantizada", "Respuestas siempre iguales", "Filtración de datos sensibles en prompts o respuestas", "Alucinaciones", "Reducción automática del costo"]},
+ {"d": "D5", "t": "mc", "s": "El auditor de una empresa pide el reporte SOC 2 de AWS. ¿Dónde lo obtiene?", "o": ["AWS Audit Manager", "AWS Artifact", "AWS Config", "Amazon Inspector"]},
+ {"d": "D5", "t": "mc", "s": "La empresa necesita mostrar al auditor evidencia continua de que sus propios controles se cumplen. ¿Qué usa?", "o": ["AWS Audit Manager", "Amazon Macie", "AWS Artifact", "AWS KMS"]},
+ {"d": "D5", "t": "mc", "s": "Una empresa quiere controlar y rotar las claves con las que se cifran los datos de S3 y de sus entrenamientos. ¿Qué usa?", "o": ["Amazon GuardDuty", "AWS KMS", "Amazon Macie", "AWS Secrets Manager"]},
+ {"d": "D5", "t": "mc", "s": "El rol de IAM de una aplicación solo debe poder invocar un modelo específico de Bedrock y nada más. ¿Qué principio se aplica?", "o": ["Mínimo privilegio", "Cifrado en tránsito", "Alta disponibilidad", "Escalado automático"]},
+ {"d": "D5", "t": "mc", "s": "La empresa quiere saber quién invocó un modelo de Bedrock y cuándo. ¿Qué servicio registra esas llamadas a la API?", "o": ["Amazon CloudWatch Logs únicamente", "Amazon Polly", "AWS Artifact", "AWS CloudTrail"]},
+ {"d": "D5", "t": "mc", "s": "La empresa quiere detectar si un bucket de S3 dejó de cumplir la regla de que debe estar cifrado. ¿Qué usa?", "o": ["Amazon Rekognition", "AWS Config", "Amazon Translate", "AWS Artifact"]},
+ {"d": "D5", "t": "mc", "s": "La empresa quiere detectar actividad sospechosa, como credenciales comprometidas o tráfico inusual. ¿Qué usa?", "o": ["Amazon GuardDuty", "AWS Artifact", "Amazon Macie", "Amazon Inspector"]},
+ {"d": "D5", "t": "mc", "s": "Según el modelo de responsabilidad compartida, al usar un servicio administrado como Bedrock, ¿qué parte es de AWS?", "o": ["La clasificación de los datos del cliente", "La seguridad de la infraestructura y del servicio", "La configuración de los permisos de IAM del cliente", "Los datos que el cliente envía"]},
+ {"d": "D5", "t": "match", "s": "Relaciona cada necesidad con el servicio correcto.", "pairs": [["Reportes de cumplimiento de AWS", "AWS Artifact"], ["Evidencia continua de tus propios controles", "AWS Audit Manager"], ["Crear y rotar claves de cifrado", "AWS KMS"], ["Descubrir datos personales en S3", "Amazon Macie"], ["Buscar vulnerabilidades en instancias EC2", "Amazon Inspector"]]}
+];
+const LIMIT = 90*60*1000;
+const KEY = "jair-simulacro3";
+const L = "ABCDE";
+let st = JSON.parse(localStorage.getItem(KEY) || "null") || {started:false, done:false, idx:0, base:0, a:{}, f:{}, sec:{}, perm:{}};
+let runFrom=null, qFrom=null, tick=null;
+
+// Orden aleatorio fijo por examen para los elementos de ordenar y emparejar
+Q.forEach((q,i)=>{ if((q.t==="order"||q.t==="match") && !st.perm[i]){ const n=(q.steps||q.pairs).length; st.perm[i]=shuffle([...Array(n).keys()]); } });
+
+function save(){ localStorage.setItem(KEY, JSON.stringify(st)); }
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]];} return a; }
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;"); }
+function elapsed(){ return st.base + (runFrom ? Date.now()-runFrom : 0); }
+function fmt(ms){ const s=Math.max(0,Math.round(ms/1000)); return String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0"); }
+function addQTime(){ if(qFrom!==null){ const k=st.idx+1; st.sec[k]=(st.sec[k]||0)+Math.round((elapsed()-qFrom)/1000); qFrom=elapsed(); } }
+function updTimer(){ const left=LIMIT-elapsed(); const t=document.getElementById("timer"); t.textContent=fmt(left); t.classList.toggle("low", left<10*60*1000); if(left<=0 && !st.done){ finishExam(true); } }
+function startClock(){ runFrom=Date.now(); qFrom=elapsed(); tick=setInterval(updTimer,500); updTimer(); }
+function stopClock(){ addQTime(); st.base=elapsed(); runFrom=null; qFrom=null; clearInterval(tick); save(); }
+window.addEventListener("beforeunload", ()=>{ if(runFrom){ addQTime(); st.base=elapsed(); save(); } });
+const app=document.getElementById("app");
+
+function answered(i){
+  const q=Q[i], v=st.a[i+1]||"";
+  if(q.t==="mc") return v.length===1;
+  if(q.t==="multi") return v.length===q.n;
+  const n=(q.steps||q.pairs).length; return v.split("-").filter(x=>x).length===n && !v.split("-").includes("0");
+}
+function nAnswered(){ return Q.filter((q,i)=>answered(i)).length; }
+
+function intro(){
+  app.innerHTML='<div class="card"><div class="kind">Simulacro tipo examen</div><h1>65 preguntas · 90 minutos</h1>'+
+  '<ul><li class="muted">Mismo formato del AIF-C01: mayoría de opción múltiple, más algunas de respuesta múltiple, ordenamiento y emparejamiento.</li>'+
+  '<li class="muted">Mezcla los 5 dominios con el peso oficial: D1 13, D2 16, D3 18, D4 9 y D5 9 preguntas.</li>'+
+  '<li class="muted">No verás respuestas hasta que te califique. Puedes marcar preguntas para revisarlas y moverte libremente entre ellas.</li>'+
+  '<li class="muted">El timer cuenta hacia atrás desde 90:00 al dar clic en Iniciar. Al llegar a cero, el examen se cierra solo. Se guarda el tiempo total y el de cada pregunta.</li>'+
+  '<li class="muted">Si cierras la pestaña, el tiempo se pausa y sigues donde te quedaste. Para que cuente como examen real, hazlo de corrido.</li></ul>'+
+  '<div class="nav"><span class="sp"></span><button class="btn" id="go">Iniciar</button></div></div>';
+  document.getElementById("go").onclick=()=>{ st.started=true; save(); startClock(); show(); };
+}
+
+function show(){
+  const i=st.idx, q=Q[i], n=i+1, v=st.a[n]||"";
+  let h='<div class="card"><div class="kind">Pregunta '+n+' de '+Q.length+'</div><p class="stem" id="stem">'+esc(q.s)+'</p>';
+  if(q.t==="multi") h+='<p class="note">Respuesta múltiple: elige '+q.n+'.</p>';
+  if(q.t==="mc"||q.t==="multi"){
+    h+='<div role="group" aria-labelledby="stem">';
+    q.o.forEach((o,j)=>{ const on=v.includes(L[j]); h+='<label class="opt'+(on?" sel":"")+'"><input type="'+(q.t==="mc"?"radio":"checkbox")+'" name="r" value="'+L[j]+'"'+(on?" checked":"")+'><span><b>'+L[j]+')</b> '+esc(o)+'</span></label>'; });
+    h+='</div>';
+  } else if(q.t==="order"){
+    h+='<p class="note">Asigna a cada paso su posición (1 = primero).</p>';
+    const cur=v?v.split("-"):[]; const items=q.steps, perm=st.perm[i];
+    perm.forEach(k=>{ const sel=cur[k]||"0"; h+='<div class="row"><div>'+esc(items[k])+'</div><select data-k="'+k+'" aria-label="Posición de: '+esc(items[k])+'"><option value="0">Elige posición</option>'+items.map((x,p)=>'<option value="'+(p+1)+'"'+(String(p+1)===sel?" selected":"")+'>'+(p+1)+'</option>').join("")+'</select></div>'; });
+  } else {
+    h+='<p class="note">Elige el servicio que corresponde a cada necesidad. Cada servicio se usa una vez.</p>';
+    const cur=v?v.split("-"):[]; const perm=st.perm[i];
+    q.pairs.forEach((p,k)=>{ const sel=cur[k]||"0"; h+='<div class="row"><div>'+esc(p[0])+'</div><select data-k="'+k+'" aria-label="Servicio para: '+esc(p[0])+'"><option value="0">Elige un servicio</option>'+perm.map(r=>'<option value="'+(r+1)+'"'+(String(r+1)===sel?" selected":"")+'>'+esc(q.pairs[r][1])+'</option>').join("")+'</select></div>'; });
+  }
+  h+='<div class="nav"><button class="btn sec" id="prev"'+(i===0?" disabled":"")+'>Anterior</button><button class="btn sec flag'+(st.f[n]?" on":"")+'" id="flag" aria-pressed="'+(st.f[n]?"true":"false")+'">'+(st.f[n]?"Marcada para revisar":"Marcar para revisar")+'</button><span class="sp"></span>'+
+     (i<Q.length-1?'<button class="btn" id="next">Siguiente</button>':'<button class="btn" id="end">Terminar examen</button>')+'</div>';
+  h+='<details'+(st.openPal?" open":"")+'><summary>Ver todas las preguntas ('+nAnswered()+' de '+Q.length+' contestadas)</summary><div class="pal" id="pal"></div><p class="legend">Contestada = fondo claro. Marcada = borde amarillo. <span class="sp"></span></p><div class="nav"><span class="sp"></span><button class="btn sec" id="end2">Terminar examen</button></div></details></div>';
+  app.innerHTML=h;
+
+  if(q.t==="mc"||q.t==="multi"){
+    app.querySelectorAll('input[name="r"]').forEach(inp=>inp.addEventListener("change",()=>{
+      let val=[...app.querySelectorAll('input[name="r"]:checked')].map(x=>x.value).join("");
+      if(q.t==="multi" && val.length>q.n){ inp.checked=false; val=val.replace(inp.value,""); }
+      st.a[n]=val; save();
+      app.querySelectorAll("label.opt").forEach(lb=>lb.classList.toggle("sel", lb.querySelector("input").checked)); drawPal();
+    }));
+  } else {
+    app.querySelectorAll("select").forEach(s=>s.addEventListener("change",()=>{
+      const len=(q.steps||q.pairs).length; const cur=(st.a[n]||Array(len).fill("0").join("-")).split("-");
+      cur[+s.dataset.k]=s.value; st.a[n]=cur.join("-"); save(); drawPal();
+    }));
+  }
+  const go=k=>{ addQTime(); st.idx=k; save(); show(); window.scrollTo(0,0); };
+  document.getElementById("prev").onclick=()=>go(i-1);
+  if(document.getElementById("next")) document.getElementById("next").onclick=()=>go(i+1);
+  document.getElementById("flag").onclick=()=>{ st.f[n]=!st.f[n]; save(); show(); };
+  const ask=()=>{ const miss=Q.length-nAnswered(); const fl=Object.values(st.f).filter(Boolean).length;
+    if(confirm("¿Terminar el examen?"+(miss?"\nTe faltan "+miss+" pregunta(s) sin contestar.":"")+(fl?"\nTienes "+fl+" pregunta(s) marcadas para revisar.":""))) finishExam(false); };
+  if(document.getElementById("end")) document.getElementById("end").onclick=ask;
+  document.getElementById("end2").onclick=ask;
+  app.querySelector("details").addEventListener("toggle",e=>{ st.openPal=e.target.open; save(); });
+  drawPal();
+  function drawPal(){
+    const pal=document.getElementById("pal"); pal.innerHTML="";
+    Q.forEach((qq,k)=>{ const b=document.createElement("button"); b.textContent=k+1; b.type="button";
+      if(answered(k)) b.classList.add("ans"); if(st.f[k+1]) b.classList.add("flg"); if(k===i) b.classList.add("cur");
+      b.setAttribute("aria-label","Pregunta "+(k+1)+(answered(k)?", contestada":", sin contestar")+(st.f[k+1]?", marcada":""));
+      b.onclick=()=>go(k); pal.appendChild(b); });
+    app.querySelector("summary").textContent="Ver todas las preguntas ("+nAnswered()+" de "+Q.length+" contestadas)";
+  }
+}
+
+function resultText(){
+  return "Simulacro 3 AIF-C01\nTiempo usado: "+fmt(st.base)+" de 90:00\nContestadas: "+nAnswered()+" de "+Q.length+"\n"+
+    Q.map((q,i)=>{ const n=i+1; return n+": "+(st.a[n]||"-")+" · "+(st.sec[n]||0)+" s"+(st.f[n]?" · marcada":""); }).join("\n");
+}
+function finishExam(auto){
+  if(!st.done){ stopClock(); st.done=true; st.auto=!!auto; save(); }
+  const fl=Object.keys(st.f).filter(k=>st.f[k]).length;
+  const dom={D1:[0,0],D2:[0,0],D3:[0,0],D4:[0,0],D5:[0,0]};
+  Q.forEach((q,i)=>{ dom[q.d][0]++; dom[q.d][1]+=(st.sec[i+1]||0); });
+  app.innerHTML='<div class="card"><div class="kind">Examen terminado'+(st.auto?" · se acabó el tiempo":"")+'</div><h1>Listo</h1>'+
+   '<p class="muted">Tiempo usado: <b style="color:#e2e8f0">'+fmt(st.base)+'</b> de 90:00 · Contestadas: <b style="color:#e2e8f0">'+nAnswered()+' de '+Q.length+'</b> · Marcadas: '+fl+'</p>'+
+   '<table><thead><tr><th>Dominio</th><th>Preguntas</th><th>Tiempo total</th></tr></thead><tbody>'+
+   Object.keys(dom).map(k=>'<tr><td>'+k+'</td><td>'+dom[k][0]+'</td><td>'+fmt(dom[k][1]*1000)+'</td></tr>').join("")+'</tbody></table>'+
+   '<p class="muted">Ya está calificado. Revisa cada pregunta con su explicación para fijar lo que fallaste.</p><div class="nav"><a class="btn" href="simulacro-3-revision.html" style="text-decoration:none">Ver mi calificación y respuestas</a></div>'+
+   '<div class="nav"><span class="sp"></span><button class="btn sec" id="sv">Guardar archivo</button><button class="btn" id="cp">Copiar resultados</button></div><div id="msg" role="status"></div></div>';
+  document.getElementById("timer").textContent="Fin";
+  const msg=t=>document.getElementById("msg").textContent=t;
+  document.getElementById("cp").onclick=async()=>{ try{ await navigator.clipboard.writeText(resultText()); msg("Copiado."); }catch(e){ prompt("Copia este texto:",resultText()); } };
+  document.getElementById("sv").onclick=async()=>{
+    const data=JSON.stringify({examen:"simulacro-3", fecha:new Date().toISOString(), tiempo_usado_seg:Math.round(st.base/1000), tiempo_usado:fmt(st.base), se_acabo_el_tiempo:!!st.auto, respuestas:st.a, segundos_por_pregunta:st.sec, marcadas:st.f},null,2);
+    try{ if(window.showSaveFilePicker){ const h=await window.showSaveFilePicker({suggestedName:"respuestas-simulacro-3.json",types:[{description:"JSON",accept:{"application/json":[".json"]}}]}); const w=await h.createWritable(); await w.write(data); await w.close(); }
+      else { const a=document.createElement("a"); a.href=URL.createObjectURL(new Blob([data],{type:"application/json"})); a.download="respuestas-simulacro-3.json"; a.click(); }
+      msg("Archivo guardado."); }catch(e){ if(e.name!=="AbortError") msg("No se pudo guardar: usa Copiar resultados."); }
+  };
+}
+
+save();
+if(!st.started) intro();
+else if(st.done) finishExam(st.auto);
+else { startClock(); show(); }
+</script>
+</body>
+</html>

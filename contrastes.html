@@ -125,6 +125,53 @@
 <tr><td><b>Provisioned Throughput</b></td><td>Capacidad garantizada para tráfico alto y constante, o para usar un modelo personalizado (fine-tuned).</td></tr>
 </tbody>
 </table>
+<h2>9. Cómo adaptar un modelo: la escalera (lo que más fallaste en el Simulacro 2)</h2>
+<table>
+<thead><tr><th>Si el caso dice...</th><th>Usa</th><th>¿Cambia los pesos?</th></tr></thead>
+<tbody>
+<tr><td>Probar rápido y barato; cambiar instrucciones, formato o tono</td><td><b>Prompt engineering</b> (zero-shot, few-shot, chain-of-thought)</td><td>No</td></tr>
+<tr><td>La información <b>cambia</b> (manuales, políticas, precios) y hay que responder con ella, sin reentrenar</td><td><b>RAG</b> (Knowledge Bases for Bedrock)</td><td>No</td></tr>
+<tr><td>Ejemplos <b>etiquetados</b> de entrada y salida para enseñar estilo, formato o una tarea</td><td><b>Fine-tuning</b></td><td>Sí</td></tr>
+<tr><td>Muchos documentos <b>sin etiquetar</b> para que aprenda el vocabulario de un dominio</td><td><b>Continued pre-training</b></td><td>Sí</td></tr>
+<tr><td>Un modelo <b>pequeño y barato</b> que imite a uno grande</td><td><b>Model distillation</b></td><td>Se entrena el pequeño</td></tr>
+</tbody>
+</table>
+<div class="tip"><b>Truco:</b> pregunta en este orden. ¿Cambia la información? RAG. ¿Datos con etiqueta? Fine-tuning. ¿Datos sin etiqueta? Continued pre-training. ¿Pequeño que imita a grande? Distillation. Solo prompt engineering y RAG NO tocan los pesos. Dar ejemplos dentro del prompt es few-shot, no fine-tuning. De menor a mayor esfuerzo: prompt, RAG, fine-tuning, continued pre-training.</div>
+<h2>10. Seguridad y cumplimiento: no los mezcles</h2>
+<table>
+<thead><tr><th>Necesidad</th><th>Servicio</th></tr></thead>
+<tbody>
+<tr><td>Descargar los reportes de cumplimiento <b>de AWS</b> (SOC, ISO 27001)</td><td><b>AWS Artifact</b></td></tr>
+<tr><td>Reunir evidencia continua de <b>tus propios</b> controles para una auditoría</td><td><b>AWS Audit Manager</b></td></tr>
+<tr><td>Crear y controlar las claves con las que se cifran los datos</td><td><b>AWS KMS</b></td></tr>
+<tr><td>Guardar y rotar contraseñas y claves de API</td><td><b>AWS Secrets Manager</b></td></tr>
+<tr><td>Descubrir datos personales (PII) en S3</td><td><b>Amazon Macie</b></td></tr>
+<tr><td>Buscar vulnerabilidades en EC2, contenedores y Lambda</td><td><b>Amazon Inspector</b></td></tr>
+<tr><td>Detectar amenazas y actividad sospechosa</td><td><b>Amazon GuardDuty</b></td></tr>
+</tbody>
+</table>
+<div class="tip"><b>Truco:</b> Artifact = lo que AWS te <b>entrega</b>. Audit Manager = la evidencia que tú le <b>entregas</b> al auditor. KMS cifra; Secrets Manager guarda secretos.</div>
+<h2>11. SageMaker: documentar no es transformar datos</h2>
+<table>
+<thead><tr><th>Necesidad</th><th>Servicio</th></tr></thead>
+<tbody>
+<tr><td>Documentar propósito, datos, métricas y limitaciones del modelo</td><td><b>Model Cards</b></td></tr>
+<tr><td>Limpiar y transformar datos con interfaz visual</td><td><b>Data Wrangler</b></td></tr>
+<tr><td>Detectar sesgo antes de desplegar y explicar las decisiones</td><td><b>Clarify</b></td></tr>
+<tr><td>Vigilar drift y calidad cuando el modelo ya está en producción</td><td><b>Model Monitor</b></td></tr>
+</tbody>
+</table>
+<div class="tip"><b>Truco:</b> Clarify mira el modelo <b>antes</b> (sesgo y explicación). Model Monitor lo vigila <b>después</b> (producción). Model Cards es papel, no mide nada.</div>
+<h2>12. Preguntas de ordenar: el orden que siempre se repite</h2>
+<table>
+<thead><tr><th>Proceso</th><th>Orden</th></tr></thead>
+<tbody>
+<tr><td>Ciclo de vida de un modelo de ML</td><td>Preparar datos, <b>entrenar</b>, <b>evaluar</b>, desplegar, monitorear y reentrenar</td></tr>
+<tr><td>Una consulta con RAG</td><td>Convertir la pregunta en embedding, buscar en la base vectorial, <b>agregar</b> lo encontrado al prompt, el modelo responde</td></tr>
+<tr><td>Preparar una base RAG</td><td>Documentos, chunks, embeddings, base vectorial</td></tr>
+</tbody>
+</table>
+<div class="tip"><b>Truco:</b> en el Simulacro 2 fallaste las 3 de ordenar por cambiar dos pasos de lugar. Antes de elegir, di el proceso completo de corrido en tu cabeza.</div>
 </main>
 </body>
 </html>

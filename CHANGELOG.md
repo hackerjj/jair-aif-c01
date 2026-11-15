@@ -9,6 +9,12 @@ En el sitio de Gaby ese texto solo muestra la versión actual; el historial no e
 - Sitio de Gaby: https://awsemjairgarcia.github.io/gaby-aif-c01/ (repo AWSEMJairGarcia/gaby-aif-c01)
 - Backend de resultados: trento-social-backend en Render (repo hackerjj/trento-social-backend)
 
+## v2.6.0 — 15 nov 2026 · 12:31
+### Agregado
+- Panel **"¿Listo para el examen?"** arriba de Mi progreso (sitio de Jair). Revisa cuatro criterios con tus resultados reales y muestra la prueba de cada uno: último simulacro en 90% o más, dos simulacros seguidos en 80% o más, ningún dominio debajo de 75%, y usar al menos 60 de los 90 minutos. Dice "Todavía no", "Casi listo" o "Listo para agendar el examen" y se actualiza solo con cada simulacro.
+### Corregido
+- `bajar-resultados.py` se rompía con los datos de Gaby (respuestas guardadas como lista).
+- En el sitio de Gaby solo cambia el número de versión.
 ## v2.5.2 — 15 nov 2026 · 12:08
 ### Corregido
 - Los resultados nuevos no llegaban al servidor: el guardado automático tenía una lista fija de módulos y el navegador conservaba la versión vieja. Ahora reconoce cualquier módulo (diagnóstico, guías, prácticas y simulacros) por su nombre y se recarga con número de versión (`sync.js?v=2.5.2`) en todas las páginas, para que no se quede en caché.

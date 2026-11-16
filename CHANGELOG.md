@@ -9,6 +9,13 @@ En el sitio de Gaby ese texto solo muestra la versión actual; el historial no e
 - Sitio de Gaby: https://awsemjairgarcia.github.io/gaby-aif-c01/ (repo AWSEMJairGarcia/gaby-aif-c01)
 - Backend de resultados: trento-social-backend en Render (repo hackerjj/trento-social-backend)
 
+## v2.7.1 — 15 nov 2026 · 14:05
+### Corregido
+- **Los resultados ya se ven desde el celular.** Las páginas "Mi calificación" del Simulacro 2 y del Simulacro 3 buscaban tu examen solo en el navegador de la computadora y en otro dispositivo decían "Todavía no terminas el simulacro". Ahora traen tus respuestas guardadas en el sitio (con la correcta, la tuya y la explicación) y se muestran en cualquier dispositivo. Si el examen sí está en ese navegador, se usa ese.
+- En Material, los módulos que ya hiciste muestran **"Ver calificación"** cuando tienen revisión, en vez de "Repetir".
+- **Orden de la gráfica:** la Práctica 2 va antes del Simulacro 3, como pasó en la vida real.
+### Cambiado
+- En el sitio de Gaby solo cambia el número de versión.
 ## v2.7.0 — 15 nov 2026 · 13:40
 ### Agregado
 - **Práctica 3 · tus errores** (sitio de Jair): 20 ejercicios armados con los 15 errores del Simulacro 3. Mezcla unir parejas, completar frases, ordenar pasos y elegir, con verdadero o falso. Cubre clasificación contra clustering, sobreajuste, data drift, temperatura contra costo, prompting, Artifact contra Audit Manager, Ground Truth contra A2I, GAN, equidad y tres ejercicios de ordenar pasos.

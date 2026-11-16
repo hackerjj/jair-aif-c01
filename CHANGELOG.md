@@ -9,6 +9,13 @@ En el sitio de Gaby ese texto solo muestra la versión actual; el historial no e
 - Sitio de Gaby: https://awsemjairgarcia.github.io/gaby-aif-c01/ (repo AWSEMJairGarcia/gaby-aif-c01)
 - Backend de resultados: trento-social-backend en Render (repo hackerjj/trento-social-backend)
 
+## v2.7.0 — 15 nov 2026 · 13:40
+### Agregado
+- **Práctica 3 · tus errores** (sitio de Jair): 20 ejercicios armados con los 15 errores del Simulacro 3. Mezcla unir parejas, completar frases, ordenar pasos y elegir, con verdadero o falso. Cubre clasificación contra clustering, sobreajuste, data drift, temperatura contra costo, prompting, Artifact contra Audit Manager, Ground Truth contra A2I, GAN, equidad y tres ejercicios de ordenar pasos.
+- Se guarda sola en el servidor (módulo `practica3`) y entra a las gráficas y a Mis exámenes al terminarla. Tarjeta "Paso 8" en Material.
+### Cambiado
+- "Tu siguiente paso" ahora lleva a la Práctica 3; al terminarla, al Simulacro 4.
+- En el sitio de Gaby solo cambia el número de versión.
 ## v2.6.1 — 15 nov 2026 · 13:02
 ### Agregado
 - **Indicador "Guardado en el servidor"** en el Inicio de los dos sitios: dice en verde si el navegador llega al servidor y en rojo si algo lo bloquea. Sirve para saber por qué no llegan los resultados sin adivinar.

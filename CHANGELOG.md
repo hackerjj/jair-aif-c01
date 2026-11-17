@@ -9,6 +9,14 @@ En el sitio de Gaby ese texto solo muestra la versión actual; el historial no e
 - Sitio de Gaby: https://awsemjairgarcia.github.io/gaby-aif-c01/ (repo AWSEMJairGarcia/gaby-aif-c01)
 - Backend de resultados: trento-social-backend en Render (repo hackerjj/trento-social-backend)
 
+## v2.8.0 — 17 nov 2026 · 03:12
+### Agregado
+- **Práctica 4 · ordenar pasos** (sitio de Jair): 12 ejercicios solo de ordenar, el tipo que más has fallado (10 fallas). Cada uno trae una regla corta para recordar el orden: consulta RAG, preparar una base RAG, ciclo de vida de ML, foundation model, adaptación por costo, preparación de datos, agente de Bedrock, fine-tuning en Bedrock, modelo responsable, Guardrails, cifrado con KMS y una estrategia para contestar con calma.
+- **Simulacro 4** (sitio de Jair): 65 preguntas nuevas, 90 minutos, con 6 de ordenar pasos, 3 de relacionar y 3 de respuesta múltiple, y más peso en fundamentos de ML (D1). Con su página de calificación, que se ve en cualquier dispositivo.
+- Los dos se guardan en el servidor (módulos `practica4` y `simulacro4`) y entran solos a las gráficas, a Mis exámenes, a la lectura y al panel "¿Listo para el examen?". Tarjetas "Paso 9" y "Paso 10" en Material.
+### Cambiado
+- "Tu siguiente paso" sigue la ruta Práctica 4, luego Simulacro 4.
+- En el sitio de Gaby solo cambia el número de versión.
 ## v2.7.3 — 17 nov 2026 · 02:41
 ### Agregado
 - Resultado de la **Práctica 3** (16 de 20, 80%, 10:44): entra a Mis exámenes y a las gráficas. Sus 4 errores están en Mis errores y en la sección 9 de la guía de errores. El resultado se registró también en el servidor.

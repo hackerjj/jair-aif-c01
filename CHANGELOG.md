@@ -9,6 +9,14 @@ En el sitio de Gaby ese texto solo muestra la versión actual; el historial no e
 - Sitio de Gaby: https://awsemjairgarcia.github.io/gaby-aif-c01/ (repo AWSEMJairGarcia/gaby-aif-c01)
 - Backend de resultados: trento-social-backend en Render (repo hackerjj/trento-social-backend)
 
+## v2.7.2 — 17 nov 2026 · 02:20
+### Corregido
+- La fecha del texto "vX.Y.Z — build" se había quedado en 14 nov; ahora dice la fecha real. Las etiquetas de la gráfica de calificaciones ya no se encima.
+- El envío de resultados ahora usa `fetch` con `keepalive` (con `sendBeacon` de respaldo) y **anota si cada envío salió o fue bloqueado**. Antes, si algo del navegador lo bloqueaba, fallaba sin decir nada.
+- `sync.js` se carga con número de versión (`?v=2.7.2`) en todas las páginas, para que el navegador no use una copia vieja.
+### Agregado
+- Botón **"Enviar mi avance ahora"** en el Inicio de los dos sitios, con el último intento de envío ("practica3 a las 02:10 · enviado" o "bloqueado"). Sirve para forzar el envío y saber qué pasa.
+- Probado de punta a punta con un servidor local: manda el avance y el "terminado" de cada módulo.
 ## v2.7.1 — 15 nov 2026 · 14:05
 ### Corregido
 - **Los resultados ya se ven desde el celular.** Las páginas "Mi calificación" del Simulacro 2 y del Simulacro 3 buscaban tu examen solo en el navegador de la computadora y en otro dispositivo decían "Todavía no terminas el simulacro". Ahora traen tus respuestas guardadas en el sitio (con la correcta, la tuya y la explicación) y se muestran en cualquier dispositivo. Si el examen sí está en ese navegador, se usa ese.

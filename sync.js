@@ -19,15 +19,26 @@
     var r = Object.keys(st.res).map(function (k) { return st.res[k]; }).filter(function (x) { return x && x.correcto !== undefined; });
     return { ok: r.filter(function (x) { return x.correcto; }).length, total: r.length };
   }
+  function registrar(modulo, estado) {
+    try {
+      var k = PREFIX + "envio-log", l = JSON.parse(localStorage.getItem(k) || "[]");
+      l.unshift({ t: Date.now(), m: modulo, e: estado }); origSet.call(localStorage, k, JSON.stringify(l.slice(0, 6)));
+    } catch (e) { /* sin almacenamiento */ }
+  }
   function enviar(datos) {
     datos.usuario = USUARIO;
     datos.cliente_id = clienteId();
-    var cuerpo = JSON.stringify(datos);
+    var cuerpo = JSON.stringify(datos), modulo = datos.modulo || "?";
+    if (cuerpo.length >= 60000) cuerpo = JSON.stringify({ modulo: datos.modulo, evento: datos.evento, usuario: datos.usuario, cliente_id: datos.cliente_id, puntaje: datos.puntaje, total: datos.total, tiempo_seg: datos.tiempo_seg, estado: { aviso: "estado muy grande" } });
+    // fetch con keepalive: si algo bloquea el envío, falla y queda registrado; sendBeacon queda de respaldo.
     try {
-      var blob = new Blob([cuerpo], { type: "text/plain;charset=UTF-8" });
-      if (cuerpo.length < 60000 && navigator.sendBeacon && navigator.sendBeacon(URL, blob)) return;
-      fetch(URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain;charset=UTF-8" }, body: cuerpo, keepalive: cuerpo.length < 60000 });
-    } catch (e) { /* sin red: se reintenta con el siguiente avance o snapshot */ }
+      fetch(URL, { method: "POST", mode: "no-cors", keepalive: true, headers: { "Content-Type": "text/plain;charset=UTF-8" }, body: cuerpo })
+        .then(function () { registrar(modulo, "enviado"); },
+              function () { registrar(modulo, "bloqueado"); try { navigator.sendBeacon && navigator.sendBeacon(URL, new Blob([cuerpo], { type: "text/plain;charset=UTF-8" })); } catch (e) {} });
+    } catch (e) {
+      registrar(modulo, "error");
+      try { navigator.sendBeacon && navigator.sendBeacon(URL, new Blob([cuerpo], { type: "text/plain;charset=UTF-8" })); } catch (e2) {}
+    }
   }
   function enviarModulo(modulo, st, evento) {
     var p = puntaje(st);
@@ -53,6 +64,7 @@
 
   // Foto completa del avance (desde el Inicio), como respaldo por si algún envío se perdió.
   // Comprueba si el navegador puede llegar al servidor (no-cors: falla solo si algo lo bloquea).
+  window.AIF_ULTIMOS = function () { try { return JSON.parse(localStorage.getItem(PREFIX + "envio-log") || "[]"); } catch (e) { return []; } };
   window.AIF_ESTADO = function (cb) {
     try { fetch(URL.replace("/resultado", "/resultados") + "?ping=1", { method: "GET", mode: "no-cors" }).then(function () { cb(true); }, function () { cb(false); }); }
     catch (e) { cb(false); }

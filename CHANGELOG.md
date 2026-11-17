@@ -9,6 +9,13 @@ En el sitio de Gaby ese texto solo muestra la versión actual; el historial no e
 - Sitio de Gaby: https://awsemjairgarcia.github.io/gaby-aif-c01/ (repo AWSEMJairGarcia/gaby-aif-c01)
 - Backend de resultados: trento-social-backend en Render (repo hackerjj/trento-social-backend)
 
+## v2.8.2 — 17 nov 2026 · 03:08
+### Corregido
+- **El envío automático ya funciona en tu navegador.** El servidor recibió los avances de la Práctica 4 y una foto de todos tus módulos. Desde que el sitio anota cada envío (v2.7.2) se pudo comprobar.
+- La Práctica 4 muestra tu **primer intento real (8 de 12, 67%)**, tomado de los avances que llegaron al servidor, en vez del 100% de la tercera repetición. Las demás prácticas también cuentan el primer intento.
+### Cambiado
+- Las revisiones del Simulacro 2 y 3 ahora traen el **tiempo de cada pregunta** (antes solo de las falladas) y tus respuestas se verificaron contra las reales: coinciden al 100%.
+- En el sitio de Gaby solo cambia el número de versión.
 ## v2.8.1 — 17 nov 2026 · 02:54
 ### Corregido
 - En la gráfica de calificaciones, el "100%" de un intento perfecto se cortaba arriba. Ahora la gráfica deja espacio sobre la línea del 100%.

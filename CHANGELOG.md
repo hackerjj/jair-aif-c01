@@ -9,6 +9,13 @@ En el sitio de Gaby ese texto solo muestra la versión actual; el historial no e
 - Sitio de Gaby: https://awsemjairgarcia.github.io/gaby-aif-c01/ (repo AWSEMJairGarcia/gaby-aif-c01)
 - Backend de resultados: trento-social-backend en Render (repo hackerjj/trento-social-backend)
 
+## v2.7.3 — 17 nov 2026 · 02:41
+### Agregado
+- Resultado de la **Práctica 3** (16 de 20, 80%, 10:44): entra a Mis exámenes y a las gráficas. Sus 4 errores están en Mis errores y en la sección 9 de la guía de errores. El resultado se registró también en el servidor.
+### Cambiado
+- Mis errores: ordenar pasos sube a 10 fallas; temperatura contra costo, Artifact contra Audit Manager y Ground Truth contra A2I salen como corregidos en la Práctica 3.
+- "Tu siguiente paso" recomienda practicar ordenar pasos antes del Simulacro 4.
+- En el sitio de Gaby solo cambia el número de versión.
 ## v2.7.2 — 17 nov 2026 · 02:20
 ### Corregido
 - La fecha del texto "vX.Y.Z — build" se había quedado en 14 nov; ahora dice la fecha real. Las etiquetas de la gráfica de calificaciones ya no se encima.

@@ -180,6 +180,17 @@
 </tbody>
 </table>
 <div class="rule"><b>Lo que ya aguantas:</b> RAG, fine-tuning, continued pre-training y distillation (acertaste las preguntas directas), KMS, Macie, Inspector, Model Monitor, Clarify y los servicios de seguridad. <b>Lo que se repite:</b> temperatura contra costo, Artifact contra Audit Manager y ordenar pasos. Cayó D1 (62%) porque salieron fundamentos básicos que no habías repasado.</div>
+<h2>9. Práctica 3: tus 4 errores (16 de 20)</h2>
+<table>
+<thead><tr><th>#</th><th>El ejercicio</th><th>Tu respuesta</th><th>Correcta</th><th>Por qué</th></tr></thead>
+<tbody>
+<tr><td>P3-6</td><td>El modelo se entrenó con las compras de 2023 y en 2026 los hábitos cambiaron</td><td>Transfer learning</td><td><b>Data drift</b></td><td>Los datos de producción se alejan de los de entrenamiento (la segunda vez que lo fallas)</td></tr>
+<tr><td>P3-7</td><td>Ordenar las etapas de un foundation model</td><td>Evaluar antes del fine-tuning</td><td><b>Pre-training, fine-tuning, evaluación, despliegue</b></td><td>Se evalúa el modelo ya adaptado, justo antes de desplegarlo</td></tr>
+<tr><td>P3-8</td><td>Ordenar la preparación de una base RAG</td><td>Embeddings antes de dividir en chunks</td><td><b>Documentos, chunks, embeddings, base vectorial</b></td><td>Primero se fragmenta; cada fragmento se convierte en vector</td></tr>
+<tr><td>P3-18</td><td>Ordenar una estrategia para contestar sin prisa</td><td>Acomodar los del medio primero</td><td><b>Leer todo, decir el proceso, primero y último, medio, releer</b></td><td>Se empieza por leer; el orden de los pasos del medio va al final</td></tr>
+</tbody>
+</table>
+<div class="rule"><b>Ya salen bien:</b> temperatura contra costo (3 de 3), Artifact contra Audit Manager, Ground Truth contra A2I, clasificación contra clustering, sobreajuste, GAN y equidad. <b>Lo que falta:</b> ordenar pasos. Antes de elegir, di el proceso completo de corrido; si no lo puedes decir de corrido, todavía no lo sabes.</div>
 </main>
 </body>
 </html>

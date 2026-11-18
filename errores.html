@@ -191,6 +191,21 @@
 </tbody>
 </table>
 <div class="rule"><b>Ya salen bien:</b> temperatura contra costo (3 de 3), Artifact contra Audit Manager, Ground Truth contra A2I, clasificación contra clustering, sobreajuste, GAN y equidad. <b>Lo que falta:</b> ordenar pasos. Antes de elegir, di el proceso completo de corrido; si no lo puedes decir de corrido, todavía no lo sabes.</div>
+<h2>10. Simulacro 4: tus 8 errores (57 de 65, 88%)</h2>
+<table>
+<thead><tr><th>#</th><th>La pregunta</th><th>Tu respuesta</th><th>Correcta</th></tr></thead>
+<tbody>
+<tr><td>S4-4</td><td>Un sistema de recomendaciones funcionaba bien, pero tras un cambio de temporada sus sugerencias empeoraron porque los clientes ahora compran cosas distintas. ¿Cómo se llama el fenómeno?</td><td>Sobreajuste</td><td><b>Data drift (deriva de datos)</b></td></tr>
+<tr><td>S4-7</td><td>¿Qué hace la regularización durante el entrenamiento?</td><td>Agrega más etiquetas al conjunto de datos</td><td><b>Penaliza la complejidad del modelo para reducir el sobreajuste</b></td></tr>
+<tr><td>S4-10</td><td>Ordena el flujo de un proyecto de machine learning, del primer paso al último.</td><td>orden 1-2-4-3-5</td><td><b>Definir el problema de negocio → Recolectar y preparar los datos → Entrenar y ajustar el modelo → Evaluar el modelo → Desplegar y monitorear</b></td></tr>
+<tr><td>S4-34</td><td>¿Cuál de estas técnicas NO requiere entrenar el modelo?</td><td>Fine-tuning</td><td><b>RAG</b></td></tr>
+<tr><td>S4-46</td><td>Ordena los pasos para hacer fine-tuning de un modelo en Amazon Bedrock y usarlo.</td><td>orden 1-3-2-4-5</td><td><b>Preparar el dataset de entrenamiento en S3 → Crear el trabajo de fine-tuning → Evaluar el modelo personalizado → Comprar Provisioned Throughput para el modelo → Invocar el modelo personalizado</b></td></tr>
+<tr><td>S4-48</td><td>Una empresa quiere entender por qué su modelo tomó una decisión concreta, y qué variables pesaron más. ¿Qué usa?</td><td>Amazon SageMaker Model Monitor</td><td><b>Amazon SageMaker Clarify</b></td></tr>
+<tr><td>S4-59</td><td>La empresa quiere controlar las claves con las que se cifran sus datos. ¿Qué usa?</td><td>AWS Secrets Manager</td><td><b>AWS KMS</b></td></tr>
+<tr><td>S4-65</td><td>Ordena los pasos para cifrar con tu propia clave los datos de entrenamiento.</td><td>orden 2-1-3-4</td><td><b>Crear una clave en AWS KMS → Configurar el bucket de S3 para cifrar con esa clave → Guardar los datos de entrenamiento cifrados → CloudTrail registra el uso de la clave</b></td></tr>
+</tbody>
+</table>
+<div class="rule"><b>Lo que ya aguantas:</b> dominio 2 completo (16 de 16), respuesta múltiple (3 de 3), relacionar (3 de 3), adaptación de modelos, temperatura contra costo y Artifact contra Audit Manager. <b>Lo que queda:</b> en las 3 de ordenar cambiaste dos pasos de lugar, data drift, regularización, Clarify contra Model Monitor y KMS. Fueron descuidos de prisa: usaste 28 de 90 minutos.</div>
 </main>
 </body>
 </html>

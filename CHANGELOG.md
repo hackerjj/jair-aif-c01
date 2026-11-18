@@ -9,6 +9,13 @@ En el sitio de Gaby ese texto solo muestra la versión actual; el historial no e
 - Sitio de Gaby: https://awsemjairgarcia.github.io/gaby-aif-c01/ (repo AWSEMJairGarcia/gaby-aif-c01)
 - Backend de resultados: trento-social-backend en Render (repo hackerjj/trento-social-backend)
 
+## v2.8.3 — 18 nov 2026 · 02:28
+### Agregado
+- Resultado del **Simulacro 4: 57 de 65 (88%) en 28:19**, tu mejor simulacro. Llegó solo al servidor y se calificó con la clave. Entra a Mis exámenes, a las gráficas, al panel "¿Listo para el examen?" y a la lectura, con dominios y tiempo por pregunta. Su calificación se ve en cualquier dispositivo.
+- Mis errores: ordenar pasos sube a 13 fallas, data drift a 3 y Clarify contra Model Monitor a 7. La guía de errores trae una sección 10 con tus 8 errores.
+### Cambiado
+- "Tu siguiente paso" ahora es el repaso final antes de agendar el examen.
+- En el sitio de Gaby solo cambia el número de versión.
 ## v2.8.2 — 17 nov 2026 · 03:08
 ### Corregido
 - **El envío automático ya funciona en tu navegador.** El servidor recibió los avances de la Práctica 4 y una foto de todos tus módulos. Desde que el sitio anota cada envío (v2.7.2) se pudo comprobar.

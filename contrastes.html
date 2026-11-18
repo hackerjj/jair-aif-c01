@@ -189,6 +189,28 @@
 </tbody>
 </table>
 <div class="tip"><b>Truco:</b> la temperatura y el top-p cambian cómo suena la respuesta; jamás cambian el precio. Ground Truth etiqueta ANTES de entrenar; A2I revisa en producción.</div>
+<h2>14. Lo que fallaste en el Simulacro 4 (repaso final)</h2>
+<table>
+<thead><tr><th>Si el caso dice...</th><th>Es</th></tr></thead>
+<tbody>
+<tr><td>El modelo funcionaba bien y <b>con el tiempo</b> empeoró porque los datos de ahora son distintos</td><td><b>Data drift.</b> Lo detecta Model Monitor y se corrige reentrenando con datos recientes</td></tr>
+<tr><td>Penalizar la complejidad o los pesos grandes del modelo</td><td><b>Regularización</b>: reduce el sobreajuste</td></tr>
+<tr><td>Explicar por qué el modelo tomó una decisión o medir sesgo</td><td><b>SageMaker Clarify</b> (no Model Monitor)</td></tr>
+<tr><td>Vigilar calidad o drift con el modelo ya en producción</td><td><b>SageMaker Model Monitor</b></td></tr>
+<tr><td>Crear, controlar y rotar <b>claves de cifrado</b></td><td><b>AWS KMS</b></td></tr>
+<tr><td>Guardar y rotar <b>contraseñas o claves de API</b></td><td><b>AWS Secrets Manager</b></td></tr>
+<tr><td>¿Qué técnica mejora respuestas <b>sin entrenar</b>?</td><td><b>RAG</b> (y prompt engineering). Fine-tuning, continued pre-training y distillation sí entrenan</td></tr>
+</tbody>
+</table>
+<table>
+<thead><tr><th>Proceso que fallaste</th><th>Orden correcto</th></tr></thead>
+<tbody>
+<tr><td>Proyecto de ML</td><td>Problema, datos, <b>entrenar, evaluar</b>, desplegar y monitorear</td></tr>
+<tr><td>Fine-tuning en Bedrock</td><td>Datos en S3, <b>crear el trabajo, evaluar</b>, Provisioned Throughput, invocar</td></tr>
+<tr><td>Cifrar con tu clave</td><td><b>Crear la clave en KMS</b>, configurar el bucket, guardar los datos, CloudTrail registra</td></tr>
+</tbody>
+</table>
+<div class="tip"><b>Truco:</b> en los tres órdenes que fallaste, cambiaste dos pasos vecinos. Regla: lo que se <b>crea</b> va antes de lo que se <b>usa</b> o se <b>evalúa</b>. No evalúas un modelo que no entrenaste, ni configuras con una clave que no existe.</div>
 </main>
 </body>
 </html>

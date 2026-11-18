@@ -9,6 +9,14 @@ En el sitio de Gaby ese texto solo muestra la versión actual; el historial no e
 - Sitio de Gaby: https://awsemjairgarcia.github.io/gaby-aif-c01/ (repo AWSEMJairGarcia/gaby-aif-c01)
 - Backend de resultados: trento-social-backend en Render (repo hackerjj/trento-social-backend)
 
+## v2.9.0 — 18 nov 2026 · 02:42
+### Agregado
+- **Práctica 5 · errores del Simulacro 4** (sitio de Jair): 10 ejercicios con tus 8 errores: data drift, regularización, las 3 de ordenar pasos, qué técnica no entrena, Clarify contra Model Monitor y KMS contra Secrets Manager. Mezcla elegir, completar, ordenar y unir parejas.
+- **Simulacro 5** (sitio de Jair): 65 preguntas nuevas, 90 minutos, con 7 de ordenar pasos, 3 de relacionar y 3 de respuesta múltiple. Ninguna repite los Simulacros 1 a 4. Con su página de calificación, que se ve en cualquier dispositivo.
+- **Hoja de contrastes, sección 14** (en los dos sitios): lo que se falló en el Simulacro 4, con los tres órdenes correctos y la regla "lo que se crea va antes de lo que se usa".
+- Los dos se guardan en el servidor (módulos `practica5` y `simulacro5`) y entran solos a las gráficas y al panel. Tarjetas "Paso 11" y "Paso 12" en Material.
+### Cambiado
+- "Tu siguiente paso" sigue la ruta Práctica 5, luego Simulacro 5 y luego agendar el examen.
 ## v2.8.3 — 18 nov 2026 · 02:28
 ### Agregado
 - Resultado del **Simulacro 4: 57 de 65 (88%) en 28:19**, tu mejor simulacro. Llegó solo al servidor y se calificó con la clave. Entra a Mis exámenes, a las gráficas, al panel "¿Listo para el examen?" y a la lectura, con dominios y tiempo por pregunta. Su calificación se ve en cualquier dispositivo.

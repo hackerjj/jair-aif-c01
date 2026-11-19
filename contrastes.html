@@ -211,6 +211,23 @@
 </tbody>
 </table>
 <div class="tip"><b>Truco:</b> en los tres órdenes que fallaste, cambiaste dos pasos vecinos. Regla: lo que se <b>crea</b> va antes de lo que se <b>usa</b> o se <b>evalúa</b>. No evalúas un modelo que no entrenaste, ni configuras con una clave que no existe.</div>
+<h2>15. Lo que fallaste en el Simulacro 5 (último repaso)</h2>
+<table>
+<thead><tr><th>Si el caso dice...</th><th>Es</th></tr></thead>
+<tbody>
+<tr><td>Penalizar la complejidad o los pesos grandes <b>al entrenar</b></td><td><b>Regularización</b> (reduce el sobreajuste)</td></tr>
+<tr><td>Dividir los datos en partes y <b>entrenar y validar varias veces</b></td><td><b>Validación cruzada</b> (detecta el sobreajuste)</td></tr>
+<tr><td>Reusar un modelo ya entrenado para otra tarea</td><td><b>Transfer learning</b> (no tiene que ver con penalizar)</td></tr>
+<tr><td>Muchos pares de pregunta y respuesta aprobadas para fijar el estilo</td><td><b>Fine-tuning</b> (few-shot es solo unos ejemplos dentro del prompt)</td></tr>
+<tr><td>Comparar varios foundation models con tus datos antes de elegir</td><td><b>Amazon Bedrock Model Evaluation</b></td></tr>
+<tr><td>Invocar un modelo personalizado (fine-tuning) en Bedrock</td><td><b>Provisioned Throughput</b> (batch es para lotes sin prisa)</td></tr>
+<tr><td>Buscar <b>vulnerabilidades</b> en EC2, contenedores o Lambda</td><td><b>Amazon Inspector</b></td></tr>
+<tr><td>Detectar <b>amenazas</b> o actividad sospechosa en la cuenta</td><td><b>Amazon GuardDuty</b></td></tr>
+<tr><td>Reportes de cumplimiento <b>de AWS</b> (SOC, ISO, PCI)</td><td><b>AWS Artifact</b>: lo descargas</td></tr>
+<tr><td>Evidencia continua de <b>tus</b> controles</td><td><b>AWS Audit Manager</b>: lo entregas</td></tr>
+</tbody>
+</table>
+<div class="tip"><b>Truco:</b> Inspector <b>inspecciona</b> tu software buscando huecos; GuardDuty <b>vigila</b> como guardia quién entra. En los órdenes: primero se <b>detecta</b> el problema y después se actúa, y Clarify va <b>antes</b> de desplegar, Model Monitor <b>después</b>.</div>
 </main>
 </body>
 </html>

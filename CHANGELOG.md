@@ -9,6 +9,15 @@ En el sitio de Gaby ese texto solo muestra la versión actual; el historial no e
 - Sitio de Gaby: https://awsemjairgarcia.github.io/gaby-aif-c01/ (repo AWSEMJairGarcia/gaby-aif-c01)
 - Backend de resultados: trento-social-backend en Render (repo hackerjj/trento-social-backend)
 
+## v2.9.1 — 19 nov 2026 · 02:10
+### Corregido
+- En la gráfica de calificaciones las etiquetas se enciman cuando hay muchos intentos. Ahora, con más de 8 intentos, se muestran inclinadas y con el nombre corto.
+### Agregado
+- Resultados de la **Práctica 5 (8 de 10, 5:37)** y del **Simulacro 5 (56 de 65, 86%, 27:31)**. Llegaron solos al servidor. Entran a Mis exámenes, las gráficas, el panel "¿Listo para el examen?" y la lectura. La calificación del Simulacro 5 se ve en cualquier dispositivo.
+- Mis errores y la sección 11 de la guía de errores con los 9 errores del Simulacro 5.
+- Hoja de contrastes, sección 15 (en los dos sitios): regularización contra validación cruzada, fine-tuning contra few-shot, Model Evaluation, Provisioned Throughput, Inspector contra GuardDuty y Artifact contra Audit Manager.
+### Cambiado
+- "Tu siguiente paso" ahora es agendar el examen, con un último repaso.
 ## v2.9.0 — 18 nov 2026 · 02:42
 ### Agregado
 - **Práctica 5 · errores del Simulacro 4** (sitio de Jair): 10 ejercicios con tus 8 errores: data drift, regularización, las 3 de ordenar pasos, qué técnica no entrena, Clarify contra Model Monitor y KMS contra Secrets Manager. Mezcla elegir, completar, ordenar y unir parejas.

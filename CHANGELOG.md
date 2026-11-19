@@ -9,6 +9,9 @@ En el sitio de Gaby ese texto solo muestra la versión actual; el historial no e
 - Sitio de Gaby: https://awsemjairgarcia.github.io/gaby-aif-c01/ (repo AWSEMJairGarcia/gaby-aif-c01)
 - Backend de resultados: trento-social-backend en Render (repo hackerjj/trento-social-backend)
 
+## v2.10.1 — 19 nov 2026 · 09:54
+### Cambiado
+- La **Práctica 6** pasa de 15 a 24 ejercicios: se agregaron tus 9 errores del Simulacro 5 (regularización, validación cruzada, fine-tuning contra few-shot, Model Evaluation, Provisioned Throughput, Inspector contra GuardDuty, Artifact contra Audit Manager y dos órdenes) y los 2 órdenes que fallaste otra vez en la Práctica 5 (proyecto de ML y cifrado con KMS).
 ## v2.10.0 — 19 nov 2026 · 09:44
 ### Agregado
 - Revisión de la guía de **AWS Skill Builder** que compartió un compañero (51 servicios y un examen de práctica de 65 preguntas). El curso ya cubría casi todo; se agregaron los temas que faltaban.

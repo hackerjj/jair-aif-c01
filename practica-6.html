@@ -121,7 +121,36 @@ const EX = [
    exp:"Ground Truth organiza a personas para etiquetar y calificar, incluido el feedback de RLHF."},
  {t:"mc", s:"La empresa quiere comparar FMs midiendo si sus respuestas son tóxicas, con un dataset de prueba y a escala. ¿Qué usa?",
    o:["SageMaker Clarify (evaluación de FMs)","Amazon A2I para cada respuesta","AWS AI Service Cards","AWS Trusted Advisor"], a:0,
-   exp:"Clarify evalúa FMs midiendo toxicidad y sesgo. A2I es revisión humana una por una, no a escala."}
+   exp:"Clarify evalúa FMs midiendo toxicidad y sesgo. A2I es revisión humana una por una, no a escala."},
+ {t:"fill", text:"Penalizar los pesos grandes al entrenar es ___. Dividir los datos en partes y entrenar y validar varias veces es ___.",
+   ans:["regularización","validación cruzada"], bank:["transfer learning","validación cruzada","regularización","inferencia por lotes"],
+   exp:"Tu error del Simulacro 5: elegiste transfer learning y luego inferencia por lotes. Regularizar evita el sobreajuste; la validación cruzada lo detecta."},
+ {t:"mc", s:"Un banco tiene 2,000 pares de pregunta y respuesta aprobadas y quiere que el modelo responda con ese estilo. ¿Qué técnica usa?",
+   o:["Few-shot con un ejemplo","Fine-tuning","Continued pre-training","RAG"], a:1,
+   exp:"Tu error del Simulacro 5: elegiste few-shot. Few-shot es poner unos pocos ejemplos en el prompt. Miles de pares etiquetados se usan para entrenar: fine-tuning."},
+ {t:"mc", s:"Un equipo quiere comparar tres foundation models con sus propios datos antes de elegir uno. ¿Qué usa?",
+   o:["SageMaker Ground Truth","SageMaker Clarify","Amazon Bedrock Model Evaluation","AWS Audit Manager"], a:2,
+   exp:"Tu error del Simulacro 5: elegiste Ground Truth, que sirve para etiquetar datos. Comparar modelos es Bedrock Model Evaluation."},
+ {t:"mc", s:"Un modelo personalizado con fine-tuning en Bedrock no se puede invocar bajo demanda. ¿Qué necesita?",
+   o:["Batch inference","Provisioned Throughput","Un VPC endpoint","Guardrails"], a:1,
+   exp:"Tu error del Simulacro 5: elegiste batch. Los modelos personalizados en Bedrock se invocan con Provisioned Throughput."},
+ {t:"match", title:"Une cada necesidad de seguridad con su servicio", pairs:[
+   ["Buscar vulnerabilidades en contenedores o EC2","Amazon Inspector"],
+   ["Detectar amenazas y actividad sospechosa","Amazon GuardDuty"],
+   ["Descargar los reportes de cumplimiento de AWS","AWS Artifact"],
+   ["Evidencia continua de tus propios controles","AWS Audit Manager"]]},
+ {t:"order", s:"Ordena cómo se corrige un modelo afectado por data drift.",
+   steps:["Model Monitor detecta que los datos cambiaron","Recolectar datos recientes","Reentrenar el modelo","Evaluar el nuevo modelo","Desplegar la nueva versión"],
+   exp:"Tu error del Simulacro 5: pusiste recolectar antes de detectar. Primero se detecta el problema y después se actúa."},
+ {t:"order", s:"Ordena las herramientas según el momento en que se usan en la vida de un modelo.",
+   steps:["SageMaker Ground Truth","Entrenamiento del modelo","SageMaker Clarify","Despliegue","SageMaker Model Monitor"],
+   exp:"Tu error del Simulacro 5: pusiste Model Monitor antes de Clarify. Clarify va antes de desplegar; Model Monitor, después."},
+ {t:"order", s:"Ordena el flujo de un proyecto de machine learning.",
+   steps:["Definir el problema de negocio","Recolectar y preparar los datos","Entrenar y ajustar el modelo","Evaluar el modelo","Desplegar y monitorear"],
+   exp:"Lo fallaste en el Simulacro 4 y otra vez en la Práctica 5. Lo que se crea va antes de lo que se evalúa: primero entrenas, luego evalúas."},
+ {t:"order", s:"Ordena los pasos para cifrar con tu propia clave los datos de entrenamiento.",
+   steps:["Crear una clave en AWS KMS","Configurar el bucket de S3 para cifrar con esa clave","Guardar los datos de entrenamiento cifrados","CloudTrail registra el uso de la clave"],
+   exp:"Lo fallaste en el Simulacro 4 y otra vez en la Práctica 5. Sin clave no hay nada que configurar: la clave va primero."}
 ];
 const KIND = {match:"Une las parejas", fill:"Completa la frase", mc:"Elige la respuesta", order:"Ordena los pasos"};
 const KEY = "jair-practica6";
@@ -141,7 +170,7 @@ const app = document.getElementById("app");
 
 function intro(){
   app.innerHTML = '<div class="card"><div class="kind">Práctica 6 · temas nuevos</div><h1>Une, completa y ordena</h1>'+
-   '<p class="muted">15 ejercicios con los temas que faltaban según la guía de Skill Builder: herramientas de SageMaker, sesgo y varianza, forecasting, MAE y MAPE, tipos de datos, bases vectoriales, Kendra, Rekognition, adaptación de dominio, latencia, prompt injection, IAM, gateway endpoint y RLHF. Aquí sí ves si acertaste en cada ejercicio, para que aprendas en el momento. Cuenta como correcto solo si lo resuelves sin errores al primer intento.</p>'+
+   '<p class="muted">24 ejercicios: tus 9 errores del Simulacro 5, los 2 órdenes que fallaste otra vez en la Práctica 5 y los temas que faltaban según la guía de Skill Builder: herramientas de SageMaker, sesgo y varianza, forecasting, MAE y MAPE, tipos de datos, bases vectoriales, Kendra, Rekognition, adaptación de dominio, latencia, prompt injection, IAM, gateway endpoint y RLHF. Aquí sí ves si acertaste en cada ejercicio, para que aprendas en el momento. Cuenta como correcto solo si lo resuelves sin errores al primer intento.</p>'+
    '<p class="muted">El timer arranca cuando das clic en Iniciar. El tiempo total y el de cada ejercicio se guardan en tus resultados.</p>'+
    '<div class="actions"><button class="btn" id="go">Iniciar</button></div></div>';
   document.getElementById("go").onclick=()=>{ st.started=true; save(); startClock(); show(); };

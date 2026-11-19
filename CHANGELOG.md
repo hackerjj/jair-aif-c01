@@ -9,6 +9,15 @@ En el sitio de Gaby ese texto solo muestra la versión actual; el historial no e
 - Sitio de Gaby: https://awsemjairgarcia.github.io/gaby-aif-c01/ (repo AWSEMJairGarcia/gaby-aif-c01)
 - Backend de resultados: trento-social-backend en Render (repo hackerjj/trento-social-backend)
 
+## v2.10.0 — 19 nov 2026 · 09:44
+### Agregado
+- Revisión de la guía de **AWS Skill Builder** que compartió un compañero (51 servicios y un examen de práctica de 65 preguntas). El curso ya cubría casi todo; se agregaron los temas que faltaban.
+- **Hoja de contrastes, sección 16** (en los dos sitios): Autopilot, JumpStart, Model Registry, Pipelines, Studio contra Canvas, built-in algorithms, sesgo y varianza, forecasting, MAE y MAPE, datos semiestructurados, perplejidad, Kendra, bases vectoriales (OpenSearch, DocumentDB, Redshift), Rekognition con custom adapters, domain adaptation contra instruction-based fine-tuning, latencia por tokens, Titan, RLHF, toxicidad con Clarify, IAM contra bucket policy, VPC gateway endpoint, AI Service Cards, Generative AI Security Scoping Matrix, tipos de prompt injection, ECR y Lambda.
+- **Práctica 6 · temas nuevos** (sitio de Jair): 15 ejercicios con esos temas.
+- **Simulacro 6** (sitio de Jair): 65 preguntas nuevas, sin repetir los Simulacros 1 a 5, centradas en esos temas, con 9 de respuesta múltiple como en Skill Builder.
+- Los dos se guardan en el servidor (módulos `practica6` y `simulacro6`) y entran solos al tablero. Tarjetas "Paso 13" y "Paso 14".
+### Cambiado
+- "Tu siguiente paso" sigue la ruta Práctica 6, Simulacro 6 y luego agendar.
 ## v2.9.1 — 19 nov 2026 · 02:10
 ### Corregido
 - En la gráfica de calificaciones las etiquetas se enciman cuando hay muchos intentos. Ahora, con más de 8 intentos, se muestran inclinadas y con el nombre corto.
